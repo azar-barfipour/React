@@ -1,0 +1,8 @@
+body {
+  background-color: gray;
+  font-family: sans-serif;
+}
+body > div {
+  margin: 10px;
+  color: #005;
+}
