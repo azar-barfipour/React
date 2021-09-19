@@ -7,13 +7,15 @@ body {
   background-color: gray;
   font-family: sans-serif;
 }
-.header {
+.container {
   max-width: 500px;
   height: 300px;
   border: 1px solid black;
   border-radius: 25px;
-  padding: 20px;
   margin: 20px;
+  padding: 20px;
+}
+.header {
   display: flex;
   justify-content: space-between;
 }

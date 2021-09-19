@@ -15,5 +15,4 @@ color : Proptypes.string,
 text : Proptypes.string,
 }
 
-
 export default Button
