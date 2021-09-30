@@ -5,11 +5,7 @@ import ExpensesFilter from "./ExpensesFilter";
 
 const Expenses = (props) => {
   const saveExpensesFilterHandler = (expensesFilterData) => {
-    const expensesData = {
-      ...expensesFilterData,
-      id: 1,
-    };
-    console.log(expensesData);
+    console.log(expensesFilterData);
   };
   return (
     <Card className="expenses">

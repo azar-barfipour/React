@@ -6,11 +6,7 @@ const ExpensesFilter = (props) => {
   const [enteresYear, setenteresYear] = useState("");
 
   const filterHandler = (event) => {
-    console.log(event.target.value);
-    const expenseFilterData = {
-      year: setenteresYear,
-    };
-    props.onExpensesFilter(expenseFilterData);
+    props.onExpensesFilter(event.target.value);
   };
   return (
     <div className="expenses-filter">
