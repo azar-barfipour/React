@@ -4,7 +4,7 @@ import "./ExpensesFilter.css";
 
 const ExpensesFilter = (props) => {
   const filterHandler = (event) => {
-    console.log(props.onExpensesFilter(event.target.value));
+    props.onExpensesFilter(event.target.value);
   };
   return (
     <div className="expenses-filter">
