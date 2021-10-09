@@ -1,8 +1,4 @@
 .card {
-  margin: 40px auto;
-  padding: 10px;
   border-radius: 0.5em;
   background-color: white;
-  width: 90%;
-  max-width: 40rem;
 }

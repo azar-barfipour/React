@@ -1,8 +1,9 @@
-.list-controller {
+.listcontroller {
   margin: 40px auto;
   padding: 10px;
   border-radius: 0.5em;
   background-color: white;
-  width: 500px;
+  width: 90%;
+  max-width: 40rem;
   /* height: 80px; */
 }
