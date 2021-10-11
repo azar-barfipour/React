@@ -1,0 +1,32 @@
+//{useState}
+
+it keeps reactions and changes 
+
+const [snapshot value, set function to create snapshot value] = useState(default value)
+
+when we are listening to a action like click we can use states and the function to keep new values and use snapshot values on our components.
+
+we use event to get the value and pass it to the changing function and keep it into our snapshot.
+
+
+//{useEffect}
+
+when there is a action in the app and we want to response to that.
+
+useEffect(()=>{},[])
+
+useEffect(function ,[dependencies])
+
+it runs once for the first time when the component renders. then for every time that dependencies changed. 
+clean up will run every time before useEffect run just not for the first time....
+
+
+
+{useReducer}
+
+when we are update one state which depends on another state... => merge it in one state with using {useReducer}
+
+const [state,dispatchFn] = useReducer(reducerFn,initial state,initial Fn)
+
+const [snapshot,updating function with actions] = useReducer(get the latest snapshot and action,initial state,initial Fn)
+
