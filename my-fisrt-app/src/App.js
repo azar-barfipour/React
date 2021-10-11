@@ -24,10 +24,10 @@ function App() {
   };
 
   return (
-    <div>
+    <React.Fragment>
       <AddUser onAddUser={addUserHandler} />
       <UserList items={newUsers} />
-    </div>
+    </React.Fragment>
   );
 }
 

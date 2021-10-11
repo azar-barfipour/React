@@ -41,10 +41,18 @@ const AddUser = (props) => {
 
     props.onAddUser(listItemes);
   };
-
+  const errorHandler = () => {
+    setError(null);
+  };
   return (
-    <div>
-      {error && <ErrorModal title={error.title} message={error.message} />}
+    <React.Fragment>
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onConfirm={errorHandler}
+        />
+      )}
       <Card className={classes.input}>
         <form onSubmit={addUserHandler}>
           <div className="form-controler">
@@ -63,12 +71,12 @@ const AddUser = (props) => {
                 value={enteredAge}
                 onChange={inputAgeHandler}
               ></input>
-              <Button>Add User</Button>
+              <Button type="submit">Add User</Button>
             </div>
           </div>
         </form>
       </Card>
-    </div>
+    </React.Fragment>
   );
 };
 
