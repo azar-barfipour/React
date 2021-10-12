@@ -22,11 +22,21 @@ clean up will run every time before useEffect run just not for the first time...
 
 
 
-{useReducer}
+//{useReducer}
 
 when we are update one state which depends on another state... => merge it in one state with using {useReducer}
 
 const [state,dispatchFn] = useReducer(reducerFn,initial state,initial Fn)
 
 const [snapshot,updating function with actions] = useReducer(get the latest snapshot and action,initial state,initial Fn)
+
+
+//Context
+
+passing from one component to another without using chans of props.
+
+after making the context component we have 2 things to do:
+1. to provide the component where ever we need it
+2. to listen to it
+
 

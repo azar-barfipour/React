@@ -59,7 +59,12 @@ const Login = (props) => {
       console.log("CLEANUP");
       clearTimeout(identifier);
     };
-  }, [emailState.value, passwordState.value]);
+  }, [
+    emailState.value,
+    passwordState.value,
+    emailState.isValid,
+    passwordState.isValid,
+  ]);
 
   const emailChangeHandler = (event) => {
     dispatchEmail({ type: "USER_INPUT", val: event.target.value });
