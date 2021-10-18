@@ -8,20 +8,14 @@ const Cart = (props) => {
       description: "Finest fish and veggies",
       price: 22.99,
     },
-    {
-      id: "m2",
-      name: "Schnitzel",
-      description: "A german specialty!",
-      price: 16.5,
-    },
   ];
+  const cartList = cartItems.map((cartItem) => {
+    return <li>{cartItem.name}</li>;
+  });
+  console.log(cartList);
   return (
     <Modal onClose={props.onHideCart}>
-      <ul className={classes[`cart-items`]}>
-        {cartItems.map((cartItem) => {
-          <li>{cartItem.name}</li>;
-        })}
-      </ul>
+      <ul className={classes[`cart-items`]}>{cartList}</ul>
       <div className={classes.total}>
         <span>total</span>
         <span>25$</span>
