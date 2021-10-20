@@ -1,0 +1,10 @@
+.header {
+  position: fixed;
+  width: 100%;
+  background-color: white;
+}
+
+.header h1 {
+  font-size: 1rem;
+  text-align: center;
+}
