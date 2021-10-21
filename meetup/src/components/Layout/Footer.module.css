@@ -1,0 +1,10 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  background-color: tomato;
+  width: 100%;
+}
+.footer h2 {
+  font-size: 1rem;
+  text-align: center;
+}

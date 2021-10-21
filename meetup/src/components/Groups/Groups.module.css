@@ -1,0 +1,21 @@
+.groups {
+  margin: auto 1.5rem;
+  margin-top: 1.5rem;
+  background-color: aqua;
+  height: 10rem;
+}
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title a {
+  text-decoration: none;
+  color: rgb(119, 231, 162);
+}
+
+.images {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
