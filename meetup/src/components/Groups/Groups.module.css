@@ -3,11 +3,13 @@
   margin-top: 1.5rem;
   background-color: aqua;
   height: 10rem;
+  border: 1px solid black;
 }
 .title {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid black;
 }
 .title a {
   text-decoration: none;
@@ -18,4 +20,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.images div {
+  border: 1px solid black;
+  width: 15rem;
+  height: 5rem;
+}
+.groupItem {
+  display: flex;
+  justify-content: space-between;
 }

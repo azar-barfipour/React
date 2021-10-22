@@ -3,3 +3,12 @@
   height: 15rem;
   margin: auto 1.5rem;
 }
+.calendar h4 {
+  border: 1px solid black;
+}
+.calendar h6 {
+  border: 1px solid black;
+}
+.calendar p {
+  border: 1px solid black;
+}
