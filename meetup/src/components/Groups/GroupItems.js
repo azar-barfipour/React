@@ -1,10 +1,12 @@
 import classes from "./GroupItems.module.css";
-import react, { Fragment } from "react";
+import Card from "../UI/Card";
 const GroupItems = (props) => {
   return (
-    <li className={classes.groupItems}>
-      <p>{props.title}</p>
-    </li>
+    <Card className={classes.groupItems}>
+      <li>
+        <p>{props.title}</p>
+      </li>
+    </Card>
   );
 };
 export default GroupItems;

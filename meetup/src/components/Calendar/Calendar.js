@@ -25,14 +25,16 @@ const Calendar = () => {
         <div>
           <h4>Your Calendar</h4>
         </div>
-        {calendarItemes.map((calendarIteme) => {
-          return (
-            <CalendarItems
-              title={calendarIteme.title}
-              dec={calendarIteme.description}
-            />
-          );
-        })}
+        <ul className={classes.calendarItemes}>
+          {calendarItemes.map((calendarIteme) => {
+            return (
+              <CalendarItems
+                title={calendarIteme.title}
+                dec={calendarIteme.description}
+              />
+            );
+          })}
+        </ul>
       </div>
     </Fragment>
   );

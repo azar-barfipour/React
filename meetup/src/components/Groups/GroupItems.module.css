@@ -1,4 +1,8 @@
 .groupItems {
+  margin-right: 1rem;
+}
+.groupItems li {
   font-size: 0.8rem;
   list-style: none;
+  max-width: 15rem;
 }

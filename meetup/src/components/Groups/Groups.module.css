@@ -1,19 +1,16 @@
 .groups {
   margin: auto 1.5rem;
   margin-top: 1.5rem;
-  background-color: aqua;
   height: 10rem;
-  border: 1px solid black;
 }
 .title {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid black;
 }
 .title a {
   text-decoration: none;
-  color: rgb(119, 231, 162);
+  color: rgb(10, 117, 51);
 }
 
 .images {
@@ -22,8 +19,6 @@
   align-items: center;
 }
 .images div {
-  border: 1px solid black;
-  width: 15rem;
   height: 5rem;
 }
 .groupItem {

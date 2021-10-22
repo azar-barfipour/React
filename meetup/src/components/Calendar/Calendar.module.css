@@ -1,14 +1,9 @@
 .calendar {
-  background-color: blueviolet;
-  height: 15rem;
+  /* background-color: blueviolet;  */
   margin: auto 1.5rem;
 }
-.calendar h4 {
-  border: 1px solid black;
-}
-.calendar h6 {
-  border: 1px solid black;
-}
-.calendar p {
-  border: 1px solid black;
+.calendarItemes {
+  max-height: 10rem;
+  overflow-y: scroll;
+  margin-bottom: 1rem;
 }

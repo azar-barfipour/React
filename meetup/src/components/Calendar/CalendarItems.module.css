@@ -1,0 +1,7 @@
+.calendarItems {
+  margin-bottom: 1rem;
+}
+
+.calendarItems li {
+  list-style: none;
+}
