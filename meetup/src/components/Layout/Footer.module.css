@@ -1,9 +1,13 @@
 .footer {
+  position: fixed;
+  z-index: 2;
+  bottom: 0;
   height: 2rem;
-  background-color: tomato;
+  background-color: rgb(12, 6, 5);
   width: 100%;
 }
 .footer h2 {
   font-size: 1rem;
   text-align: center;
+  color: white;
 }
