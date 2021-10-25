@@ -1,6 +1,6 @@
 .calendar {
-  /* background-color: blueviolet;  */
   margin: auto 1.5rem;
+  margin-bottom: 2rem;
 }
 .calendarItemes {
   max-height: 10rem;
