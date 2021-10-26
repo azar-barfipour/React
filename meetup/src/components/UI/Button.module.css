@@ -1,0 +1,9 @@
+.button {
+  padding: 0.2rem;
+  margin-top: 0.5rem;
+  background-color: blueviolet;
+  border-radius: 8px;
+}
+.button:hover {
+  background-color: rgb(103, 10, 190);
+}

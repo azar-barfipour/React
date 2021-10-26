@@ -1,5 +1,7 @@
 import react, { useState } from "react";
 import classes from "./AddGroups.module.css";
+import Button from "../UI/Button";
+import Input from "../UI/Input";
 
 const AddGroups = (props) => {
   const [title, setTitle] = useState("");
@@ -26,13 +28,15 @@ const AddGroups = (props) => {
   return (
     <form className={classes.addgroups} onSubmit={addGroupsHandler}>
       <h3>Adding new groups</h3>
-      <label>title</label>
+      <Input type="text" onChange={titleHandler} label="Group Title" />
+      <Input type="text" onChange={desHandler} label="Group Descriotion" />
+      {/* <label>title</label>
       <input type="text" onChange={titleHandler}></input>
       <label>description</label>
-      <input type="text" onChange={desHandler}></input>
+      <input type="text" onChange={desHandler}></input>  */}
       {/* <label>Date</label> */}
       {/* <input type="datetime-local" onChange={dateHandler}></input> */}
-      <button type="submit">ADD</button>
+      <Button type="submit" name="ADD" />
     </form>
   );
 };
