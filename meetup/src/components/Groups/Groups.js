@@ -1,29 +1,32 @@
-import react, { Fragment } from "react";
+import react, { Fragment, useState } from "react";
 import classes from "./Groups.module.css";
 import GroupItems from "./GroupItems";
 import AddGroups from "./AddGroups";
-const Groups = (props) => {
-  const addGroupItemsHandler = (item) => {
-    const itemes = {
-      title: item.title,
-      description: item.description,
-    };
-  };
-  const groupItemes = [
-    {
-      id: "g1",
-      title: "English Conversation",
-    },
-    {
-      id: "g2",
-      title: "Dance Club",
-    },
 
-    {
-      id: "g3",
-      title: "Newcommers",
-    },
-  ];
+const DUMMI = [
+  {
+    id: "g1",
+    title: "English Conversation",
+  },
+  {
+    id: "g2",
+    title: "Dance Club",
+  },
+
+  {
+    id: "g3",
+    title: "Newcommers",
+  },
+];
+const Groups = (props) => {
+  const [stateItem, setStateItem] = useState([]);
+
+  const addGroupItemsHandler = (item) => {
+    setStateItem((prevItemes) => {
+      return [item, ...prevItemes];
+    });
+  };
+
   return (
     <Fragment>
       <AddGroups onAddGroupItems={addGroupItemsHandler} />
@@ -35,7 +38,7 @@ const Groups = (props) => {
           </span>
         </div>
         <ul className={classes.groupItem}>
-          {props.itemes.map((groupItem) => {
+          {stateItem.map((groupItem) => {
             return <GroupItems title={groupItem.title} />;
           })}
         </ul>
