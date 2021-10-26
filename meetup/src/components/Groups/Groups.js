@@ -7,19 +7,25 @@ const DUMMI = [
   {
     id: "g1",
     title: "English Conversation",
+    description: "an online event for speaking in English",
+    // date: new Date(2020, 12, 5, 13, 20),
   },
   {
     id: "g2",
     title: "Dance Club",
+    description: "Having fun and dancing in a great area",
+    // date: new Date(1990, 12, 2, 12, 30),
   },
 
   {
     id: "g3",
     title: "Newcommers",
+    description: "gattring at art gallery",
+    // date: new Date(2021, 8, 7, 16, 40),
   },
 ];
 const Groups = (props) => {
-  const [stateItem, setStateItem] = useState([]);
+  const [stateItem, setStateItem] = useState(DUMMI);
 
   const addGroupItemsHandler = (item) => {
     setStateItem((prevItemes) => {
@@ -39,7 +45,14 @@ const Groups = (props) => {
         </div>
         <ul className={classes.groupItem}>
           {stateItem.map((groupItem) => {
-            return <GroupItems title={groupItem.title} />;
+            return (
+              <GroupItems
+                key={groupItem.id}
+                title={groupItem.title}
+                description={groupItem.description}
+                // date={groupItem.date}
+              />
+            );
           })}
         </ul>
       </div>

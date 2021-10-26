@@ -1,18 +1,17 @@
-import react, { fragment } from "react";
+import react, { Fragment } from "react";
 import Header from "./components/Layout/Header";
 import Footer from "./components/Layout/Footer";
 import Groups from "./components/Groups/Groups";
 import Calendar from "./components/Calendar/Calendar";
-import GroupItems from "./components/Groups/GroupItems";
 
 function App() {
   return (
-    <fragment>
+    <Fragment>
       <Header />
       <Groups />
       <Calendar />
       <Footer />
-    </fragment>
+    </Fragment>
   );
 }
 

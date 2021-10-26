@@ -32,6 +32,7 @@ const Calendar = () => {
           {calendarItemes.map((calendarIteme) => {
             return (
               <CalendarItems
+                key={calendarIteme.id}
                 title={calendarIteme.title}
                 dec={calendarIteme.description}
                 date={calendarIteme.date}
