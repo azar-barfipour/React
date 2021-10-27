@@ -23,13 +23,29 @@ const AddGroups = (props) => {
       description: description,
       // date: new Date(date),
     };
-    props.onAddGroupItems(groupItems);
+    if (title.trim().length !== 0) {
+      props.onAddGroupItems(groupItems);
+    }
+    setTitle("");
+    setDescription("");
   };
   return (
     <form className={classes.addgroups} onSubmit={addGroupsHandler}>
       <h3>Adding new groups</h3>
-      <Input type="text" onChange={titleHandler} label="Group Title" />
-      <Input type="text" onChange={desHandler} label="Group Descriotion" />
+      <Input
+        id="title"
+        type="text"
+        onChange={titleHandler}
+        label="Group Title"
+        value={title}
+      />
+      <Input
+        id="desc"
+        type="text"
+        onChange={desHandler}
+        label="Group Descriotion"
+        value={description}
+      />
       {/* <label>title</label>
       <input type="text" onChange={titleHandler}></input>
       <label>description</label>
