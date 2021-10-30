@@ -5,3 +5,10 @@
 .addgroups input {
   display: block;
 }
+.addgroups h3 {
+  margin-bottom: 0.5rem;
+}
+.isempty {
+  border: 1px solid red;
+  background-color: rgb(231, 183, 183);
+}

@@ -22,4 +22,6 @@
 .groupItem {
   display: flex;
   justify-content: space-between;
+  max-width: 100%;
+  overflow-x: scroll;
 }

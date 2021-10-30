@@ -5,5 +5,5 @@
 .groupItems li {
   font-size: 0.8rem;
   list-style: none;
-  max-width: 15rem;
+  width: 8rem;
 }

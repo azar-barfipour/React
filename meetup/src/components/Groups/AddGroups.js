@@ -6,6 +6,7 @@ import Input from "../UI/Input";
 const AddGroups = (props) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [isEmpty, setIsEmpty] = useState(true);
   // const [date, setDate] = useState("");
   const titleHandler = (event) => {
     setTitle(event.target.value);
@@ -23,9 +24,12 @@ const AddGroups = (props) => {
       description: description,
       // date: new Date(date),
     };
-    if (title.trim().length !== 0) {
-      props.onAddGroupItems(groupItems);
+    if (title.trim().length === 0) {
+      setIsEmpty(false);
+      return;
     }
+    props.onAddGroupItems(groupItems);
+
     setTitle("");
     setDescription("");
   };
@@ -33,6 +37,7 @@ const AddGroups = (props) => {
     <form className={classes.addgroups} onSubmit={addGroupsHandler}>
       <h3>Adding new groups</h3>
       <Input
+        className={`${!isEmpty ? classes.isempty : {}}`}
         id="title"
         type="text"
         onChange={titleHandler}
