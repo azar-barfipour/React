@@ -1,3 +1,4 @@
+import react, { useState } from "react";
 import classes from "./GroupItems.module.css";
 import Card from "../UI/Card";
 const GroupItems = (props) => {
@@ -6,9 +7,15 @@ const GroupItems = (props) => {
   // const year = props.date.getFullYear();
   // const hour = props.date.getHours();
   // const minute = props.date.getMinutes();
+
   return (
     <Card className={classes.groupItems}>
       <li>
+        <span>
+          <button type="button" onClick={props.onRemove}>
+            X
+          </button>
+        </span>
         <h5>{props.title}</h5>
         <p>{props.description}</p>
         {/* <p>{year + month + day + hour + minute}</p> */}

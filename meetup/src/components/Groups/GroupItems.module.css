@@ -7,3 +7,11 @@
   list-style: none;
   width: 8rem;
 }
+.groupItems li span {
+  display: flex;
+  justify-content: flex-end;
+}
+.groupItems li span button {
+  color: rgb(189, 187, 187);
+  background-color: white;
+}

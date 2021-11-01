@@ -32,6 +32,9 @@ const Groups = (props) => {
       return [item, ...prevItemes];
     });
   };
+  const removeHandler = () => {
+    setStateItem(stateItem.filter((item) => item.id !== stateItem.id));
+  };
 
   return (
     <Fragment>
@@ -50,6 +53,7 @@ const Groups = (props) => {
                 key={groupItem.id}
                 title={groupItem.title}
                 description={groupItem.description}
+                onRemove={removeHandler.bind(null, groupItem.id)}
                 // date={groupItem.date}
               />
             );
