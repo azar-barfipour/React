@@ -1,4 +1,4 @@
-import react, { Fragment, useState } from "react";
+import react, { Fragment, useState, useCallback, useEffect } from "react";
 import classes from "./Groups.module.css";
 import GroupItems from "./GroupItems";
 import AddGroups from "./AddGroups";
@@ -26,7 +26,7 @@ const stateItem = [
   },
 ];
 const Groups = (props) => {
-  // Adding groups and removing items
+  // ******Adding groups and removing items*****
   // const [stateItem, setStateItem] = useState(DUMMI);
   // const addGroupItemsHandler = (item) => {
   //   setStateItem((prevItemes) => {
@@ -39,21 +39,39 @@ const Groups = (props) => {
   // };
 
   const [groups, setGroups] = useState([]);
-  async function fetchGroupsHandler() {
-    const response = await fetch(
-      "https://recat-meetup-project-default-rtdb.firebaseio.com/groups.json"
-    );
-    const data = await response.json();
-    const loadedGroups = [];
-    for (const key in data) {
-      loadedGroups.push({
-        id: key,
-        title: data[key].title,
-        description: data[key].description,
-      });
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const fetchGroupsHandler = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(
+        "https://recat-meetup-project-default-rtdb.firebaseio.com/groups.json"
+      );
+      if (!response.ok) {
+        throw new Error("Something went wrong!!!");
+      }
+      const data = await response.json();
+      const loadedGroups = [];
+      for (const key in data) {
+        loadedGroups.push({
+          id: key,
+          title: data[key].title,
+          description: data[key].description,
+        });
+      }
+      setGroups(loadedGroups);
+      setIsLoading(false);
+    } catch (error) {
+      setError(error.message);
     }
-    setGroups(loadedGroups);
-  }
+  }, []);
+
+  useEffect(() => {
+    fetchGroupsHandler();
+  }, [fetchGroupsHandler]);
 
   async function addGroupItemsHandler(group) {
     console.log(group);
@@ -83,16 +101,21 @@ const Groups = (props) => {
             onClick={fetchGroupsHandler}
           />
         </div>
+        {!isLoading && groups.length === 0 && <p>No Groups Found.</p>}
+        {error && <p>{error}</p>}
         <ul className={classes.groupItem}>
           {groups.map((groupItem) => {
             return (
-              <GroupItems
-                key={groupItem.id}
-                title={groupItem.title}
-                description={groupItem.description}
-                // onRemove={removeHandler.bind(null, groupItem.id)} //for removing items
-                // date={groupItem.date}
-              />
+              !isLoading &&
+              groups.length > 0 && (
+                <GroupItems
+                  key={groupItem.id}
+                  title={groupItem.title}
+                  description={groupItem.description}
+                  // onRemove={removeHandler.bind(null, groupItem.id)} //for removing items
+                  // date={groupItem.date}
+                />
+              )
             );
           })}
         </ul>
