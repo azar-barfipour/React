@@ -2,8 +2,9 @@ import react, { Fragment, useState } from "react";
 import classes from "./Groups.module.css";
 import GroupItems from "./GroupItems";
 import AddGroups from "./AddGroups";
+import Button from "../UI/Button";
 
-const DUMMI = [
+const stateItem = [
   {
     id: "g1",
     title: "English Conversation",
@@ -25,16 +26,50 @@ const DUMMI = [
   },
 ];
 const Groups = (props) => {
-  const [stateItem, setStateItem] = useState(DUMMI);
+  // Adding groups and removing items
+  // const [stateItem, setStateItem] = useState(DUMMI);
+  // const addGroupItemsHandler = (item) => {
+  //   setStateItem((prevItemes) => {
+  //     return [item, ...prevItemes];
+  //   });
+  //   props.onAddGroups(stateItem);
+  // };
+  // const removeHandler = () => {
+  //   setStateItem(stateItem.filter((item) => item.id !== stateItem.id));
+  // };
 
-  const addGroupItemsHandler = (item) => {
-    setStateItem((prevItemes) => {
-      return [item, ...prevItemes];
-    });
-  };
-  const removeHandler = () => {
-    setStateItem(stateItem.filter((item) => item.id !== stateItem.id));
-  };
+  const [groups, setGroups] = useState([]);
+  async function fetchGroupsHandler() {
+    const response = await fetch(
+      "https://recat-meetup-project-default-rtdb.firebaseio.com/groups.json"
+    );
+    const data = await response.json();
+    const loadedGroups = [];
+    for (const key in data) {
+      loadedGroups.push({
+        id: key,
+        title: data[key].title,
+        description: data[key].description,
+      });
+    }
+    setGroups(loadedGroups);
+  }
+
+  async function addGroupItemsHandler(group) {
+    console.log(group);
+    const response = await fetch(
+      "https://recat-meetup-project-default-rtdb.firebaseio.com/groups.json",
+      {
+        method: "POST",
+        body: JSON.stringify(group),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+  }
 
   return (
     <Fragment>
@@ -42,18 +77,20 @@ const Groups = (props) => {
       <div className={classes.groups}>
         <div className={classes.title}>
           <h4>Your groups</h4>
-          <span>
-            <a href="#">See all</a>
-          </span>
+          <Button
+            type="button"
+            name="All Groups"
+            onClick={fetchGroupsHandler}
+          />
         </div>
         <ul className={classes.groupItem}>
-          {stateItem.map((groupItem) => {
+          {groups.map((groupItem) => {
             return (
               <GroupItems
                 key={groupItem.id}
                 title={groupItem.title}
                 description={groupItem.description}
-                onRemove={removeHandler.bind(null, groupItem.id)}
+                // onRemove={removeHandler.bind(null, groupItem.id)} //for removing items
                 // date={groupItem.date}
               />
             );
