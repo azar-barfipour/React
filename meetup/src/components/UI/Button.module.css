@@ -7,3 +7,11 @@
 .button:hover {
   background-color: rgb(103, 10, 190);
 }
+.button:disabled,
+.button:disabled:hover,
+.button:disabled:active {
+  background-color: #ccc;
+  color: #292929;
+  border-color: #ccc;
+  cursor: not-allowed;
+}

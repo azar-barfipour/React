@@ -8,8 +8,11 @@ const AddGroups = (props) => {
   const [description, setDescription] = useState("");
   const [isTitleTouched, setIsTitleTouched] = useState(false);
   // const [date, setDate] = useState("");
+  const titleEmpty = title.trim().length !== 0;
+  const titleValid = !titleEmpty && isTitleTouched;
+
   let formIsValid = false;
-  if (title.trim().length !== 0) {
+  if (titleEmpty) {
     formIsValid = true;
   }
 
@@ -25,7 +28,7 @@ const AddGroups = (props) => {
   const addGroupsHandler = (event) => {
     event.preventDefault();
     setIsTitleTouched(true);
-    if (title.trim().length === 0) {
+    if (!titleEmpty) {
       return;
     }
     const groupItems = {
@@ -46,9 +49,7 @@ const AddGroups = (props) => {
     <form className={classes.addgroups} onSubmit={addGroupsHandler}>
       <h3>Adding new groups</h3>
       <Input
-        className={`${
-          isTitleTouched && title.trim().length === 0 ? classes.isempty : {}
-        }`}
+        className={`${titleValid ? classes.isempty : {}}`}
         id="title"
         type="text"
         onChange={titleHandler}
@@ -56,11 +57,7 @@ const AddGroups = (props) => {
         label="Group Title"
         value={title}
       />
-      {isTitleTouched && title.trim().length === 0 ? (
-        <p>Insert the title.</p>
-      ) : (
-        ""
-      )}
+      {titleValid ? <p>Insert the title.</p> : ""}
       <Input
         id="desc"
         type="text"
@@ -77,7 +74,8 @@ const AddGroups = (props) => {
       <Button
         type="submit"
         name="ADD"
-        className={` ${!formIsValid ? classes.disabled : ""} `}
+        disabled={!formIsValid}
+        // className={` ${!formIsValid ? classes.button : ""} `}
       />
     </form>
   );
