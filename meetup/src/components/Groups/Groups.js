@@ -64,8 +64,8 @@ const Groups = (props) => {
       }
       setGroups(loadedGroups);
       setIsLoading(false);
-    } catch (error) {
-      setError(error.message);
+    } catch (err) {
+      setError(err.message);
     }
   }, []);
 

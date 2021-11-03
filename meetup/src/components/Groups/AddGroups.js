@@ -6,8 +6,13 @@ import Input from "../UI/Input";
 const AddGroups = (props) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [isEmpty, setIsEmpty] = useState(true);
+  const [isTitleTouched, setIsTitleTouched] = useState(false);
   // const [date, setDate] = useState("");
+  let formIsValid = false;
+  if (title.trim().length !== 0) {
+    formIsValid = true;
+  }
+
   const titleHandler = (event) => {
     setTitle(event.target.value);
   };
@@ -19,31 +24,43 @@ const AddGroups = (props) => {
   // };
   const addGroupsHandler = (event) => {
     event.preventDefault();
+    setIsTitleTouched(true);
+    if (title.trim().length === 0) {
+      return;
+    }
     const groupItems = {
       title: title,
       description: description,
       // date: new Date(date),
     };
-    if (title.trim().length === 0) {
-      setIsEmpty(false);
-      return;
-    }
     props.onAddGroupItems(groupItems);
 
     setTitle("");
     setDescription("");
+    setIsTitleTouched(false);
+  };
+  const titleBlurHandler = (event) => {
+    setIsTitleTouched(true);
   };
   return (
     <form className={classes.addgroups} onSubmit={addGroupsHandler}>
       <h3>Adding new groups</h3>
       <Input
-        className={`${!isEmpty ? classes.isempty : {}}`}
+        className={`${
+          isTitleTouched && title.trim().length === 0 ? classes.isempty : {}
+        }`}
         id="title"
         type="text"
         onChange={titleHandler}
+        onBlur={titleBlurHandler}
         label="Group Title"
         value={title}
       />
+      {isTitleTouched && title.trim().length === 0 ? (
+        <p>Insert the title.</p>
+      ) : (
+        ""
+      )}
       <Input
         id="desc"
         type="text"
@@ -57,7 +74,11 @@ const AddGroups = (props) => {
       <input type="text" onChange={desHandler}></input>  */}
       {/* <label>Date</label> */}
       {/* <input type="datetime-local" onChange={dateHandler}></input> */}
-      <Button type="submit" name="ADD" />
+      <Button
+        type="submit"
+        name="ADD"
+        className={` ${!formIsValid ? classes.disabled : ""} `}
+      />
     </form>
   );
 };

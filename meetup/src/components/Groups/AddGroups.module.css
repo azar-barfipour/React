@@ -12,3 +12,9 @@
   border: 1px solid red;
   background-color: rgb(231, 183, 183);
 }
+.disabled {
+  background-color: #ccc;
+  color: #292929;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
