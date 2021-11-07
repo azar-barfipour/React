@@ -1,23 +1,26 @@
 import { Fragment } from "react";
 import { Route } from "react-router-dom";
-import Header from "./components/Layout/Header";
-import Footer from "./components/Layout/Footer";
+import Layout from "./components/Layout/Layout";
 import Groups from "./components/Groups/Groups";
 import Calendar from "./components/Calendar/Calendar";
 import YourGroups from "./components/Groups/YourGroups/YourGroups";
+import { Redirect } from "react-router-dom";
 
 function App() {
   return (
     <Fragment>
-      <Header />
-      <Route path="/Home">
-        <YourGroups />
-        <Calendar />
-      </Route>
-      <Route path="/Explore">
-        <Groups />
-      </Route>
-      <Footer />
+      <Layout>
+        <Route path="/" exact>
+          <Redirect to="/Home" />
+        </Route>
+        <Route path="/Home">
+          <YourGroups />
+          <Calendar />
+        </Route>
+        <Route path="/Explore">
+          <Groups />
+        </Route>
+      </Layout>
     </Fragment>
   );
 }

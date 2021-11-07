@@ -94,7 +94,7 @@ const Groups = (props) => {
       <AddGroups onAddGroupItems={addGroupItemsHandler} />
       <div className={classes.groups}>
         <div className={classes.title}>
-          <h4>Your groups</h4>
+          <h4>Groups</h4>
           <Button
             type="button"
             name="All Groups"

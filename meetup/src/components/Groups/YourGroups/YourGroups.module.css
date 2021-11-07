@@ -1,0 +1,11 @@
+.yourGroups {
+  margin: 2.5rem 1.5rem;
+}
+
+.yourGroups ul {
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  overflow-x: auto;
+  margin-top: 1rem;
+}

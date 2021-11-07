@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import YourGroupsDetails from "./YourGroupsDetails";
+import classes from "./YourGroups.module.css";
 
 const YourGroups = (props) => {
   const [yourGroups, setYourGroups] = useState([]);
@@ -24,17 +25,19 @@ const YourGroups = (props) => {
     fetchGroups();
   }, []);
   return (
-    <div>
+    <div className={classes.yourGroups}>
       <h4>Your Groups</h4>
-      {yourGroups.map((group) => {
-        return (
-          <YourGroupsDetails
-            id={group.id}
-            title={group.title}
-            description={group.description}
-          />
-        );
-      })}
+      <ul>
+        {yourGroups.map((group) => {
+          return (
+            <YourGroupsDetails
+              id={group.id}
+              title={group.title}
+              description={group.description}
+            />
+          );
+        })}
+      </ul>
     </div>
   );
 };

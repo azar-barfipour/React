@@ -1,0 +1,8 @@
+.details {
+  margin-right: 1rem;
+}
+.details li {
+  list-style: none;
+  font-size: 0.8rem;
+  width: 8rem;
+}
