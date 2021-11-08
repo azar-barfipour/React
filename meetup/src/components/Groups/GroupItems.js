@@ -1,6 +1,7 @@
 import react, { useState } from "react";
 import classes from "./GroupItems.module.css";
 import Card from "../UI/Card";
+import { Link } from "react-router-dom";
 
 const GroupItems = (props) => {
   // const month = props.date.toLocaleString("en-US", { month: "short" });
@@ -18,7 +19,7 @@ const GroupItems = (props) => {
           </button>
         </span>
         <h5>{props.title}</h5>
-        <button type="button">Details</button>
+        <Link to={`/Explore/${props.id}`}>Details</Link>
         {/* <p>{props.description}</p> */}
         {/* <p>{year + month + day + hour + minute}</p> */}
       </li>

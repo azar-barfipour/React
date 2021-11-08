@@ -110,6 +110,7 @@ const Groups = (props) => {
               groups.length > 0 && (
                 <GroupItems
                   key={groupItem.id}
+                  id={groupItem.id}
                   title={groupItem.title}
                   description={groupItem.description}
                   // onRemove={removeHandler.bind(null, groupItem.id)} //for removing items

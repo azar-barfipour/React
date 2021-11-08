@@ -1,23 +1,28 @@
-import { Route } from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Groups from "./pages/Groups";
 import Calendar from "./pages/Calendar";
 import YourGroups from "./pages/YourGroups";
-import { Redirect } from "react-router-dom";
+import GroupItemsDetails from "./pages/GroupItemsDetails";
 
 function App() {
   return (
     <Layout>
-      <Route path="/" exact>
-        <Redirect to="/Home" />
-      </Route>
-      <Route path="/Home">
-        <YourGroups />
-        <Calendar />
-      </Route>
-      <Route path="/Explore">
-        <Groups />
-      </Route>
+      <Switch>
+        <Route path="/" exact>
+          <Redirect to="/Home" />
+        </Route>
+        <Route path="/Home">
+          <YourGroups />
+          <Calendar />
+        </Route>
+        <Route path="/Explore">
+          <Groups />
+        </Route>
+        <Route path="/Explore/:groupdId">
+          <GroupItemsDetails />
+        </Route>
+      </Switch>
     </Layout>
   );
 }

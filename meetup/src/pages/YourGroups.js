@@ -31,6 +31,7 @@ const YourGroups = (props) => {
         {yourGroups.map((group) => {
           return (
             <YourGroupsDetails
+              key={group.id}
               id={group.id}
               title={group.title}
               description={group.description}
