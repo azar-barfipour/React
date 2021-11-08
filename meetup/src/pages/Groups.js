@@ -1,8 +1,8 @@
 import { Fragment, useState, useCallback, useEffect } from "react";
 import classes from "./Groups.module.css";
-import GroupItems from "./GroupItems";
-import AddGroups from "./AddGroups";
-import Button from "../UI/Button";
+import GroupItems from "../components/Groups/GroupItems";
+import AddGroups from "../components/Groups/AddGroups";
+import Button from "../components/UI/Button";
 
 const stateItem = [
   {

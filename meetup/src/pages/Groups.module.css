@@ -1,5 +1,6 @@
 .groups {
-  margin: 1rem 1.5rem;
+  width: 400px;
+  margin: 3.5rem auto;
 }
 .title {
   display: flex;
@@ -11,17 +12,9 @@
   color: rgb(10, 117, 51);
 }
 
-.images {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 .images div {
   height: 5rem;
 }
 .groupItem {
-  display: flex;
-  justify-content: space-between;
   max-width: 100%;
-  overflow-x: auto;
 }

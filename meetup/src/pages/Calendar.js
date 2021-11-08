@@ -1,6 +1,6 @@
 import react, { Fragment } from "react";
-import classes from "../Calendar/Calendar.module.css";
-import CalendarItems from "./CalendarItems";
+import classes from "./Calendar.module.css";
+import CalendarItems from "../components/Calendar/CalendarItems";
 const Calendar = () => {
   const calendarItemes = [
     {

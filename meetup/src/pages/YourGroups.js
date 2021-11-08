@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import YourGroupsDetails from "./YourGroupsDetails";
+import YourGroupsDetails from "../components/Groups/YourGroups/YourGroupsDetails";
 import classes from "./YourGroups.module.css";
 
 const YourGroups = (props) => {

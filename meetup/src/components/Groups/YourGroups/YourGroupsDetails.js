@@ -6,9 +6,6 @@ const YourGroupsDetails = (props) => {
       <li>
         <h5>{props.title}</h5>
       </li>
-      <li>
-        <p>{props.description}</p>
-      </li>
     </Card>
   );
 };

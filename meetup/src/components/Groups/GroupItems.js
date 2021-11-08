@@ -1,6 +1,7 @@
 import react, { useState } from "react";
 import classes from "./GroupItems.module.css";
 import Card from "../UI/Card";
+
 const GroupItems = (props) => {
   // const month = props.date.toLocaleString("en-US", { month: "short" });
   // const day = props.date.toLocaleString("en-US", { day: "2-digit" });
@@ -17,7 +18,8 @@ const GroupItems = (props) => {
           </button>
         </span>
         <h5>{props.title}</h5>
-        <p>{props.description}</p>
+        <button type="button">Details</button>
+        {/* <p>{props.description}</p> */}
         {/* <p>{year + month + day + hour + minute}</p> */}
       </li>
     </Card>

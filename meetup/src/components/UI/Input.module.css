@@ -1,12 +1,12 @@
 .input input {
   font: inherit;
   border-radius: 6px;
-  width: 20rem;
-  max-width: 100%;
+  width: 100%;
 }
 .input label {
   display: block;
   margin-bottom: 0.2rem;
+  margin-top: 0.5rem;
   font-weight: bold;
   font-size: 0.7rem;
 }

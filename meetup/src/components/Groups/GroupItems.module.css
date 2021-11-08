@@ -1,11 +1,10 @@
 .groupItems {
-  margin-right: 1rem;
-  margin-top: 1rem;
+  width: 400px;
+  margin: 1.5rem auto;
 }
 .groupItems li {
   font-size: 0.8rem;
   list-style: none;
-  width: 8rem;
 }
 .groupItems li span {
   display: flex;
@@ -14,4 +13,10 @@
 .groupItems li span button {
   color: rgb(189, 187, 187);
   background-color: white;
+}
+.groupItems button {
+  padding: 0.2rem;
+  margin-top: 0.5rem;
+  background-color: blueviolet;
+  border-radius: 8px;
 }
