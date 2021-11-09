@@ -19,7 +19,7 @@ function App() {
         <Route path="/Explore">
           <Groups />
         </Route>
-        <Route path="/Explore/:groupdId">
+        <Route path="/Explore/:groupDetailId">
           <GroupItemsDetails />
         </Route>
       </Switch>
