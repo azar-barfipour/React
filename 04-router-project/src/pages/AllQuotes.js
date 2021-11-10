@@ -1,15 +1,32 @@
+import { useEffect, useState } from "react";
 import QuoteList from "../components/QuoteList";
 
-const DUMMY_QUOTES = [
-  { id: "q1", author: "Max", text: "Learning React is fun!" },
-  { id: "q2", author: "Maximilian", text: "Learning React is great!" },
-];
-
 const AllQuotes = () => {
+  const [quotes, setQuotes] = useState([]);
+
+  useEffect(() => {
+    const fetchQuote = async () => {
+      const response = await fetch(
+        "https://test-router-bbd5a-default-rtdb.firebaseio.com/quote.json"
+      );
+      const data = await response.json();
+      let transferData = [];
+      for (const key in data) {
+        transferData.push({
+          id: key,
+          text: data[key].text,
+          author: data[key].author,
+        });
+      }
+      setQuotes(transferData);
+    };
+    fetchQuote();
+  }, []);
+
   return (
     <div>
       <h1>All Quotes Page</h1>
-      <QuoteList quotes={DUMMY_QUOTES} />
+      <QuoteList quotes={quotes} />
     </div>
   );
 };
