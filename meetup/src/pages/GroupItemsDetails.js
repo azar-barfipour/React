@@ -1,51 +1,45 @@
 import classes from "./GroupItemsDetails.module.css";
 import { useState, useCallback, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Route } from "react-router-dom";
+import Comment from "../components/Groups/Comment";
+
 const GroupItemsDetails = () => {
   const params = useParams();
-  const { groupDetailId } = params;
   const [groups, setGroups] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  useEffect(() => {
+    const fetchGroups = async () => {
+      setIsLoading(true);
+      setError(null);
 
-  const fetchGroupsHandler = useCallback(async () => {
-    setIsLoading(true);
-    setError(null);
+      try {
+        const response = await fetch(
+          `https://recat-meetup-project-default-rtdb.firebaseio.com/groups/${params.groupDetailId}.json`
+        );
 
-    try {
-      const response = await fetch(
-        "https://recat-meetup-project-default-rtdb.firebaseio.com/groups/${groupDetailId}.json"
-      );
-      if (!response.ok) {
-        throw new Error("Something went wrong!!!");
+        if (!response.ok) {
+          throw new Error("Something went wrong!!!");
+        }
+        const data = await response.json();
+        setGroups(data);
+        setIsLoading(false);
+      } catch (err) {
+        setError(err.message);
       }
-      const data = await response.json();
-      const loadedGroups = [];
-      for (const key in data) {
-        loadedGroups.push({
-          id: groupDetailId,
-          title: data[key].title,
-          description: data[key].description,
-        });
-      }
-      setGroups(loadedGroups);
-      setIsLoading(false);
-    } catch (err) {
-      setError(err.message);
-    }
+    };
+    fetchGroups();
   }, []);
 
-  useEffect(() => {
-    fetchGroupsHandler();
-  }, [fetchGroupsHandler]);
   return (
-    // <li>
-    //   <h5>{groups.title}</h5>
-    //   <p>{groups.description}</p>
-    // </li>
-    <div>
+    <div className={classes.datail}>
       <h1>groups</h1>
-      <p>{groups.title}</p>
+      {/* <p>{params.groupDetailId}</p> */}
+      <h5>{groups.title}</h5>
+      <p>{groups.description}</p>
+      <Route path="/Explore/:groupDetailId/Comment">
+        <Comment />
+      </Route>
     </div>
   );
 };

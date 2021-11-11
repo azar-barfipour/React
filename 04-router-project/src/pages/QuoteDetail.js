@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { useParams } from "react-router-dom";
 
-const QuoteDetail = () => {
+const QuoteDetail = (props) => {
   const params = useParams();
 
   return (

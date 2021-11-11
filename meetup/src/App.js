@@ -16,7 +16,7 @@ function App() {
           <YourGroups />
           <Calendar />
         </Route>
-        <Route path="/Explore">
+        <Route path="/Explore" exact>
           <Groups />
         </Route>
         <Route path="/Explore/:groupDetailId">

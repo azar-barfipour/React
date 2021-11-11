@@ -20,8 +20,6 @@ const GroupItems = (props) => {
         </span>
         <h5>{props.title}</h5>
         <Link to={`/Explore/${props.id}`}>Details</Link>
-        {/* <p>{props.description}</p> */}
-        {/* <p>{year + month + day + hour + minute}</p> */}
       </li>
     </Card>
   );
