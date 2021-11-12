@@ -62,6 +62,7 @@ const Groups = (props) => {
           description: data[key].description,
         });
       }
+      console.log(loadedGroups);
       setGroups(loadedGroups);
       setIsLoading(false);
     } catch (err) {

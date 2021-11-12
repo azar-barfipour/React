@@ -1,7 +1,7 @@
 import classes from "./GroupItemsDetails.module.css";
 import { useState, useCallback, useEffect } from "react";
 import { useParams, Route } from "react-router-dom";
-import Comment from "../components/Groups/Comment";
+import Comment from "../components/Comment/Comment";
 
 const GroupItemsDetails = () => {
   const params = useParams();
