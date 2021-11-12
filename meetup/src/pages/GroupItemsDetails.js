@@ -2,6 +2,7 @@ import classes from "./GroupItemsDetails.module.css";
 import { useState, useCallback, useEffect } from "react";
 import { useParams, Route } from "react-router-dom";
 import Comment from "../components/Comment/Comment";
+import { Link } from "react-router-dom";
 
 const GroupItemsDetails = () => {
   const params = useParams();
@@ -37,6 +38,7 @@ const GroupItemsDetails = () => {
       {/* <p>{params.groupDetailId}</p> */}
       <h5>{groups.title}</h5>
       <p>{groups.description}</p>
+      <Link to={`/Explore/${params.groupDetailId}/Comment`}>Comment</Link>
       <Route path="/Explore/:groupDetailId/Comment">
         <Comment />
       </Route>

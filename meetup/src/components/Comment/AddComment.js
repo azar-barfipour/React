@@ -1,4 +1,4 @@
-import { Fragment, useState, useRef } from "react";
+import { Fragment, useRef } from "react";
 import classes from "./AddComment.module.css";
 import Card from "../UI/Card";
 
