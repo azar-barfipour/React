@@ -8,6 +8,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem auto;
+  box-shadow: 0 1px 3px rgba(97, 96, 96, 0.2);
 }
 
 .header h1 {
@@ -15,6 +16,7 @@
   text-align: center;
   padding: 0.5rem;
   font-weight: bolder;
+  color: rgb(246, 88, 88);
 }
 .header ul {
   display: flex;
@@ -32,12 +34,13 @@
   font-family: inherit;
   font-size: 12px;
   font-weight: bold;
+  color: gray;
 }
 
 .header a:hover,
 .header a:active,
 .header a.active {
-  color: #e595f0;
+  color: rgb(246, 88, 88);
   padding-bottom: 0.1rem;
-  border-bottom: 2px solid #e595f0;
+  border-bottom: 2px solid rgb(246, 88, 88);
 }

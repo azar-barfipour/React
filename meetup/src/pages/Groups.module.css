@@ -1,20 +1,17 @@
 .groups {
-  width: 400px;
-  margin: 3.5rem auto;
+  margin: 1.5rem auto;
 }
 .title {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.title a {
-  text-decoration: none;
-  color: rgb(10, 117, 51);
+  margin-left: 3.5rem;
 }
 
 .images div {
   height: 5rem;
 }
 .groupItem {
-  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
 }

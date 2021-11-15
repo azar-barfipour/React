@@ -1,22 +1,26 @@
 .groupItems {
-  width: 400px;
+  width: 120px;
+  height: 150px;
   margin: 1.5rem auto;
 }
 .groupItems li {
   font-size: 0.8rem;
   list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
 }
-.groupItems li span {
+/* .groupItems li span {
   display: flex;
   justify-content: flex-end;
-}
-.groupItems li span button {
-  color: rgb(189, 187, 187);
-  background-color: white;
-}
-.groupItems button {
-  padding: 0.2rem;
-  margin-top: 0.5rem;
-  background-color: blueviolet;
+} */
+
+.link {
+  padding: 0.1rem;
+  margin-top: 0.3rem;
   border-radius: 8px;
+  color: black;
+  text-decoration: none;
+  margin-bottom: 1rem;
 }

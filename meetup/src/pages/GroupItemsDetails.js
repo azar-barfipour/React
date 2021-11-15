@@ -3,6 +3,7 @@ import { useState, useCallback, useEffect } from "react";
 import { useParams, Route } from "react-router-dom";
 import Comment from "../components/Comment/Comment";
 import { Link } from "react-router-dom";
+import Card from "../components/UI/Card";
 
 const GroupItemsDetails = () => {
   const params = useParams();
@@ -34,11 +35,20 @@ const GroupItemsDetails = () => {
 
   return (
     <div className={classes.datail}>
-      <h1>groups</h1>
-      {/* <p>{params.groupDetailId}</p> */}
-      <h5>{groups.title}</h5>
-      <p>{groups.description}</p>
-      <Link to={`/Explore/${params.groupDetailId}/Comment`}>Comment</Link>
+      <h4>groups</h4>
+      <Card className={classes.card}>
+        <li>
+          {/* <p>{params.groupDetailId}</p> */}
+          <h5>{groups.title}</h5>
+          <p>{groups.description}</p>
+        </li>
+      </Card>
+      <Link
+        className={classes.btn}
+        to={`/Explore/${params.groupDetailId}/Comment`}
+      >
+        Comment
+      </Link>
       <Route path="/Explore/:groupDetailId/Comment">
         <Comment />
       </Route>

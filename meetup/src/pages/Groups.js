@@ -95,12 +95,12 @@ const Groups = (props) => {
       <AddGroups onAddGroupItems={addGroupItemsHandler} />
       <div className={classes.groups}>
         <div className={classes.title}>
-          <h4>Groups</h4>
-          <Button
+          <h4>Explore meetup</h4>
+          {/* <Button
             type="button"
             name="All Groups"
             onClick={fetchGroupsHandler}
-          />
+          /> */}
         </div>
         {!isLoading && groups.length === 0 && <p>No Groups Found.</p>}
         {error && <p>{error}</p>}

@@ -1,17 +1,19 @@
 .button {
   padding: 0.2rem;
   margin-top: 0.5rem;
-  background-color: blueviolet;
+  background-color: rgb(246, 88, 88);
+  color: rgb(250, 250, 250);
   border-radius: 8px;
+  width: 5rem;
 }
 .button:hover {
-  background-color: rgb(103, 10, 190);
+  background-color: rgb(246, 88, 88);
 }
 .button:disabled,
 .button:disabled:hover,
 .button:disabled.active {
   background-color: #ccc;
-  color: #292929;
+  color: rgb(255, 255, 255);
   border-color: #ccc;
   cursor: not-allowed;
 }

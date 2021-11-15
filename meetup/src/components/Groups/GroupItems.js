@@ -13,13 +13,14 @@ const GroupItems = (props) => {
   return (
     <Card className={classes.groupItems}>
       <li>
-        <span>
+        {/* <span>
           <button type="button" onClick={props.onRemove}>
             X
           </button>
-        </span>
-        <h5>{props.title}</h5>
-        <Link to={`/Explore/${props.id}`}>Details</Link>
+        </span> */}
+        <Link className={classes.link} to={`/Explore/${props.id}`}>
+          <h5>{props.title}</h5>
+        </Link>
       </li>
     </Card>
   );
