@@ -12,7 +12,7 @@ const GroupItems = (props) => {
 
   return (
     <Card className={classes.groupItems}>
-      <li>
+      <li style={{ background: `url("/group1.png")` }}>
         {/* <span>
           <button type="button" onClick={props.onRemove}>
             X
