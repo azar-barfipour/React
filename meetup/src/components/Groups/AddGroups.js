@@ -47,7 +47,7 @@ const AddGroups = (props) => {
     setIsTitleTouched(true);
   };
   return (
-    <Card className={classes.formCard}>
+    <div className={classes.formCard}>
       <form className={classes.addgroups} onSubmit={addGroupsHandler}>
         <Input
           className={`${titleValid ? classes.isempty : {}}`}
@@ -55,7 +55,7 @@ const AddGroups = (props) => {
           type="text"
           onChange={titleHandler}
           onBlur={titleBlurHandler}
-          label="Group Title"
+          label="Title"
           value={title}
         />
         {titleValid ? (
@@ -67,7 +67,7 @@ const AddGroups = (props) => {
           id="desc"
           type="text"
           onChange={desHandler}
-          label="Group Descriotion"
+          label="Descriotion"
           value={description}
         />
         {/* <label>title</label>
@@ -83,7 +83,7 @@ const AddGroups = (props) => {
           // className={` ${!formIsValid ? classes.button : ""} `}
         />
       </form>
-    </Card>
+    </div>
   );
 };
 export default AddGroups;

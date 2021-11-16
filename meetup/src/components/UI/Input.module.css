@@ -2,16 +2,16 @@
   font: inherit;
   border-radius: 6px;
   width: 100%;
+  padding: 2px;
 }
 .input label {
   display: block;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.5rem;
   margin-top: 0.5rem;
   font-weight: bold;
   font-size: 0.7rem;
 }
 .input input:focus {
   outline: none;
-  /* background: #fad0ec; */
-  /* border-color: #8b005d; */
+  border-color: rgba(117, 117, 117);
 }
