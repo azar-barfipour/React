@@ -17,6 +17,11 @@ const Header = () => {
               Explore
             </NavLink>
           </li>
+          <li>
+            <NavLink activeClassName={classes.active} to="/auth">
+              Sign in
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </div>

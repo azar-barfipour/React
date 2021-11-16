@@ -4,6 +4,7 @@ import Groups from "./pages/Groups";
 import Calendar from "./pages/Calendar";
 import YourGroups from "./pages/YourGroups";
 import GroupItemsDetails from "./pages/GroupItemsDetails";
+import Auth from "./pages/Auth";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
         </Route>
         <Route path="/Explore/:groupDetailId">
           <GroupItemsDetails />
+        </Route>
+        <Route path="/auth">
+          <Auth />
         </Route>
       </Switch>
     </Layout>
