@@ -19,7 +19,7 @@ const Header = () => {
           </li>
           <li>
             <NavLink activeClassName={classes.active} to="/auth">
-              Sign in
+              Log in
             </NavLink>
           </li>
         </ul>
