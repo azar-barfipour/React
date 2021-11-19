@@ -1,14 +1,16 @@
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import classes from "./AuthForm.module.css";
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
+import AuthContext from "../../store/auth-context";
 const AuthForm = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const [enteredEmail, setEnteredEmail] = useState();
   const [enteredPassword, setEnteredPassword] = useState();
   const [isLogin, setIsLogin] = useState(true);
-
+  const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedIn;
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
   };
@@ -46,6 +48,10 @@ const AuthForm = () => {
   };
   const loginSubmitHandler = () => {
     setIsLogin(true);
+    console.log(isLoggedIn);
+    {
+      isLoggedIn && <p>logged in</p>;
+    }
   };
 
   return (
