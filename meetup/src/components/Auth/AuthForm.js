@@ -17,6 +17,9 @@ const AuthForm = () => {
   const passwordChangeHandler = (event) => {
     setEnteredPassword(event.target.value);
   };
+  const logoutHandler = () => {
+    authCtx.logout();
+  };
 
   async function addSubmitHandler(event) {
     event.preventDefault();
@@ -42,18 +45,15 @@ const AuthForm = () => {
     });
     const data = await response.json();
     console.log(data);
-    {
-      isLoggedIn ? alert("signed up") : alert("logged in");
-    }
+    authCtx.login(data.idToken);
   }
   const submitHandler = () => {
     setIsLogin(false);
   };
   const loginSubmitHandler = () => {
     setIsLogin(true);
-    console.log(isLoggedIn);
     {
-      isLoggedIn && <p>logged in</p>;
+      isLogin && <p>logged in</p>;
     }
   };
 
@@ -77,6 +77,7 @@ const AuthForm = () => {
           </button>
         </p>
       )}
+
       <form onSubmit={addSubmitHandler}>
         <Input
           id="email"
@@ -94,7 +95,12 @@ const AuthForm = () => {
           onChange={passwordChangeHandler}
           value={enteredPassword}
         />
-        <Button name={isLogin ? "Log in" : "Sign up"} type="submit" />
+        {!isLoggedIn && (
+          <Button name={isLogin ? "Log in" : "Sign up"} type="submit" />
+        )}
+        {isLoggedIn && (
+          <Button type="submit" name="Log out" onClick={logoutHandler}></Button>
+        )}
       </form>
     </div>
   );
