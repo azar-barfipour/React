@@ -43,9 +43,11 @@ const AuthForm = () => {
       }),
       headers: { "Content-Type": "application/json" },
     });
-    const data = await response.json();
-    console.log(data);
-    authCtx.login(data.idToken);
+    if (isLogin) {
+      const data = await response.json();
+      console.log(data);
+      authCtx.login(data.idToken);
+    }
   }
   const submitHandler = () => {
     setIsLogin(false);
@@ -95,9 +97,11 @@ const AuthForm = () => {
           onChange={passwordChangeHandler}
           value={enteredPassword}
         />
+
         {!isLoggedIn && (
           <Button name={isLogin ? "Log in" : "Sign up"} type="submit" />
         )}
+
         {isLoggedIn && (
           <Button type="submit" name="Log out" onClick={logoutHandler}></Button>
         )}
