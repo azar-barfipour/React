@@ -16,13 +16,14 @@ const Header = () => {
               Home
             </NavLink>
           </li>
-          {isLoggedIn && (
-            <li>
-              <NavLink activeClassName={classes.active} to="/Explore">
-                Explore
-              </NavLink>
-            </li>
-          )}
+          {/* {isLoggedIn && ( */}
+          <li>
+            <NavLink activeClassName={classes.active} to="/Explore">
+              Explore
+            </NavLink>
+          </li>
+          {/* )
+          }*/}
           <li>
             <NavLink activeClassName={classes.active} to="/auth">
               {isLoggedIn ? "Log out" : "Log in"}

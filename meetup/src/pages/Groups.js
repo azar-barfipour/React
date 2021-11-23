@@ -60,6 +60,7 @@ const Groups = (props) => {
           id: key,
           title: data[key].title,
           description: data[key].description,
+          image: data[key].image,
         });
       }
       console.log(loadedGroups);
@@ -114,6 +115,7 @@ const Groups = (props) => {
                   id={groupItem.id}
                   title={groupItem.title}
                   description={groupItem.description}
+                  image={groupItem.image}
                   // onRemove={removeHandler.bind(null, groupItem.id)} //for removing items
                   // date={groupItem.date}
                 />

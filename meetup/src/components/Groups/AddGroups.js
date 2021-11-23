@@ -8,6 +8,8 @@ const AddGroups = (props) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [isTitleTouched, setIsTitleTouched] = useState(false);
+  const [selectedFile, setSelectedFile] = useState();
+  const [isSelectedFile, setIsSelectedFile] = useState(false);
   // const [date, setDate] = useState("");
   const titleEmpty = title.trim().length !== 0;
   const titleValid = !titleEmpty && isTitleTouched;
@@ -23,11 +25,16 @@ const AddGroups = (props) => {
   const desHandler = (event) => {
     setDescription(event.target.value);
   };
+  const imageHandler = (event) => {
+    setSelectedFile(URL.createObjectURL(event.target.files[0]));
+    setIsSelectedFile(true);
+  };
   // const dateHandler = (event) => {
   //   setDate(event.target.value);
   // };
   const addGroupsHandler = (event) => {
     event.preventDefault();
+    console.log(selectedFile);
     setIsTitleTouched(true);
     if (!titleEmpty) {
       return;
@@ -36,6 +43,7 @@ const AddGroups = (props) => {
       title: title,
       description: description,
       // date: new Date(date),
+      image: selectedFile,
     };
     props.onAddGroupItems(groupItems);
 
@@ -46,6 +54,7 @@ const AddGroups = (props) => {
   const titleBlurHandler = (event) => {
     setIsTitleTouched(true);
   };
+
   return (
     <div className={classes.formCard}>
       <form className={classes.addgroups} onSubmit={addGroupsHandler}>
@@ -63,13 +72,31 @@ const AddGroups = (props) => {
         ) : (
           ""
         )}
+        <label className={classes["label-description"]}>Descriotion</label>
+        <textarea
+          rows="4"
+          cols="50"
+          className={classes.description}
+          id="desc"
+          onChange={desHandler}
+          value={description}
+          label="Descriotion"
+        ></textarea>
         <Input
+          type="file"
+          name="file"
+          id="file"
+          label="Image"
+          // value={selectedFile}
+          onChange={imageHandler}
+        />
+        {/* <Input
           id="desc"
           type="text"
           onChange={desHandler}
           label="Descriotion"
           value={description}
-        />
+        /> */}
         {/* <label>title</label>
       <input type="text" onChange={titleHandler}></input>
       <label>description</label>

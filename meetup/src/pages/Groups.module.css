@@ -1,5 +1,6 @@
 .groups {
   margin: 1.5rem auto;
+  z-index: auto;
 }
 .title {
   display: flex;

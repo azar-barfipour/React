@@ -23,7 +23,7 @@ const AuthForm = () => {
     const enteredEmailRef = emailRef.current.value;
     const enteredPasswordRef = passwordRef.current.value;
 
-    let url = "";
+    let url;
     if (isLogin) {
       url =
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBPzh_70XgT3p1zKFsHQ-eOLHinYkyXYjM";
@@ -42,6 +42,9 @@ const AuthForm = () => {
     });
     const data = await response.json();
     console.log(data);
+    {
+      isLoggedIn ? alert("signed up") : alert("logged in");
+    }
   }
   const submitHandler = () => {
     setIsLogin(false);

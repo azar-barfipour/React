@@ -25,3 +25,23 @@
   font-size: 12px;
   margin-top: 0.5rem;
 }
+.label-description {
+  display: block;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  font-size: 0.7rem;
+}
+.description {
+  font: inherit;
+  border-radius: 6px;
+  width: 100%;
+  padding: 2px;
+  resize: none;
+  background-color: rgb(231, 236, 245);
+  border: 1px solid rgb(212, 218, 228);
+}
+.description:focus {
+  outline: none;
+  border-color: rgba(117, 117, 117);
+}

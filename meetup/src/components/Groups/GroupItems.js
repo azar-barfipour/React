@@ -11,15 +11,18 @@ const GroupItems = (props) => {
   // const minute = props.date.getMinutes();
 
   return (
+    // groupItemWrap
     <Card className={classes.groupItems}>
-      <li style={{ background: `url("/group1.png")` }}>
-        {/* <span>
-          <button type="button" onClick={props.onRemove}>
-            X
-          </button>
-        </span> */}
+      <li className={classes.groupItem}>
+        <div className={classes["gropuItem__image-wrapper"]}>
+          <img
+            src={props.image}
+            alt="theme event"
+            className={classes["gropuItem__image"]}
+          />
+        </div>
         <Link className={classes.link} to={`/Explore/${props.id}`}>
-          <h5>{props.title}</h5>
+          <h5 className={classes["group-item__title"]}>{props.title}</h5>
         </Link>
       </li>
     </Card>
