@@ -82,14 +82,14 @@ const AddGroups = (props) => {
           value={description}
           label="Descriotion"
         ></textarea>
-        <Input
+        {/* <Input
           type="file"
           name="file"
           id="file"
           label="Image"
           // value={selectedFile}
           onChange={imageHandler}
-        />
+        /> */}
         {/* <Input
           id="desc"
           type="text"

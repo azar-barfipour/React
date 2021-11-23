@@ -10,6 +10,8 @@ const stateItem = [
     title: "English Conversation",
     description: "an online event for speaking in English",
     // date: new Date(2020, 12, 5, 13, 20),
+    image:
+      "https://images.unsplash.com/photo-1637270057940-921ced86faee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
   },
   {
     id: "g2",
@@ -60,7 +62,7 @@ const Groups = (props) => {
           id: key,
           title: data[key].title,
           description: data[key].description,
-          image: data[key].image,
+          // image: data[key].image,
         });
       }
       console.log(loadedGroups);
@@ -115,6 +117,7 @@ const Groups = (props) => {
                   id={groupItem.id}
                   title={groupItem.title}
                   description={groupItem.description}
+                  // image={groupItem.image}
                   image={groupItem.image}
                   // onRemove={removeHandler.bind(null, groupItem.id)} //for removing items
                   // date={groupItem.date}
