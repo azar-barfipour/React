@@ -3,8 +3,11 @@ import classes from "./Event.module.css";
 
 const Event = () => {
   return (
-    <Link to="./Explore">
-      <p className={classes.newEvent}>Start your own events</p>
+    <Link to="./Home/AddEvent" className={classes.newEvent}>
+      <div className={classes["newEvent-wrapper"]}>
+        <p>Start your own events</p>
+        <span>&#62;</span>
+      </div>
     </Link>
   );
 };

@@ -5,6 +5,7 @@ import Calendar from "./pages/Calendar";
 import YourGroups from "./pages/YourGroups";
 import GroupItemsDetails from "./pages/GroupItemsDetails";
 import Auth from "./pages/Auth";
+import AddEvent from "./pages/AddEvent";
 
 function App() {
   return (
@@ -13,9 +14,13 @@ function App() {
         <Route path="/" exact>
           <Redirect to="/Home" />
         </Route>
-        <Route path="/Home">
+        <Route path="/Home" exact>
           {/* <YourGroups /> */}
           <Calendar />
+        </Route>
+        <Route path="/Home/AddEvent">
+          {/* <YourGroups /> */}
+          <AddEvent />
         </Route>
         <Route path="/Explore" exact>
           <Groups />
