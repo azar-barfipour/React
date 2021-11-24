@@ -1,41 +1,46 @@
-import react, { Fragment } from "react";
+import react, { Fragment, useEffect, useState } from "react";
 import classes from "./Calendar.module.css";
 import CalendarItems from "../components/Calendar/CalendarItems";
+import Event from "../components/Event/Event";
+
 const Calendar = () => {
-  const calendarItemes = [
-    {
-      id: "c1",
-      title: "Dance Club",
-      description: "Having fun and dancing in a great area",
-      date: new Date(1990, 12, 2, 12, 30),
-    },
-    {
-      id: "c2",
-      title: "English Conversation",
-      description: "an online event for speaking in English",
-      date: new Date(2020, 12, 5, 13, 20),
-    },
-    {
-      id: "c3",
-      title: "Persian Dance",
-      description: "Art gallery with great DJs",
-      date: new Date(2021, 8, 7, 16, 40),
-    },
-  ];
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const fetchHandler = async () => {
+      const response = await fetch(
+        "https://recat-meetup-project-default-rtdb.firebaseio.com/groups.json"
+      );
+      const data = await response.json();
+      console.log(data);
+      let loadedData = [];
+      for (const key in data) {
+        loadedData.push({
+          id: key,
+          title: data[key].title,
+          description: data[key].description,
+        });
+      }
+      setItems(loadedData);
+    };
+    fetchHandler();
+  }, []);
+
   return (
     <Fragment>
+      <Event />
       <div className={classes.calendar}>
-        <div>
-          <h4>Your Calendar</h4>
+        <div className={classes.header}>
+          <h4>Your calendar</h4>
         </div>
         <ul className={classes.calendarItemes}>
-          {calendarItemes.map((calendarIteme) => {
+          {items.map((item) => {
             return (
               <CalendarItems
-                key={calendarIteme.id}
-                title={calendarIteme.title}
-                dec={calendarIteme.description}
-                date={calendarIteme.date}
+                key={item.id}
+                title={item.title}
+                description={item.description}
+                // date={item.date}
               />
             );
           })}

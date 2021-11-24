@@ -4,13 +4,18 @@ import Card from "../UI/Card";
 
 const CalendarItems = (props) => {
   return (
-    <Card className={classes.calendarItems}>
+    <div className={classes.calendarItems}>
       <li>
-        <h4>{props.title}</h4>
-        <p>{props.dec}</p>
-        <CalendarDate date={props.date} />
+        <div>
+          <h4>{props.title}</h4>
+          <p>{props.description}</p>
+        </div>
+        {/* <CalendarDate date={props.date} /> */}
+        <div>
+          <img src="https://images.unsplash.com/photo-1637270057940-921ced86faee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"></img>
+        </div>
       </li>
-    </Card>
+    </div>
   );
 };
 export default CalendarItems;

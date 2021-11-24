@@ -14,7 +14,7 @@ function App() {
           <Redirect to="/Home" />
         </Route>
         <Route path="/Home">
-          <YourGroups />
+          {/* <YourGroups /> */}
           <Calendar />
         </Route>
         <Route path="/Explore" exact>
