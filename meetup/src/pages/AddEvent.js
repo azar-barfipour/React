@@ -1,5 +1,5 @@
-import EventForm from "../components/Event/EventForm";
+import AddGroups from "../components/Groups/AddGroups";
 const AddEvent = () => {
-  return <EventForm />;
+  return <AddGroups />;
 };
 export default AddEvent;
