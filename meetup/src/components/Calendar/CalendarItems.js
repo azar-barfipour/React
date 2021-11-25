@@ -1,6 +1,7 @@
 import { useContext, Fragment } from "react";
 import classes from "./CalendarItems.module.css";
 import AuthContext from "../../store/auth-context";
+import CalendarItem from "./CalendarItem";
 import CalendarDate from "./CalendarDate";
 
 const CalendarItems = (props) => {
@@ -8,20 +9,39 @@ const CalendarItems = (props) => {
   const isLoggedIn = authctx.isLoggedIn;
   return (
     <Fragment>
-      {isLoggedIn && (
-        <div className={classes.calendarItems}>
-          <li>
-            <div>
-              <h4>{props.title}</h4>
-              <p>{props.description}</p>
+      <div className={classes.calendar}>
+        <div className={classes.header}>
+          {isLoggedIn ? (
+            <h4>Your calendar</h4>
+          ) : (
+            <div className={classes["header-wrapper"]}>
+              <div>
+                <h1>Dive in! There are so many things to do on Meetup</h1>
+                <p>
+                  Make friends, find support, grow a business, and explore your
+                  interests. Thousands of events are happening every day, both
+                  online and in person!
+                </p>
+              </div>
+              <div>
+                <img src="https://www.meetup.com/_next/image/?url=%2Fimages%2Fshared%2Fonline_events.svg&w=640&q=75"></img>
+              </div>
             </div>
-            {/* <CalendarDate date={props.date} /> */}
-            <div>
-              <img src="https://images.unsplash.com/photo-1637270057940-921ced86faee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"></img>
-            </div>
-          </li>
+          )}
         </div>
-      )}
+        <ul className={classes.calendarItemes}>
+          {props.items.map((item) => {
+            return (
+              <CalendarItem
+                key={item.id}
+                title={item.title}
+                description={item.description}
+                // date={item.date}
+              />
+            );
+          })}
+        </ul>
+      </div>
     </Fragment>
   );
 };
