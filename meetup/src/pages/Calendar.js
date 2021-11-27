@@ -1,6 +1,6 @@
 import react, { Fragment, useEffect, useState, useContext } from "react";
 import CalendarItems from "../components/Calendar/CalendarItems";
-import Event from "../components/Event/Event";
+import Event from "../components/Event/EventLink";
 import AuthContext from "../store/auth-context";
 
 const Calendar = () => {

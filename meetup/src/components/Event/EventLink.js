@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import classes from "./Event.module.css";
+import classes from "./EventLink.module.css";
 import AuthContext from "../../store/auth-context";
 
-const Event = () => {
+const EventLink = () => {
   const authctx = useContext(AuthContext);
   const isLoggedIn = authctx.isLoggedIn;
   return (
@@ -19,4 +19,4 @@ const Event = () => {
     </Link>
   );
 };
-export default Event;
+export default EventLink;

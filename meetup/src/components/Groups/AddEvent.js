@@ -1,9 +1,9 @@
 import react, { useState } from "react";
-import classes from "./AddGroups.module.css";
+import classes from "./AddEvent.module.css";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 
-const AddGroups = (props) => {
+const AddEvent = (props) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [isTitleTouched, setIsTitleTouched] = useState(false);
@@ -112,4 +112,4 @@ const AddGroups = (props) => {
     </div>
   );
 };
-export default AddGroups;
+export default AddEvent;
