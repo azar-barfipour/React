@@ -1,11 +1,10 @@
 import { Route, Redirect, Switch } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
-import Groups from "./pages/Groups";
 import Calendar from "./pages/Calendar";
-import YourGroups from "./pages/YourGroups";
 import GroupItemsDetails from "./pages/GroupItemsDetails";
 import Auth from "./pages/Auth";
 import Event from "./pages/Events";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -15,15 +14,13 @@ function App() {
           <Redirect to="/Home" />
         </Route>
         <Route path="/Home" exact>
-          {/* <YourGroups /> */}
           <Calendar />
         </Route>
         <Route path="/Home/AddEvent">
-          {/* <YourGroups /> */}
           <Event />
         </Route>
         <Route path="/Explore" exact>
-          <Groups />
+          <Search />
         </Route>
         <Route path="/Explore/:groupDetailId">
           <GroupItemsDetails />

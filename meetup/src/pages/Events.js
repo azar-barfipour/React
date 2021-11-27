@@ -3,7 +3,7 @@ import classes from "./Groups.module.css";
 import GroupItems from "../components/Groups/GroupItems";
 import AddGroups from "../components/Groups/AddGroups";
 import Button from "../components/UI/Button";
-import AddEvent from "../components/Groups/AddEvent";
+import AddEvent from "../components/Event/AddEvent";
 import EventItems from "../components/Event/EventItems";
 
 const stateItem = [
