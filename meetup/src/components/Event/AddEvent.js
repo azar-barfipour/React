@@ -10,11 +10,14 @@ const AddEvent = (props) => {
   const [selectedFile, setSelectedFile] = useState();
   const [isSelectedFile, setIsSelectedFile] = useState(false);
   const [date, setDate] = useState("");
+  const [isDateTouched, setIsDateTouched] = useState(false);
   const titleEmpty = title.trim().length !== 0;
   const titleValid = !titleEmpty && isTitleTouched;
+  const dateEmpty = date.trim().length !== 0;
+  const dateValid = !dateEmpty && isDateTouched;
 
   let formIsValid = false;
-  if (titleEmpty) {
+  if (titleEmpty && dateEmpty) {
     formIsValid = true;
   }
 
@@ -35,7 +38,11 @@ const AddEvent = (props) => {
     event.preventDefault();
     console.log(selectedFile);
     setIsTitleTouched(true);
+    setIsDateTouched(true);
     if (!titleEmpty) {
+      return;
+    }
+    if (!dateEmpty) {
       return;
     }
     const groupItems = {
@@ -48,12 +55,16 @@ const AddEvent = (props) => {
 
     setTitle("");
     setDescription("");
+    setDate("");
     setIsTitleTouched(false);
+    setIsDateTouched(false);
   };
-  const titleBlurHandler = (event) => {
+  const titleBlurHandler = () => {
     setIsTitleTouched(true);
   };
-
+  const dateBlurHandler = () => {
+    setIsDateTouched(true);
+  };
   return (
     <div className={classes.formCard}>
       <form className={classes.addgroups} onSubmit={addGroupsHandler}>
@@ -67,7 +78,7 @@ const AddEvent = (props) => {
           value={title}
         />
         {titleValid ? (
-          <p className={classes.error}>Fill the blank please!</p>
+          <p className={classes.error}>Don't forget to name your event</p>
         ) : (
           ""
         )}
@@ -89,8 +100,22 @@ const AddEvent = (props) => {
           // value={selectedFile}
           onChange={imageHandler}
         /> */}
-        <label>Date</label>
-        <input type="datetime-local" onChange={dateHandler}></input>
+        <Input
+          type="datetime-local"
+          onChange={dateHandler}
+          id="date"
+          onBlur={dateBlurHandler}
+          label="Date"
+          value={date}
+        />
+        {dateValid && <p className={classes.error}>Don't forget to set date</p>}
+        <Input
+          type="text"
+          // onChange={locationHandler}
+          id="location"
+          label="Location"
+          // value={location}
+        />
         <Button
           type="submit"
           name="ADD"
