@@ -5,6 +5,7 @@ const EventItems = (props) => {
     <ul>
       {props.groups.map((groupItem) => {
         return (
+          !props.isLoading &&
           props.groups.length > 0 && (
             <EventItem
               key={groupItem.id}
@@ -13,8 +14,7 @@ const EventItems = (props) => {
               description={groupItem.description}
               // image={groupItem.image}
               image={groupItem.image}
-              // onRemove={removeHandler.bind(null, groupItem.id)} //for removing items
-              // date={groupItem.date}
+              date={groupItem.date}
             />
           )
         );

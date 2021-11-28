@@ -36,7 +36,7 @@ const CalendarItems = (props) => {
                 key={item.id}
                 title={item.title}
                 description={item.description}
-                // date={item.date}
+                date={item.date}
               />
             );
           })}

@@ -1,47 +1,15 @@
 import { Fragment, useState, useCallback, useEffect } from "react";
 import classes from "./Groups.module.css";
-import GroupItems from "../components/Groups/GroupItems";
-import AddGroups from "../components/Groups/AddGroups";
-import Button from "../components/UI/Button";
 import AddEvent from "../components/Event/AddEvent";
 import EventItems from "../components/Event/EventItems";
 
 const stateItem = [
   {
-    id: "g1",
-    title: "English Conversation",
-    description: "an online event for speaking in English",
-    // date: new Date(2020, 12, 5, 13, 20),
     image:
       "https://images.unsplash.com/photo-1637270057940-921ced86faee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
   },
-  {
-    id: "g2",
-    title: "Dance Club",
-    description: "Having fun and dancing in a great area",
-    // date: new Date(1990, 12, 2, 12, 30),
-  },
-
-  {
-    id: "g3",
-    title: "Newcommers",
-    description: "gattring at art gallery",
-    // date: new Date(2021, 8, 7, 16, 40),
-  },
 ];
 const Events = (props) => {
-  // ******Adding groups and removing items*****
-  // const [stateItem, setStateItem] = useState(DUMMI);
-  // const addGroupItemsHandler = (item) => {
-  //   setStateItem((prevItemes) => {
-  //     return [item, ...prevItemes];
-  //   });
-  //   props.onAddGroups(stateItem);
-  // };
-  // const removeHandler = () => {
-  //   setStateItem(stateItem.filter((item) => item.id !== stateItem.id));
-  // };
-
   const [groups, setGroups] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -64,6 +32,7 @@ const Events = (props) => {
           id: key,
           title: data[key].title,
           description: data[key].description,
+          date: data[key].date,
           // image: data[key].image,
         });
       }
@@ -99,7 +68,7 @@ const Events = (props) => {
     <Fragment>
       <AddEvent onAddGroupItems={addGroupItemsHandler} />
       <div className={classes.groups}>
-        <EventItems groups={groups} />
+        <EventItems groups={groups} isLoading={isLoading} />
       </div>
     </Fragment>
   );

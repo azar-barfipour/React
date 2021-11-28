@@ -20,6 +20,7 @@ const Calendar = () => {
           id: key,
           title: data[key].title,
           description: data[key].description,
+          date: data[key].date,
         });
       }
       setItems(loadedData);

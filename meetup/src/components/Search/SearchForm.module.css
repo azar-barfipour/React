@@ -1,0 +1,9 @@
+.form {
+  margin: 3rem;
+}
+.form label {
+  display: block;
+}
+.form input {
+  background-color: aqua;
+}

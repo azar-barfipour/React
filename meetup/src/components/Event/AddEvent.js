@@ -9,7 +9,7 @@ const AddEvent = (props) => {
   const [isTitleTouched, setIsTitleTouched] = useState(false);
   const [selectedFile, setSelectedFile] = useState();
   const [isSelectedFile, setIsSelectedFile] = useState(false);
-  // const [date, setDate] = useState("");
+  const [date, setDate] = useState("");
   const titleEmpty = title.trim().length !== 0;
   const titleValid = !titleEmpty && isTitleTouched;
 
@@ -28,9 +28,9 @@ const AddEvent = (props) => {
     setSelectedFile(URL.createObjectURL(event.target.files[0]));
     setIsSelectedFile(true);
   };
-  // const dateHandler = (event) => {
-  //   setDate(event.target.value);
-  // };
+  const dateHandler = (event) => {
+    setDate(event.target.value);
+  };
   const addGroupsHandler = (event) => {
     event.preventDefault();
     console.log(selectedFile);
@@ -41,7 +41,7 @@ const AddEvent = (props) => {
     const groupItems = {
       title: title,
       description: description,
-      // date: new Date(date),
+      date: new Date(date),
       // image: selectedFile,
     };
     props.onAddGroupItems(groupItems);
@@ -89,19 +89,8 @@ const AddEvent = (props) => {
           // value={selectedFile}
           onChange={imageHandler}
         /> */}
-        {/* <Input
-          id="desc"
-          type="text"
-          onChange={desHandler}
-          label="Descriotion"
-          value={description}
-        /> */}
-        {/* <label>title</label>
-      <input type="text" onChange={titleHandler}></input>
-      <label>description</label>
-      <input type="text" onChange={desHandler}></input>  */}
-        {/* <label>Date</label> */}
-        {/* <input type="datetime-local" onChange={dateHandler}></input> */}
+        <label>Date</label>
+        <input type="datetime-local" onChange={dateHandler}></input>
         <Button
           type="submit"
           name="ADD"

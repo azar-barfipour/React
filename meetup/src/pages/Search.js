@@ -1,4 +1,5 @@
+import SearchForm from "../components/Search/SearchForm";
 const Search = () => {
-  return <div style={{ margin: "3rem" }}>Searching ...</div>;
+  return <SearchForm />;
 };
 export default Search;
