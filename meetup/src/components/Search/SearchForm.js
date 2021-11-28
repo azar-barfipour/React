@@ -6,7 +6,7 @@ import SearchItems from "./SearchItems";
 const SearchForm = () => {
   const [enteredSearch, setEnteredSearch] = useState("");
   const [events, setEvents] = useState([]);
-  const [searchParam] = useState(["title"]);
+  const [eventsResult, setEventsResult] = useState([]);
   const inputChangeHandler = (event) => {
     setEnteredSearch(event.target.value);
   };
@@ -21,23 +21,13 @@ const SearchForm = () => {
         loadedData.push({ id: key, title: data[key].title });
       }
       setEvents(loadedData);
+      const result = events.filter((e) =>
+        e.title.toLowerCase().includes(enteredSearch)
+      );
+      setEventsResult(result);
     };
     fetchHandler();
-  }, []);
-
-  //   const search = () => {
-  //       return items.filter((item) => {
-  //                 return searchParam.some((newItem) => {
-  //                     return (
-  //                         item[newItem]
-  //                             .toString()
-  //                             .toLowerCase()
-  //                             .indexOf(q.toLowerCase()) > -1
-  //                     );
-  //                 });
-  //             });
-  //         }
-  //   }
+  }, [enteredSearch]);
 
   return (
     <div className={classes["form-container"]}>
@@ -49,7 +39,8 @@ const SearchForm = () => {
           value={enteredSearch}
         ></input>
       </form>
-      <SearchItems events={events} />
+      {!enteredSearch && <SearchItems events={events} />}
+      {enteredSearch && <SearchItems events={eventsResult} />}
     </div>
   );
 };
