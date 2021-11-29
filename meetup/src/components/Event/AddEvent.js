@@ -1,7 +1,8 @@
-import react, { useState } from "react";
+import { useState } from "react";
 import classes from "./AddEvent.module.css";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
+import GoogleMap from "./GoogleMap";
 
 const AddEvent = (props) => {
   const [title, setTitle] = useState("");
@@ -109,13 +110,15 @@ const AddEvent = (props) => {
           value={date}
         />
         {dateValid && <p className={classes.error}>Don't forget to set date</p>}
-        <Input
+        <label>Location</label>
+        <GoogleMap></GoogleMap>
+        {/* <Input
           type="text"
           // onChange={locationHandler}
           id="location"
           label="Location"
           // value={location}
-        />
+        /> */}
         <Button
           type="submit"
           name="ADD"
