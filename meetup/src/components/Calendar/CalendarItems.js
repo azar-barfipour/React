@@ -15,17 +15,17 @@ const CalendarItems = (props) => {
             <h4>Your calendar</h4>
           ) : (
             <div className={classes["header-wrapper"]}>
-              <div>
+              <section>
                 <h1>Dive in! There are so many things to do on Meetup</h1>
                 <p>
                   Make friends, find support, grow a business, and explore your
                   interests. Thousands of events are happening every day, both
                   online and in person!
                 </p>
-              </div>
-              <div>
+              </section>
+              <section>
                 <img src="https://www.meetup.com/_next/image/?url=%2Fimages%2Fshared%2Fonline_events.svg&w=640&q=75"></img>
-              </div>
+              </section>
             </div>
           )}
         </div>

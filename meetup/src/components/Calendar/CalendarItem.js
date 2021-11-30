@@ -6,7 +6,7 @@ const CalanderItem = (props) => {
   const authctx = useContext(AuthContext);
   const isLoggedIn = authctx.isLoggedIn;
   return (
-    <div className={classes["calendarItems_container"]}>
+    <main className={classes["calendarItems_container"]}>
       {isLoggedIn && (
         <div className={classes.calendarItems}>
           <li>
@@ -16,12 +16,12 @@ const CalanderItem = (props) => {
             <div className={classes.title}>
               <CalendarDate date={props.date} />
               <h4>{props.title}</h4>
-              <p>{props.description}</p>
+              {/* <p>{props.description}</p> */}
             </div>
           </li>
         </div>
       )}
-    </div>
+    </main>
   );
 };
 export default CalanderItem;
