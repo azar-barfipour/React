@@ -16,12 +16,14 @@ const GoogleMap = (props) => {
     }
   };
   return (
-    <div className={classes["map-container"]}>
+    <div>
       <Map
+        className={classes["map-container"]}
         google={props.google}
         zoom={14}
         initialCenter={listing.latLng}
         ref={refMap}
+        style={{ width: "400px", height: "300px" }}
         onBoundsChanged={useCallback(handleBoundsChanged, [
           handleBoundsChanged,
         ])}

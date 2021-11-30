@@ -1,7 +1,9 @@
+.calendarItems_container {
+  border: 1px solid blue;
+}
 .calendarItems {
   margin-bottom: 1rem;
   margin-top: 1rem;
-  /* background-color: rosybrown; */
 }
 
 .calendarItems li {

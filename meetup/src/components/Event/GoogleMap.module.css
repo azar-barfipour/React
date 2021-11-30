@@ -1,8 +1,5 @@
 .map-container {
-  width: 200px;
-}
-
-.map {
-  width: 10%;
-  height: 10%;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 2rem;
 }

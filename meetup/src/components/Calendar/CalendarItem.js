@@ -6,7 +6,7 @@ const CalanderItem = (props) => {
   const authctx = useContext(AuthContext);
   const isLoggedIn = authctx.isLoggedIn;
   return (
-    <div>
+    <div className={classes["calendarItems_container"]}>
       {isLoggedIn && (
         <div className={classes.calendarItems}>
           <li>
