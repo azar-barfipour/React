@@ -10,8 +10,7 @@ const EventLink = () => {
     <Link to="./Home/AddEvent" className={classes.newEvent}>
       {isLoggedIn ? (
         <div className={classes["newEvent-wrapper"]}>
-          <p>Start your own events</p>
-          <span>&#62;</span>
+          <p>Start your own events &#62;</p>
         </div>
       ) : (
         <div></div>

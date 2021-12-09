@@ -1,11 +1,13 @@
 .newEvent {
   text-decoration: none;
+  width: 90%;
 }
 .newEvent-wrapper {
   border-bottom: 5px solid rgb(231, 228, 228);
   margin: 1.5rem auto;
-  width: 60%;
+  width: 90%;
 }
+
 
 .newEvent p {
   display: inline-block;

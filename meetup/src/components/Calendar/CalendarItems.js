@@ -2,7 +2,6 @@ import { useContext, Fragment } from "react";
 import classes from "./CalendarItems.module.css";
 import AuthContext from "../../store/auth-context";
 import CalendarItem from "./CalendarItem";
-import CalendarDate from "./CalendarDate";
 
 const CalendarItems = (props) => {
   const authctx = useContext(AuthContext);
@@ -15,7 +14,7 @@ const CalendarItems = (props) => {
             <h4>Your calendar</h4>
           ) : (
             <div className={classes["header-wrapper"]}>
-              <section>
+              <section className={classes['header-text']}>
                 <h1>Dive in! There are so many things to do on Meetup</h1>
                 <p>
                   Make friends, find support, grow a business, and explore your
@@ -23,7 +22,7 @@ const CalendarItems = (props) => {
                   online and in person!
                 </p>
               </section>
-              <section>
+              <section className={classes['header-image']}>
                 <img src="https://www.meetup.com/_next/image/?url=%2Fimages%2Fshared%2Fonline_events.svg&w=640&q=75"></img>
               </section>
             </div>
