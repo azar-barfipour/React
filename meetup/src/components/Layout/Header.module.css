@@ -7,32 +7,32 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem auto;
+  padding: 0.5rem;
   box-shadow: 0 1px 3px rgba(97, 96, 96, 0.2);
 }
 
 .header h1 {
-  font-size: 1rem;
+  font-size: 1.5rem;
   text-align: center;
   padding: 0.5rem;
   font-weight: bolder;
   color: rgb(246, 88, 88);
 }
-.header ul {
+.items{
   display: flex;
-  justify-content: center;
   list-style: none;
   align-items: center;
   padding-right: 1rem;
+  margin-right: 1rem;
 }
 .header li {
-  margin: 0.3rem;
+  margin: 0.8rem;
 }
 
 .header a {
   text-decoration: none;
   font-family: inherit;
-  font-size: 12px;
+  font-size: 1rem;
   font-weight: bold;
   color: gray;
 }

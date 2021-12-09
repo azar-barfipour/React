@@ -8,9 +8,11 @@ const Header = () => {
   const isLoggedIn = authctx.isLoggedIn;
   return (
     <div className={classes.header}>
+      <div>
       <h1>meetup</h1>
+      </div>
       <nav>
-        <ul>
+        <ul className={classes.items}>
           <li>
             <NavLink activeClassName={classes.active} to="/Home">
               Home
@@ -30,7 +32,7 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-    </div>
+      </div>
   );
 };
 
