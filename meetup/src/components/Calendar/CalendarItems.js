@@ -9,26 +9,26 @@ const CalendarItems = (props) => {
   return (
     <Fragment>
       <div className={classes.calendar}>
-        <div className={classes.header}>
+        <div className={classes['calendar__wrapper']}>
           {isLoggedIn ? (
             <h4>Your calendar</h4>
           ) : (
-            <div className={classes["header-wrapper"]}>
-              <section className={classes['header-text']}>
-                <h1>Dive in! There are so many things to do on Meetup</h1>
-                <p>
+            <div className={classes.header}>
+              <section className={classes['header__wrapper']}>
+                <h1 className={classes['header__title']}>Dive in! There are so many things to do on Meetup</h1>
+                <p className={classes['header__desc']}>  
                   Make friends, find support, grow a business, and explore your
                   interests. Thousands of events are happening every day, both
                   online and in person!
                 </p>
               </section>
-              <section className={classes['header-image']}>
+              <section className={classes['header__image']}>
                 <img src="https://www.meetup.com/_next/image/?url=%2Fimages%2Fshared%2Fonline_events.svg&w=640&q=75"></img>
               </section>
             </div>
           )}
         </div>
-        <ul className={classes.calendarItemes}>
+        <ul className={classes['calendar__list']}>
           {props.items.map((item) => {
             return (
               <CalendarItem
