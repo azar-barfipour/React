@@ -11,21 +11,30 @@
   box-shadow: 0 1px 3px rgba(97, 96, 96, 0.2);
 }
 
-.header h1 {
+.header__title{
   font-size: 1.5rem;
   text-align: center;
   padding: 0.5rem;
   font-weight: bolder;
   color: rgb(246, 88, 88);
 }
-.items{
+
+.header__nav{
+  display: none;
+}
+@media (min-width : 600px) {
+  .header__nav{
+  display: block;
+
+}
+.header__list{
   display: flex;
   list-style: none;
   align-items: center;
   padding-right: 1rem;
   margin-right: 1rem;
 }
-.header li {
+.header__list--item{
   margin: 0.8rem;
 }
 
@@ -43,4 +52,5 @@
   color: rgb(246, 88, 88);
   padding-bottom: 0.1rem;
   border-bottom: 2px solid rgb(246, 88, 88);
+}
 }

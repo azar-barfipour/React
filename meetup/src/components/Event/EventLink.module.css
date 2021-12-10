@@ -1,17 +1,16 @@
-.newEvent {
+.event-new{
   text-decoration: none;
-  width: 90%;
 }
-.newEvent-wrapper {
-  border-bottom: 5px solid rgb(231, 228, 228);
+.event-new__wrapper {
+  border-bottom: 8px solid rgb(231, 228, 228);
   margin: 1.5rem auto;
-  width: 90%;
+  width: 100%;
 }
 
 
-.newEvent p {
+.event-new__text {
   display: inline-block;
-  margin: 4rem 1.5rem 0 0;
+  margin: 4rem 1.5rem 0 1.5rem;
   color: #000;
   padding: 1rem 0;
 }

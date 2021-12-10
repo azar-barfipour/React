@@ -7,10 +7,10 @@ const EventLink = () => {
   const authctx = useContext(AuthContext);
   const isLoggedIn = authctx.isLoggedIn;
   return (
-    <Link to="./Home/AddEvent" className={classes.newEvent}>
+    <Link to="./Home/AddEvent" className={classes['event-new']}>
       {isLoggedIn ? (
-        <div className={classes["newEvent-wrapper"]}>
-          <p>Start your own events &#62;</p>
+        <div className={classes["event-new__wrapper"]}>
+          <p className={classes["event-new__text"]}>Start your own events &#62;</p>
         </div>
       ) : (
         <div></div>

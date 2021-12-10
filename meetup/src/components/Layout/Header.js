@@ -9,23 +9,23 @@ const Header = () => {
   return (
     <div className={classes.header}>
       <div>
-      <h1>meetup</h1>
+      <h1 className={classes['header__title']}>meetup</h1>
       </div>
-      <nav>
-        <ul className={classes.items}>
-          <li>
-            <NavLink activeClassName={classes.active} to="/Home">
+      <nav className={classes['header__nav']}>
+        <ul className={classes['header__list']}>
+          <li className={classes['header__list--item']}> 
+            <NavLink  activeClassName={classes.active} to="/Home">
               Home
             </NavLink>
           </li>
           {isLoggedIn && (
-            <li>
+            <li className={classes['header__list--item']}>
               <NavLink activeClassName={classes.active} to="/Explore">
                 Explore
               </NavLink>
             </li>
           )}
-          <li>
+          <li className={classes['header__list--item']}> 
             <NavLink activeClassName={classes.active} to="/auth">
               {isLoggedIn ? "Log out" : "Log in"}
             </NavLink>
