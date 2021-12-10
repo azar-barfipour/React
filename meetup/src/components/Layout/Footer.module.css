@@ -2,16 +2,36 @@
   position: fixed;
   z-index: 20;
   bottom: 0;
-  height: 2rem;
   background-color: rgb(250, 250, 250);
   width: 100%;
   border-top: 1px solid rgba(177, 175, 175, 0.2);
 }
-.footer h2 {
-  font-size: 1rem;
-  text-align: center;
-  color: rgb(0, 0, 0);
+.footer__list{
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem 4rem;
 }
+.footer__list--item a{ 
+  text-decoration: none;
+  font-family: inherit;
+  color: gray;
+}
+.footer__list--item a:hover,
+.footer__list--item a:active,
+.footer__list--item a.active{
+  color: rgb(246, 88, 88);
+}
+.footer__list--link{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.footer__list--title{
+font-size: .6rem;
+margin: 0;
+}
+
 @media (min-width: 600px) {
   .footer{
     display: none;
