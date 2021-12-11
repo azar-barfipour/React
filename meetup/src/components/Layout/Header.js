@@ -19,13 +19,15 @@ const Header = () => {
             </NavLink>
           </li>
           {isLoggedIn && (
-            <li className={classes['header__list--item']}>
+            <li className={classes['header__list--item']}> 
               <NavLink activeClassName={classes.active} to="/Explore">
                 Explore
               </NavLink>
             </li>
           )}
-          <li className={classes['header__list--item']}> 
+        </ul>
+        <ul className={classes['header__auth']}>
+        <li className={classes['header__auth--item']}> 
             <NavLink activeClassName={classes.active} to="/auth">
               {isLoggedIn ? "Log out" : "Log in"}
             </NavLink>
