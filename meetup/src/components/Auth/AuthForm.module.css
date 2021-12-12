@@ -1,32 +1,30 @@
-.authForm {
-  width: 300px;
-  margin: 3.5rem auto;
+.auth-form {
+  width: 70%;
+  margin: 5rem auto;
   border: 1px solid rgba(230, 230, 230);
-  padding: 2rem;
+  padding: 3rem;
   border-radius: 0.5rem;
 }
 
-.authForm h2 {
+.auth-form__header {
   text-align: center;
   font-weight: bold;
   margin: 0.5rem;
 }
-.authForm p {
+.auth-form__text {
   font-size: 14px;
   text-align: center;
   font-family: inherit;
   margin-bottom: 2rem;
 }
-.authForm p button {
+.auth-form__button {
   background-color: rgb(255, 255, 255);
   cursor: pointer;
   color: #008294;
-}
-.authForm form {
   text-align: center;
 }
 
-.authLink {
+.auth-form__link {
   display: block;
   border: 1px solid rgba(230, 230, 230);
   padding: 0.5rem 1rem;
@@ -34,10 +32,12 @@
   cursor: pointer;
 }
 
-.authForm input {
+.auth-form__input {
   background-color: rgb(231, 236, 245);
   border: 1px solid rgb(212, 218, 228);
 }
-.authForm label {
-  text-align: left;
+@media (min-width: 40rem) {
+  .auth-form {
+    max-width: 30rem;
+  }
 }

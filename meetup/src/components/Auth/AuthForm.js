@@ -60,28 +60,29 @@ const AuthForm = () => {
   };
 
   return (
-    <div className={classes.authForm}>
-      {isLogin && <h2>Log in</h2>}
-      {!isLogin && <h2>Sign up</h2>}
+    <div className={classes['auth-form']}>
+      {isLogin && <h2 className={classes['auth-form__header']}>Log in</h2>}
+      {!isLogin && <h2 className={classes['auth-form__header']}>Sign up</h2>}
       {isLogin && (
-        <p>
+        <p className={classes['auth-form__text']}>
           Not a member yet?{" "}
-          <button onClick={submitHandler} type="submit">
+          <button onClick={submitHandler} type="submit" className={classes['auth-form__button']}>
             Sign up
           </button>
         </p>
       )}
       {!isLogin && (
-        <p>
+        <p className={classes['auth-form__text']}>
           Already a member?{" "}
-          <button onClick={loginSubmitHandler} type="submit">
+          <button onClick={loginSubmitHandler} type="submit" className={classes['auth-form__button']}>
             Log in
           </button>
         </p>
       )}
 
-      <form onSubmit={addSubmitHandler}>
+      <form onSubmit={addSubmitHandler} className={classes['auth-form__wrapper']}>
         <Input
+        className={classes['auth-form__input']}
           id="email"
           type="email"
           label="Email"
@@ -90,6 +91,7 @@ const AuthForm = () => {
           value={enteredEmail}
         />
         <Input
+          className={classes['auth-form__input']}
           id="password"
           type="password"
           label="Password"
@@ -99,11 +101,11 @@ const AuthForm = () => {
         />
 
         {!isLoggedIn && (
-          <Button name={isLogin ? "Log in" : "Sign up"} type="submit" />
+          <Button name={isLogin ? "Log in" : "Sign up"} type="submit"/>
         )}
 
         {isLoggedIn && (
-          <Button type="submit" name="Log out" onClick={logoutHandler}></Button>
+          <Button type="submit" name="Log out" onClick={logoutHandler}/>
         )}
       </form>
     </div>
