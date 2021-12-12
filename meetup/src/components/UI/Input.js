@@ -15,8 +15,8 @@ const Input = React.forwardRef((props, ref) => {
   });
 
   return (
-    <div className={classes.input}>
-      <label htmlFor={props.id}>{props.label}</label>
+    <div className={classes['input-wrapper']}>
+      <label htmlFor={props.id} className={classes['input-label']}>{props.label}</label>
       <input
         className={props.className}
         type={props.type}

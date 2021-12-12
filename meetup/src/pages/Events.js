@@ -68,7 +68,7 @@ const Events = (props) => {
     <Fragment>
       <AddEvent onAddGroupItems={addGroupItemsHandler} />
       <div className={classes.groups}>
-        <EventItems groups={groups} isLoading={isLoading} />
+        {/* <EventItems groups={groups} isLoading={isLoading} /> */}
       </div>
     </Fragment>
   );

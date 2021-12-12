@@ -10,18 +10,21 @@
   text-align: center;
   font-weight: bold;
   margin: 0.5rem;
+  font-size: 1.5rem;
 }
 .auth-form__text {
   font-size: 14px;
   text-align: center;
   font-family: inherit;
   margin-bottom: 2rem;
+  font-size: 1rem;
 }
 .auth-form__button {
   background-color: rgb(255, 255, 255);
   cursor: pointer;
   color: #008294;
   text-align: center;
+  font-size: 1rem;
 }
 
 .auth-form__link {
@@ -38,6 +41,6 @@
 }
 @media (min-width: 40rem) {
   .auth-form {
-    max-width: 30rem;
+    max-width: 25rem;
   }
 }

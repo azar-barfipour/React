@@ -1,4 +1,4 @@
-import classes from "./EventForm.module.css";
+
 import EventItem from "./EventItem";
 const EventItems = (props) => {
   return (
@@ -15,6 +15,7 @@ const EventItems = (props) => {
               // image={groupItem.image}
               image={groupItem.image}
               date={groupItem.date}
+              location={groupItem.location}
             />
           )
         );

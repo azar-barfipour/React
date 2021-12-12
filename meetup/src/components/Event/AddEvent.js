@@ -3,6 +3,7 @@ import classes from "./AddEvent.module.css";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import GoogleMap from "./GoogleMap";
+import { Fragment } from "react/cjs/react.production.min";
 
 const AddEvent = (props) => {
   const [title, setTitle] = useState("");
@@ -67,8 +68,12 @@ const AddEvent = (props) => {
     setIsDateTouched(true);
   };
   return (
-    <div className={classes.formCard}>
-      <form className={classes.addgroups} onSubmit={addGroupsHandler}>
+      <Fragment>
+    <div className={classes['form-wrapper__title']}>
+      <h2 className={classes['form__title']}>Start your new event</h2>
+      </div>
+    <div className={classes['form-wrapper']}>
+      <form className={classes['form']} onSubmit={addGroupsHandler}>
         <Input
           className={`${titleValid ? classes.isempty : {}}`}
           id="title"
@@ -83,11 +88,11 @@ const AddEvent = (props) => {
         ) : (
           ""
         )}
-        <label className={classes["label-description"]}>Descriotion</label>
+        <label className={classes["form-lable__description"]}>Descriotion</label>
         <textarea
           rows="4"
           cols="50"
-          className={classes.description}
+          className={classes["form-input__description"]}
           id="desc"
           onChange={desHandler}
           value={description}
@@ -110,7 +115,6 @@ const AddEvent = (props) => {
           value={date}
         />
         {dateValid && <p className={classes.error}>Don't forget to set date</p>}
-        <label>Location</label>
         {/* <GoogleMap></GoogleMap> */}
         <Input
           type="text"
@@ -127,6 +131,7 @@ const AddEvent = (props) => {
         />
       </form>
     </div>
+    </Fragment>
   );
 };
 export default AddEvent;
