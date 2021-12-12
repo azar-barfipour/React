@@ -111,14 +111,14 @@ const AddEvent = (props) => {
         />
         {dateValid && <p className={classes.error}>Don't forget to set date</p>}
         <label>Location</label>
-        <GoogleMap></GoogleMap>
-        {/* <Input
+        {/* <GoogleMap></GoogleMap> */}
+        <Input
           type="text"
           // onChange={locationHandler}
           id="location"
           label="Location"
           // value={location}
-        /> */}
+        />
         <Button
           type="submit"
           name="ADD"

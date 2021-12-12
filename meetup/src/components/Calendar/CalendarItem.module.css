@@ -18,4 +18,24 @@
   border-radius: 0.5rem;
   margin: 1rem 0;
 }
+/* @media (min-width: 640px) {
+  .calendarItem__item {
+    border: 1px solid rgb(231, 228, 228);
+    max-width: 100%;
+    height: 10rem;
+    overflow: hidden;
+    justify-content: center;
+  }
+ 
+} */
+
+/* @media (min-width: 720px) and (max-width:799px){
+  .calendarItem__item {
+    width: 13rem;
+  }}
+  @media (min-width: 800px) {
+    .calendarItem__item {
+      width: 70rem;
+    }
+  } */
 

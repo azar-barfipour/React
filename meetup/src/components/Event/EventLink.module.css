@@ -9,8 +9,16 @@
 
 
 .event-new__text {
-  display: inline-block;
   margin: 4rem 1.5rem 0 1.5rem;
   color: #000;
   padding: 1rem 0;
+}
+
+@media (min-width: 640px) {
+  .event-new__wrapper {
+    max-width: 40rem;
+  }
+  .event-new__text {
+    margin-left: 0;
+  }
 }
