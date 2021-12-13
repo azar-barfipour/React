@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import classes from "./SearchForm.module.css";
 import React from "react";
 import SearchItems from "./SearchItems";
+import Input from '../UI/Input'
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SearchForm = () => {
   const [enteredSearch, setEnteredSearch] = useState("");
@@ -32,12 +35,14 @@ const SearchForm = () => {
   return (
     <div className={classes["form-container"]}>
       <form className={classes.form}>
-        <label value="Explore meetup">Explore meetup</label>
         <input
+          className={classes["form__input"]}
           type="search"
+          placeholder="Explore meetup"
           onChange={inputChangeHandler}
           value={enteredSearch}
-        ></input>
+        />
+        <FontAwesomeIcon icon={faSearch} className={classes["form__icon"]}/>
       </form>
       {!enteredSearch && <SearchItems events={events} />}
       {enteredSearch && <SearchItems events={eventsResult} />}

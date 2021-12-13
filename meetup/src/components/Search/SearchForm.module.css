@@ -1,9 +1,27 @@
 .form {
-  margin: 3rem;
+  margin: 5rem auto;
+  width: 90%;
+  max-width: 40rem;
+  position: relative;
 }
-.form label {
-  display: block;
+.form__input {
+  font: inherit;
+  border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgb(231, 236, 245);
+  border: 1px solid rgb(212, 218, 228);
+  display: inline-block;
+  padding: .4rem 0 .4rem 2rem;
 }
-.form input {
-  background-color: aqua;
+.form__icon{
+  position: absolute;
+  left: .5rem;
+  top: .6rem;
+  color: gray;
+}
+
+.form__input:focus, .form__input:hover{
+  outline: none;
+  border-color: rgba(117, 117, 117);
 }
