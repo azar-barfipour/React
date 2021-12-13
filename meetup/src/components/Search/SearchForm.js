@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import classes from "./SearchForm.module.css";
 import React from "react";
 import SearchItems from "./SearchItems";
-import Input from '../UI/Input'
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

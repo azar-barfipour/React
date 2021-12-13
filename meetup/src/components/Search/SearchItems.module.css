@@ -1,0 +1,11 @@
+.search__wrapper{
+    width: 90%;
+    max-width: 40rem;
+    margin:auto;
+}
+.search__list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
