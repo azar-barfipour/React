@@ -2,6 +2,7 @@
     width: 90%;
     max-width: 40rem;
     margin:auto;
+    margin-bottom: 5rem;
 }
 .search__list{
     display: flex;

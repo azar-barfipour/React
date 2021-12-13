@@ -5,7 +5,7 @@ const SearchItems = (props) => {
     <div className={classes["search__wrapper"]}>
     <ul className={classes["search__list"]}> 
       {props.events.map((event) => {
-        return <SearchItem key={event.id} title={event.title} />;
+        return <SearchItem key={event.id} id={event.id} title={event.title} />;
       })}
     </ul>
     </div>
