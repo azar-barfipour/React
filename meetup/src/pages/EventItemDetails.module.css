@@ -1,23 +1,21 @@
 .datail {
-  margin: 5rem;
-  text-align: center;
-}
-.card {
-  width: 200px;
-  margin: 1rem auto;
+  /* margin: 5rem; */
 }
 li {
   list-style: none;
 }
-
-li h4 {
+.detail__img{
+  width: 100%;
+  background-position: center/cover;
   margin-bottom: 1rem;
 }
-li h5 {
-  margin-bottom: 0.5rem;
+
+.detail__title {
+  font-size: 2rem;
+  margin: 1rem;
 }
 
-li p {
+.detail__desc {
   margin-bottom: 1rem;
 }
 
