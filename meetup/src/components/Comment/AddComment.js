@@ -1,6 +1,5 @@
 import { Fragment, useRef } from "react";
 import classes from "./AddComment.module.css";
-import Card from "../UI/Card";
 
 const AddComment = (props) => {
   const commentRef = useRef();
@@ -15,16 +14,12 @@ const AddComment = (props) => {
   };
   return (
     <Fragment>
-      <h5>Your Comment</h5>
-      <Card>
-        <form onSubmit={addCommentHandler}>
-          <div onSubmit={addCommentHandler}>
-            <label>comment</label>
-            <textarea ref={commentRef} type="text"></textarea>
+        <form onSubmit={addCommentHandler} className={classes['from-comment']}>
+          <div onSubmit={addCommentHandler} className={classes['from-comment__wrapper']}>
+            <textarea ref={commentRef} type="text" rows="4" cols="50" className={classes['from-comment__desc']}></textarea>
           </div>
-          <button type="submit">Add Comment</button>
+          <button type="submit" className={classes.btn}>POST</button>
         </form>
-      </Card>
     </Fragment>
   );
 };

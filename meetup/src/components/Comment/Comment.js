@@ -1,7 +1,9 @@
 import { Fragment, useState, useCallback, useEffect } from "react";
+import classes from './Comment.module.css'
 import AddComment from "./AddComment";
 import CommentItems from "./CommentItems";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 const Comment = () => {
   const params = useParams();
   const [isAddingComment, setIsAddingComment] = useState(false);
@@ -14,7 +16,7 @@ const Comment = () => {
 
   async function AddCommentHandler(comment) {
     const response = await fetch(
-      `https://recat-meetup-project-default-rtdb.firebaseio.com/comments/${params.groupDetailId}.json`,
+      `https://recat-meetup-project-default-rtdb.firebaseio.com/comments/${params.eventDetailId}.json`,
       {
         method: "POST",
         body: JSON.stringify(comment),
@@ -28,7 +30,7 @@ const Comment = () => {
 
   const fetchCommentHandler = useCallback(async () => {
     const response = await fetch(
-      `https://recat-meetup-project-default-rtdb.firebaseio.com/comments/${params.groupDetailId}.json`
+      `https://recat-meetup-project-default-rtdb.firebaseio.com/comments/${params.eventDetailId}.json`
     );
     console.log(response);
     const data = await response.json();
@@ -49,12 +51,19 @@ const Comment = () => {
 
   return (
     <Fragment>
-      <h2>User Comments</h2>
-      {!isAddingComment && (
-        <button onClick={commentFormHandler}>Add a Comment</button>
-      )}
+      <Link
+      onClick={commentFormHandler}
+        className={classes['comment__link']}
+        to={`/Explore/${params.eventDetailId}/Comment`}
+      >
+        Add a comment
+      </Link>
+      {/* {!isAddingComment && (
+        // <button onClick={commentFormHandler}>Add a Comment</button>
+      )} */}
       {isAddingComment && <AddComment onAddComment={AddCommentHandler} />}
-      <ul>
+      <CommentItems comments={comments}/>
+      {/* <ul>
         {comments.map((comment) => {
           return (
             <CommentItems
@@ -64,7 +73,7 @@ const Comment = () => {
             />
           );
         })}
-      </ul>
+      </ul> */}
     </Fragment>
   );
 };
