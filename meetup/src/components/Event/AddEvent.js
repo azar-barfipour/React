@@ -4,6 +4,7 @@ import Button from "../UI/Button";
 import Input from "../UI/Input";
 import GoogleMap from "./GoogleMap";
 import { Fragment } from "react/cjs/react.production.min";
+import Modal from "../UI/Modal";
 
 const AddEvent = (props) => {
   const [title, setTitle] = useState("");
@@ -21,6 +22,7 @@ const AddEvent = (props) => {
   const dateValid = !dateEmpty && isDateTouched;
   const locationEmpty = location.trim().length !== 0;
   const locationValid = !locationEmpty && isLocationTouched;
+  const [isModal,setIsModal] = useState(false); 
 
   let formIsValid = false;
   if (titleEmpty && dateEmpty && locationEmpty) {
@@ -45,7 +47,6 @@ const AddEvent = (props) => {
   }
   const addGroupsHandler = (event) => {
     event.preventDefault();
-    console.log(selectedFile);
     setIsTitleTouched(true);
     setIsDateTouched(true);
     setIsLocationTouched(true);
@@ -63,7 +64,7 @@ const AddEvent = (props) => {
       // image: selectedFile,
     };
     props.onAddGroupItems(groupItems);
-
+    setIsModal(true);
     setTitle("");
     setDescription("");
     setDate("");
@@ -71,6 +72,7 @@ const AddEvent = (props) => {
     setIsTitleTouched(false);
     setIsDateTouched(false);
     setIsLocationTouched(false);
+
   };
   const titleBlurHandler = () => {
     setIsTitleTouched(true);
@@ -81,8 +83,16 @@ const AddEvent = (props) => {
   const locationBlurHandler = () => {
     setIsLocationTouched(true);
   };
+  const modalHandler = () => {
+    setIsModal(false);
+  }
   return (
       <Fragment>
+    {isModal && 
+    <Modal title='New Event' message='New event added successfully
+    ' onConfirm = {modalHandler}/>
+    }
+
     <div className={classes['form-wrapper__title']}>
       <h2 className={classes['form__title']}>Start your new event</h2>
       </div>
@@ -147,6 +157,7 @@ const AddEvent = (props) => {
         />
       </form>
     </div>
+    
     </Fragment>
   );
 };

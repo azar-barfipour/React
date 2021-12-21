@@ -3,6 +3,7 @@ import Input from "../UI/Input";
 import classes from "./AuthForm.module.css";
 import { useRef, useState, useContext } from "react";
 import AuthContext from "../../store/auth-context";
+import Modal from "../UI/Modal";
 const AuthForm = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -11,6 +12,7 @@ const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
+  const [modal,setModal] = useState(false);
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
   };
@@ -47,6 +49,7 @@ const AuthForm = () => {
       const data = await response.json();
       console.log(data);
       authCtx.login(data.idToken);
+      setModal(true);
     }
   }
   const submitHandler = () => {
@@ -58,8 +61,12 @@ const AuthForm = () => {
       isLogin && <p>logged in</p>;
     }
   };
-
+const modalHandler = () =>{
+  setModal(false)
+}
   return (
+    <div>
+    {modal && <Modal title='Log in' message='logged in succesefully' onConfirm={modalHandler}/>}
     <div className={classes['auth-form']}>
       {isLogin && <h2 className={classes['auth-form__header']}>Log in</h2>}
       {!isLogin && <h2 className={classes['auth-form__header']}>Sign up</h2>}
@@ -108,6 +115,7 @@ const AuthForm = () => {
           <Button type="submit" name="Log out" onClick={logoutHandler}/>
         )}
       </form>
+    </div>
     </div>
   );
 };
