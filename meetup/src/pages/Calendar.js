@@ -21,6 +21,7 @@ const Calendar = () => {
           title: data[key].title,
           description: data[key].description,
           date: data[key].date,
+          location: data[key].location
         });
       }
       setItems(loadedData);

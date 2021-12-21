@@ -36,6 +36,7 @@ const CalendarItems = (props) => {
                 title={item.title}
                 description={item.description}
                 date={item.date}
+                location={item.location}
               />
             );
           })}

@@ -14,6 +14,7 @@ const CalanderItem = (props) => {
               <CalendarDate date={props.date} />
               <h4>{props.title}</h4>
               <p>{props.description}</p>
+              <p>{props.location}</p>
             </div>
             <div>
               <img className={classes["calendarItem__img"]} src="https://source.unsplash.com/200x100/?party"></img>

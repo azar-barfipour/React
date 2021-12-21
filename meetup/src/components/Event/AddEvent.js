@@ -13,13 +13,17 @@ const AddEvent = (props) => {
   const [isSelectedFile, setIsSelectedFile] = useState(false);
   const [date, setDate] = useState("");
   const [isDateTouched, setIsDateTouched] = useState(false);
+  const [location, setLocation] = useState("");
+  const [isLocationTouched, setIsLocationTouched] = useState(false);
   const titleEmpty = title.trim().length !== 0;
   const titleValid = !titleEmpty && isTitleTouched;
   const dateEmpty = date.trim().length !== 0;
   const dateValid = !dateEmpty && isDateTouched;
+  const locationEmpty = location.trim().length !== 0;
+  const locationValid = !locationEmpty && isLocationTouched;
 
   let formIsValid = false;
-  if (titleEmpty && dateEmpty) {
+  if (titleEmpty && dateEmpty && locationEmpty) {
     formIsValid = true;
   }
 
@@ -36,11 +40,15 @@ const AddEvent = (props) => {
   const dateHandler = (event) => {
     setDate(event.target.value);
   };
+  const locationHandler = (event) =>{
+    setLocation(event.target.value)
+  }
   const addGroupsHandler = (event) => {
     event.preventDefault();
     console.log(selectedFile);
     setIsTitleTouched(true);
     setIsDateTouched(true);
+    setIsLocationTouched(true);
     if (!titleEmpty) {
       return;
     }
@@ -51,6 +59,7 @@ const AddEvent = (props) => {
       title: title,
       description: description,
       date: new Date(date),
+      location : location
       // image: selectedFile,
     };
     props.onAddGroupItems(groupItems);
@@ -58,14 +67,19 @@ const AddEvent = (props) => {
     setTitle("");
     setDescription("");
     setDate("");
+    setLocation("");
     setIsTitleTouched(false);
     setIsDateTouched(false);
+    setIsLocationTouched(false);
   };
   const titleBlurHandler = () => {
     setIsTitleTouched(true);
   };
   const dateBlurHandler = () => {
     setIsDateTouched(true);
+  };
+  const locationBlurHandler = () => {
+    setIsLocationTouched(true);
   };
   return (
       <Fragment>
@@ -118,11 +132,13 @@ const AddEvent = (props) => {
         {/* <GoogleMap></GoogleMap> */}
         <Input
           type="text"
-          // onChange={locationHandler}
+          onChange={locationHandler}
           id="location"
+          onBlur={locationBlurHandler}
           label="Location"
-          // value={location}
+          value={location}
         />
+        {locationValid && <p className={classes.error}>Don't forget to set location</p>}
         <Button
           type="submit"
           name="ADD"
