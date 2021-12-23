@@ -8,14 +8,27 @@
     background-color: rgba(0, 0, 0, .75);
 }
 .modal-wrapper{
-    position: fixed;
-    top: 30vh;
-    left: 10%;
+    margin: 10rem auto;
     width: 80%;
+    max-width: 35rem;
     z-index: 100;
     overflow: hidden;
     background-color: white;
     display: flex;
     flex-direction: column;
     align-content: space-between;
+    padding: 1rem;
+    border-radius: .3rem;
 }
+.modal--close{
+    align-self: flex-end;
+    cursor: pointer;
+}
+.modal__title{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.modal__desc{
+    text-align: center;
+}
+

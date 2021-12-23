@@ -66,7 +66,8 @@ const modalHandler = () =>{
 }
   return (
     <div>
-    {modal && <Modal title='Log in' message='logged in succesefully' onConfirm={modalHandler}/>}
+    {modal && isLogin && <Modal title='Log in' message='logged in succesefully' onConfirm={modalHandler}/>}
+    {modal && !isLogin && <Modal title='Sign up' message='signed in succesefully' onConfirm={modalHandler}/>}
     <div className={classes['auth-form']}>
       {isLogin && <h2 className={classes['auth-form__header']}>Log in</h2>}
       {!isLogin && <h2 className={classes['auth-form__header']}>Sign up</h2>}
