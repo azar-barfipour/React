@@ -1,3 +1,7 @@
+.link-wrapper{
+  max-width: 40rem;
+  margin: 1.5rem auto;
+}
 .event-new{
   text-decoration: none;
 }
@@ -14,7 +18,7 @@
   padding: 1rem 0;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 40rem) {
   .event-new__wrapper {
     max-width: 40rem;
   }

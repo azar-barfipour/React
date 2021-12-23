@@ -7,6 +7,7 @@ const EventLink = () => {
   const authctx = useContext(AuthContext);
   const isLoggedIn = authctx.isLoggedIn;
   return (
+    <div className={classes['link-wrapper']}>
     <Link to="./Home/AddEvent" className={classes['event-new']}>
       {isLoggedIn ? (
         <div className={classes["event-new__wrapper"]}>
@@ -16,6 +17,7 @@ const EventLink = () => {
         <div></div>
       )}
     </Link>
+    </div>
   );
 };
 export default EventLink;
