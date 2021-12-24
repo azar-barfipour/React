@@ -1,7 +1,8 @@
-import { Fragment, useRef } from "react";
+import { Fragment, useRef,useState } from "react";
 import classes from "./AddComment.module.css";
 
 const AddComment = (props) => {
+const [isEmpty,setIsEmpy] = useState(false);
   const commentRef = useRef();
   const addCommentHandler = (event) => {
     event.preventDefault();
@@ -10,6 +11,10 @@ const AddComment = (props) => {
     const commentsItem = {
       text: enteredComment,
     };
+    if(enteredComment.trim().length === 0) {
+      setIsEmpy(true)
+      return;
+    }
     props.onAddComment(commentsItem);
   };
   return (

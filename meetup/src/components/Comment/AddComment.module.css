@@ -10,7 +10,7 @@
 }
 
 .from-comment__desc :hover , .from-comment__desc :focus{
-  border: none;
+  outline: none;
   border-bottom: 1px solid rgb(202, 197, 197);
 }
 .btn {
