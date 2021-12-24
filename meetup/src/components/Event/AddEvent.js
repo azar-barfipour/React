@@ -91,7 +91,7 @@ const AddEvent = (props) => {
     {isModal && 
     <Modal title='New Event' message='New event added successfully
     ' onConfirm = {modalHandler}/>
-    }
+     } 
 
     <div className={classes['form-wrapper__title']}>
       <h2 className={classes['form__title']}>Start your new event</h2>

@@ -8,21 +8,21 @@
     background-color: rgba(0, 0, 0, .75);
 }
 .modal-wrapper{
-    margin: 10rem auto;
-    width: 80%;
-    max-width: 35rem;
-    z-index: 100;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
     overflow: hidden;
-    background-color: white;
     display: flex;
     flex-direction: column;
     align-content: space-between;
-    padding: 1rem;
-    border-radius: .3rem;
+    border-radius: .3rem; 
+    background-color: white;
 }
+
 .modal--close{
     align-self: flex-end;
     cursor: pointer;
+    margin: .3rem .5rem;
 }
 .modal__title{
     text-align: center;
@@ -30,5 +30,6 @@
 }
 .modal__desc{
     text-align: center;
+    margin-bottom: 1rem;
 }
 
