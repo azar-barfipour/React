@@ -10,11 +10,29 @@
   align-items: center;
   justify-content: space-between;
 }
-.calendarItem__title{
+.calendar-wrapper{
+  display: flex;
+  align-items: center;
+}
+.calendarItem-text{
   width: 70%;
+}
+.calendarItem__title{
+  margin-bottom: .5rem;
+}
+.calendarItem__desc{
+  margin-bottom: .5rem;
+}
+.location-wrapper{
+  display: flex;
+  align-items: center;
+}
+.calendarItem__location{
+  margin-left: .3rem;
 }
 .calendarItem__img {
   width: 100%;
+  min-width: 98px;
   border-radius: 0.5rem;
   margin: 1rem 0;
 }

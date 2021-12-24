@@ -2,7 +2,6 @@ import classes from "./EventItemDetails.module.css";
 import { useState, useCallback, useEffect } from "react";
 import { useParams, Route } from "react-router-dom";
 import Comment from "../components/Comment/Comment";
-import { Link } from "react-router-dom";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
