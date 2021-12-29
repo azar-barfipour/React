@@ -6,11 +6,11 @@ import AuthContext from "../store/auth-context";
 const Calendar = () => {
   const [items, setItems] = useState([]);
   const authctx = useContext(AuthContext);
-  const isLoggedIn = authctx.isLoggedIn;
+  const token = authctx.token;
   useEffect(() => {
     const fetchHandler = async () => {
       const response = await fetch(
-        "https://recat-meetup-project-default-rtdb.firebaseio.com/groups.json"
+        "https://recat-meetup-project-default-rtdb.firebaseio.com/events.json"
       );
       const data = await response.json();
       console.log(data);
@@ -21,10 +21,14 @@ const Calendar = () => {
           title: data[key].title,
           description: data[key].description,
           date: data[key].date,
-          location: data[key].location
+          location: data[key].location,
+          token : data[key].token
         });
       }
-      setItems(loadedData);
+
+const result = loadedData.filter(loaded => token===loaded.token);
+console.log(result);
+      setItems(result);
     };
     fetchHandler();
   }, []);

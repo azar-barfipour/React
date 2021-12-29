@@ -1,12 +1,16 @@
 import classes from "./EventItemDetails.module.css";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect,useContext } from "react";
 import { useParams, Route } from "react-router-dom";
 import Comment from "../components/Comment/Comment";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import AuthContext from '../store/auth-context'
 
 const EventItemsDetails = () => {
+  const authCtx = useContext(AuthContext);
+  const token = authCtx.token;
+  console.log(token);
   const params = useParams();
   const [groups, setGroups] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -33,6 +37,26 @@ const EventItemsDetails = () => {
     };
     fetchGroups();
   }, []);
+  async function addEventForUserHandler (event) {
+    event.preventDefault();
+    const response = await fetch('https://recat-meetup-project-default-rtdb.firebaseio.com/events.json',
+    {
+      method: "POST",
+      body: JSON.stringify({
+        token : token,
+        title: groups.title,
+        location : groups.location,
+        description : groups.description,
+        date: groups.date
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },})
+      const data = await response.json();
+      console.log(data);
+  }
+
+ 
 
   return (
     <div className={classes.datail}>
@@ -58,6 +82,10 @@ const EventItemsDetails = () => {
       <Route path="/Explore/:eventDetailId">
         <Comment />
       </Route>
+      </section>
+      <section className={classes['event-attend']}>
+       <button className={classes['free-button']} type='submit'>Free</button>
+       <button className={classes['attend-button']} type='submit' onClick={addEventForUserHandler}>Attend</button>
       </section>
     </div>
   );
