@@ -5,6 +5,7 @@ import CommentItems from "./CommentItems";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 const Comment = () => {
+  const [isOpen,setIsOpen] = useState(false);
   const params = useParams();
   const [isAddingComment, setIsAddingComment] = useState(false);
   const [comments, setComments] = useState([]);
@@ -12,7 +13,14 @@ const Comment = () => {
   const commentFormHandler = (event) => {
     event.preventDefault();
     setIsAddingComment(true);
+    setIsOpen(true);
   };
+  const commentFormCloseHandler = (event) => {
+    event.preventDefault();
+    setIsAddingComment(false);
+    setIsOpen(false);
+  }
+
 
   async function AddCommentHandler(comment) {
     const response = await fetch(
@@ -52,28 +60,14 @@ const Comment = () => {
   return (
     <Fragment>
       <Link
-      onClick={commentFormHandler}
+     onClick={!isOpen ? commentFormHandler : commentFormCloseHandler}
         className={classes['comment__link']}
         to={`/Explore/${params.eventDetailId}/Comment`}
       >
         Add a comment
       </Link>
-      {/* {!isAddingComment && (
-        // <button onClick={commentFormHandler}>Add a Comment</button>
-      )} */}
       {isAddingComment && <AddComment onAddComment={AddCommentHandler} />}
       <CommentItems comments={comments}/>
-      {/* <ul>
-        {comments.map((comment) => {
-          return (
-            <CommentItems
-              key={comment.id}
-              id={comment.id}
-              text={comment.text}
-            />
-          );
-        })}
-      </ul> */}
     </Fragment>
   );
 };

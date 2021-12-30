@@ -7,6 +7,8 @@
   resize: none;
   border-bottom: 1px solid rgb(231, 228, 228);
   margin: 1rem 0;
+  font:inherit;
+  outline: none;
 }
 
 .from-comment__desc :hover , .from-comment__desc :focus{
@@ -20,7 +22,4 @@
   margin-bottom: 1rem;
   font-size: 1.2rem;
   cursor: pointer;
-}
-.isCommentValid{
-  border: 1px solid red;
 }
