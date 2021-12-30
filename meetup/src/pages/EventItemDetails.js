@@ -55,9 +55,6 @@ const EventItemsDetails = () => {
       const data = await response.json();
       console.log(data);
   }
-
- 
-
   return (
     <div className={classes.datail}>
         <li className={classes['detail__item']}>

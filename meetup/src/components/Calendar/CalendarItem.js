@@ -8,6 +8,10 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 const CalanderItem = (props) => {
   const authctx = useContext(AuthContext);
   const isLoggedIn = authctx.isLoggedIn;
+  const freeHandler = (event) =>{
+    event.preventDefault();
+    
+  }
   return (
     <main>
       {isLoggedIn && (
@@ -29,6 +33,7 @@ const CalanderItem = (props) => {
               <img className={classes["calendarItem__img"]} src="https://source.unsplash.com/200x100/?party"></img>
             </div>
           </li>
+            <button onClick={freeHandler}>Free</button>
         </div>
       )}
     </main>
