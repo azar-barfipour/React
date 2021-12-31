@@ -6,6 +6,7 @@ import CalendarItem from "./CalendarItem";
 const CalendarItems = (props) => {
   const authctx = useContext(AuthContext);
   const isLoggedIn = authctx.isLoggedIn;
+  const emptyItems = props.items.length === 0;
   return (
     <Fragment>
       <div className={classes.calendar}>
@@ -28,7 +29,7 @@ const CalendarItems = (props) => {
             </div>
           )}
         </div>
-        <ul className={classes['calendar__list']}>
+       {!emptyItems ? <ul className={classes['calendar__list']}>
           {props.items.map((item) => {
             return (
               <CalendarItem
@@ -40,7 +41,7 @@ const CalendarItems = (props) => {
               />
             );
           })}
-        </ul>
+        </ul> : <p className={classes['calendar__empty']}>Your calendar is empty</p>}
       </div>
     </Fragment>
   );

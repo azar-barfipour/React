@@ -25,8 +25,8 @@ const Calendar = () => {
           token : data[key].token
         });
       }
-
-const result = loadedData.filter(loaded => token===loaded.token);
+console.log(token);
+const result = loadedData.filter(loaded => token === loaded.token);
 console.log(result);
       setItems(result);
     };

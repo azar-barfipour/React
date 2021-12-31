@@ -49,6 +49,7 @@
   padding: .5rem;
   margin-bottom: 0.5rem;
   box-sizing: border-box;
+  outline: none;
 }
 .form-input__description :focus, .form-input__description:hover {
   outline: none;

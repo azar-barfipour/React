@@ -2,6 +2,10 @@
   margin: 2rem auto;
   width: 90%;
 }
+.calendar__empty{
+  border-bottom: 5px solid rgb(231, 228, 228);
+  padding-bottom: 1rem;
+}
 .calendar__list{
   margin-bottom: 1rem;
   display: flex;

@@ -89,7 +89,7 @@ const AddEvent = (props) => {
   return (
       <Fragment>
     {isModal && 
-    <Modal title='New Event' message='New event added successfully
+    <Modal title='' message='Started your event
     ' onConfirm = {modalHandler}/>
      } 
 
@@ -141,6 +141,7 @@ const AddEvent = (props) => {
         {dateValid && <p className={classes.error}>Don't forget to set date</p>}
         {/* <GoogleMap></GoogleMap> */}
         <Input
+          placeholder = "Street, City"
           type="text"
           onChange={locationHandler}
           id="location"

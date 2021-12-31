@@ -49,8 +49,8 @@ const AuthForm = () => {
       const data = await response.json();
       console.log(data);
       authCtx.login(data.idToken);
-      setModal(true);
     }
+    setModal(true);
   }
   const submitHandler = () => {
     setIsLogin(false);

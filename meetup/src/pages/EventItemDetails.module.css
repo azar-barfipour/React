@@ -47,15 +47,17 @@ li {
   margin-bottom: 1rem;
 }
 .event-attend{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: fixed;
   bottom: 59px;
   z-index: 100;
   width: 100%;
   background-color: rgb(255,255,255);
   box-shadow:  0 1px 3px rgb(97 96 96 / 40%);
+}
+.attend-button__wrapper{
+  margin: 1rem auto;
+  width: 90%;
+  max-width: 40rem;
 }
 .attend-button{
   padding: .5rem;
@@ -64,13 +66,10 @@ li {
   color: rgb(255, 255,255);
   font-size: 1rem;
   cursor: pointer;
-  margin: 1rem;
+  width: 30%;
 }
-.free-button{
-  margin: 1rem;
-  background-color: rgb(255, 255,255);
-  cursor: pointer;
-  font-size: 1rem;
+.attend-button--active , .attend-button--active:disabled {
+  background-color: grey;
 }
 
 @media (min-width : 37.5rem) {

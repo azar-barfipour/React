@@ -10,9 +10,9 @@ import AuthContext from '../store/auth-context'
 const EventItemsDetails = () => {
   const authCtx = useContext(AuthContext);
   const token = authCtx.token;
-  console.log(token);
   const params = useParams();
   const [groups, setGroups] = useState([]);
+  const [isActive,setIsactive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   useEffect(() => {
@@ -39,6 +39,7 @@ const EventItemsDetails = () => {
   }, []);
   async function addEventForUserHandler (event) {
     event.preventDefault();
+    setIsactive(true);
     const response = await fetch('https://recat-meetup-project-default-rtdb.firebaseio.com/events.json',
     {
       method: "POST",
@@ -53,7 +54,6 @@ const EventItemsDetails = () => {
         "Content-Type": "application/json",
       },})
       const data = await response.json();
-      console.log(data);
   }
   return (
     <div className={classes.datail}>
@@ -81,8 +81,9 @@ const EventItemsDetails = () => {
       </Route>
       </section>
       <section className={classes['event-attend']}>
-       <button className={classes['free-button']} type='submit'>Free</button>
-       <button className={classes['attend-button']} type='submit' onClick={addEventForUserHandler}>Attend</button>
+       <div className={classes['attend-button__wrapper']}>
+       <button className={`${classes['attend-button']} ${isActive ? classes['attend-button--active'] : ''}`}  type='submit' onClick={addEventForUserHandler}>Attend</button>
+       </div>
       </section>
     </div>
   );
