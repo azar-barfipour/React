@@ -1,3 +1,4 @@
+import { Route, Redirect, Switch } from "react-router-dom";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import classes from "./AuthForm.module.css";
@@ -66,7 +67,7 @@ const modalHandler = () =>{
 }
   return (
     <div>
-    {modal && isLogin && <Modal title='Log in' message='logged in succesefully' onConfirm={modalHandler}/>}
+    {modal && isLogin && <Redirect to="/Home" />}
     {modal && !isLogin && <Modal title='Sign up' message='signed in succesefully' onConfirm={modalHandler}/>}
     <div className={classes['auth-form']}>
       {isLogin && <h2 className={classes['auth-form__header']}>Log in</h2>}
