@@ -15,6 +15,8 @@ const EventItemsDetails = () => {
   const [isActive,setIsactive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const initial = localStorage.getItem('isActive');
+  const [refresh, setRefresh] = useState(initial);
   useEffect(() => {
     const fetchGroups = async () => {
       setIsLoading(true);
@@ -38,8 +40,10 @@ const EventItemsDetails = () => {
     fetchGroups();
   }, []);
   async function addEventForUserHandler (event) {
-    event.preventDefault();
     setIsactive(true);
+    setRefresh(true);
+    localStorage.setItem('refresh',refresh);
+    event.preventDefault();
     const response = await fetch('https://recat-meetup-project-default-rtdb.firebaseio.com/events.json',
     {
       method: "POST",
@@ -54,7 +58,9 @@ const EventItemsDetails = () => {
         "Content-Type": "application/json",
       },})
       const data = await response.json();
-  }
+    }
+    console.log(isActive);
+    console.log(refresh);
   return (
     <div className={classes.datail}>
         <li className={classes['detail__item']}>
@@ -82,7 +88,7 @@ const EventItemsDetails = () => {
       </section>
       <section className={classes['event-attend']}>
        <div className={classes['attend-button__wrapper']}>
-       <button className={`${classes['attend-button']} ${isActive ? classes['attend-button--active'] : ''}`}  type='submit' onClick={addEventForUserHandler}>Attend</button>
+       <button disabled={refresh} className={`${classes['attend-button']} ${refresh ? classes['attend-button--active'] : ''}`}  type='submit' onClick={addEventForUserHandler}>Attend</button>
        </div>
       </section>
     </div>

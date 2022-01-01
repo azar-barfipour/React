@@ -70,6 +70,7 @@ li {
 }
 .attend-button--active , .attend-button--active:disabled {
   background-color: grey;
+  
 }
 
 @media (min-width : 37.5rem) {

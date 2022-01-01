@@ -41,7 +41,7 @@ const CalendarItems = (props) => {
               />
             );
           })}
-        </ul> : <p className={classes['calendar__empty']}>Your calendar is empty</p>}
+        </ul> : isLoggedIn &&  <p className={classes['calendar__empty']}>Your calendar is empty</p>}
       </div>
     </Fragment>
   );

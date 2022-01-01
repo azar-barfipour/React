@@ -1,4 +1,4 @@
-import { Route, Redirect, Switch } from "react-router-dom";
+import {  Redirect } from "react-router-dom";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import classes from "./AuthForm.module.css";
