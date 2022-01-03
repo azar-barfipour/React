@@ -12,55 +12,60 @@ const EventItemsDetails = () => {
   const token = authCtx.token;
   const params = useParams();
   const [groups, setGroups] = useState([]);
-  const [isActive,setIsactive] = useState(false);
+  const [isActive,setIsActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const initial = localStorage.getItem('isActive');
-  const [refresh, setRefresh] = useState(initial);
+  const [refresh, setRefresh] = useState(false);
   useEffect(() => {
     const fetchGroups = async () => {
       setIsLoading(true);
+      setIsActive(false);
+      setRefresh(false);
       setError(null);
-
+      
       try {
         const response = await fetch(
           `https://recat-meetup-project-default-rtdb.firebaseio.com/groups/${params.eventDetailId}.json`
-        );
-
-        if (!response.ok) {
-          throw new Error("Something went wrong!!!");
+          );
+          
+          if (!response.ok) {
+            throw new Error("Something went wrong!!!");
+          }
+          const data = await response.json();
+          setGroups(data);
+          setIsLoading(false);
+        } catch (err) {
+          setError(err.message);
         }
+      };
+      fetchGroups();
+    }, []);
+    async function addEventForUserHandler (event) {
+      setIsActive(true);
+      localStorage.setItem('refresh',refresh);
+      event.preventDefault();
+      const response = await fetch('https://recat-meetup-project-default-rtdb.firebaseio.com/events.json',
+      {
+        method: "POST",
+        body: JSON.stringify({
+          token : token,
+          title: groups.title,
+          location : groups.location,
+          description : groups.description,
+          date: groups.date
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },})
         const data = await response.json();
-        setGroups(data);
-        setIsLoading(false);
-      } catch (err) {
-        setError(err.message);
       }
-    };
-    fetchGroups();
-  }, []);
-  async function addEventForUserHandler (event) {
-    setIsactive(true);
-    setRefresh(true);
-    localStorage.setItem('refresh',refresh);
-    event.preventDefault();
-    const response = await fetch('https://recat-meetup-project-default-rtdb.firebaseio.com/events.json',
-    {
-      method: "POST",
-      body: JSON.stringify({
-        token : token,
-        title: groups.title,
-        location : groups.location,
-        description : groups.description,
-        date: groups.date
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },})
-      const data = await response.json();
-    }
-    console.log(isActive);
+ 
+    useEffect(() => {
+      setRefresh(JSON.parse(window.localStorage.getItem('isActive')));
+    }, []);
+    // setRefresh(JSON.parse(window.localStorage.getItem('isActive')));
     console.log(refresh);
+    // console.log(isActive);
   return (
     <div className={classes.datail}>
         <li className={classes['detail__item']}>
