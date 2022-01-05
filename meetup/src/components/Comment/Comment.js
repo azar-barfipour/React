@@ -20,6 +20,24 @@ const Comment = () => {
     setIsAddingComment(false);
     setIsOpen(false);
   }
+  const fetchCommentHandler = useCallback(async () => {
+    const response = await fetch(
+      `https://recat-meetup-project-default-rtdb.firebaseio.com/comments/${params.eventDetailId}.json`
+    );
+    const data = await response.json();
+    const loadedComments = [];
+    for (const key in data) {
+      loadedComments.push({
+        id: key,
+        text: data[key].text,
+      });
+    }
+    setComments(loadedComments);
+  }, []);
+
+  useEffect(() => {
+    fetchCommentHandler();
+  }, [fetchCommentHandler]);
 
 
   async function AddCommentHandler(comment) {
@@ -36,27 +54,6 @@ const Comment = () => {
     const data = response.json();
   }
 
-  const fetchCommentHandler = useCallback(async () => {
-    const response = await fetch(
-      `https://recat-meetup-project-default-rtdb.firebaseio.com/comments/${params.eventDetailId}.json`
-    );
-    console.log(response);
-    const data = await response.json();
-    const loadedComments = [];
-    for (const key in data) {
-      loadedComments.push({
-        id: key,
-        text: data[key].text,
-      });
-    }
-    console.log(loadedComments);
-    setComments(loadedComments);
-  }, []);
-
-  useEffect(() => {
-    fetchCommentHandler();
-  }, [fetchCommentHandler]);
-
   return (
     <Fragment>
       <Link
@@ -66,7 +63,7 @@ const Comment = () => {
       >
         Add a comment
       </Link>
-      {isAddingComment && <AddComment onAddComment={AddCommentHandler} />}
+      {isAddingComment && <AddComment onAddComment={AddCommentHandler}/>}
       <CommentItems comments={comments}/>
     </Fragment>
   );
