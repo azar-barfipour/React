@@ -12,7 +12,16 @@ const DUMMI = [{
     address: '550 Holdom, some City',
     description: "my second desc"
 }]
-const Meetup = () =>{
-    return <MeetupList meetups={DUMMI}/>
+const HomePage = (props) =>{
+    return <MeetupList meetups={props.meetups}/>
 }
-export default Meetup
+export async function getStaticProps(){
+// fetch data
+return{
+    props: {
+        meetups : DUMMI
+    },
+    revalidate: 10
+}
+}
+export default HomePage
