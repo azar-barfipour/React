@@ -15,12 +15,12 @@ const EventItemsDetails = () => {
   const [isActive,setIsActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [refresh, setRefresh] = useState(false);
+  // const [refresh, setRefresh] = useState(false);
   useEffect(() => {
     const fetchGroups = async () => {
       setIsLoading(true);
       setIsActive(false);
-      setRefresh(false);
+      // setRefresh(false);
       setError(null);
       
       try {
@@ -42,7 +42,7 @@ const EventItemsDetails = () => {
     }, []);
     async function addEventForUserHandler (event) {
       setIsActive(true);
-      localStorage.setItem('refresh',refresh);
+      // localStorage.setItem('refresh',refresh);
       event.preventDefault();
       const response = await fetch('https://recat-meetup-project-default-rtdb.firebaseio.com/events.json',
       {
@@ -60,11 +60,11 @@ const EventItemsDetails = () => {
         const data = await response.json();
       }
  
-    useEffect(() => {
-      setRefresh(JSON.parse(window.localStorage.getItem('isActive')));
-    }, []);
+    // useEffect(() => {
+    //   setRefresh(JSON.parse(window.localStorage.getItem('isActive')));
+    // }, []);
     // setRefresh(JSON.parse(window.localStorage.getItem('isActive')));
-    console.log(refresh);
+    // console.log(refresh);
     // console.log(isActive);
   return (
     <div className={classes.datail}>
@@ -93,7 +93,7 @@ const EventItemsDetails = () => {
       </section>
       <section className={classes['event-attend']}>
        <div className={classes['attend-button__wrapper']}>
-       <button disabled={refresh} className={`${classes['attend-button']} ${refresh ? classes['attend-button--active'] : ''}`}  type='submit' onClick={addEventForUserHandler}>Attend</button>
+       <button disabled={isActive} className={`${classes['attend-button']} ${isActive ? classes['attend-button--active'] : ''}`}  type='submit' onClick={addEventForUserHandler}>Attend</button>
        </div>
       </section>
     </div>
