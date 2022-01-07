@@ -73,7 +73,7 @@ li {
   
 }
 
-@media (min-width : 37.5rem) {
+@media (min-width : 40rem) {
   .event-attend{
     bottom: 0;
   }

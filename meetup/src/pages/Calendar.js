@@ -36,7 +36,7 @@ console.log(result);
   return (
     <Fragment>
       <Event />
-      <CalendarItems items={items} />
+      <CalendarItems items={items}/>
     </Fragment>
   );
 };
