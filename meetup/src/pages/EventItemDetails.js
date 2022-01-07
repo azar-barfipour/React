@@ -66,6 +66,18 @@ const EventItemsDetails = () => {
     // setRefresh(JSON.parse(window.localStorage.getItem('isActive')));
     // console.log(refresh);
     // console.log(isActive);
+  const options = {
+    hour: "numeric",
+    minute: "numeric",
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    weekday: 'short',
+  };
+  // const displayDate = new Intl.DateTimeFormat('en-US',options).format(new Date(groups.date));
+  // console.log(displayDate);
+  // console.log(new Intl.DateTimeFormat('en-US', options).format(date))
+  
   return (
     <div className={classes.datail}>
         <li className={classes['detail__item']}>
@@ -75,7 +87,7 @@ const EventItemsDetails = () => {
           <h5 className={classes['detail__title']}>{groups.title}</h5>
           <div className={classes['detail-wrapper__date']}>
           <FontAwesomeIcon icon={faCalendar}/>
-          <p className={classes['detail__date']}>{groups.date}</p>
+          <p className={classes['detail__date']}>{`${new Date(groups.date).getFullYear()}-${new Date(groups.date).getMonth()}-${new Date(groups.date).getDate()}  ${new Date(groups.date).getHours()}:${new Date(groups.date).getMinutes()}`}</p>
           </div>
           <div className={classes['detail-wrapper__location']}>
           <FontAwesomeIcon icon={faLocationArrow}/>
