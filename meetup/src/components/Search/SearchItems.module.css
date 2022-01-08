@@ -5,8 +5,29 @@
     margin-bottom: 5rem;
 }
 .search__list{
-    display: flex;
+    /* display: flex;
     justify-content: space-around;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
+    display: grid;
+    grid-template-columns: minmax(100%,auto);
 }
+
+@media (min-width: 30rem) {
+    .search__list{
+    grid-template-columns: repeat(2, 50%);
+    }
+}
+
+
+@media (min-width: 50rem) {
+    .search__list{
+        /* display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap; */
+        grid-template-columns: repeat(3, 33.33333%);
+    }
+}
+
+

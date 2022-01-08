@@ -25,8 +25,8 @@ const SearchForm = () => {
       setEvents(loadedData);
       const result = events.filter((e) =>
         e.title.toLowerCase().includes(enteredSearch)
-      );
-      setEventsResult(result);
+        )
+        setEventsResult(result);
     };
     fetchHandler();
   }, [enteredSearch]);
