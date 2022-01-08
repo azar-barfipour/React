@@ -1,0 +1,33 @@
+.span-wrapper{
+    max-width: 40rem;
+    margin: 1rem auto;
+    width: 90%
+}
+.span__list{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.span__item{
+    margin-bottom: 2rem;
+    width: 6rem;
+    border-radius: .9rem;
+    padding: .5rem;
+    border: 1px solid rgb(212, 218, 228);
+    cursor: pointer;
+    background-color: rgb(231,236,245);
+    display: flex;
+    justify-content: space-between;
+}
+.span__link{
+    color: #000;
+    text-decoration: none;
+    padding: 1rem auto;
+    text-align: center;
+}
+.sapn__link :hover {
+    color: rgb(117, 117, 117);
+}
+.span__item--color{
+    background-color: rgb(246,88,88); 
+}

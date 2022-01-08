@@ -4,6 +4,7 @@ import React from "react";
 import SearchItems from "./SearchItems";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SearchDate from './SearchDate'
 
 const SearchForm = () => {
   const [enteredSearch, setEnteredSearch] = useState("");
@@ -26,7 +27,7 @@ const SearchForm = () => {
       const result = events.filter((e) =>
         e.title.toLowerCase().includes(enteredSearch)
         )
-        setEventsResult(result);
+      setEventsResult(result);
     };
     fetchHandler();
   }, [enteredSearch]);
@@ -43,6 +44,7 @@ const SearchForm = () => {
         />
         <FontAwesomeIcon icon={faSearch} className={classes["form__icon"]}/>
       </form>
+      <SearchDate/>
       {!enteredSearch && <SearchItems events={events} />}
       {enteredSearch && <SearchItems events={eventsResult} />}
     </div>
