@@ -28,6 +28,15 @@
 .sapn__link :hover {
     color: rgb(117, 117, 117);
 }
-.span__item--color{
+.span__item--color1{
+    background-color: rgb(246,88,88); 
+}
+.span__item--color2{
+    background-color: rgb(246,88,88); 
+}
+.span__item--color3{
+    background-color: rgb(246,88,88); 
+}
+.span__item--color4{
     background-color: rgb(246,88,88); 
 }
