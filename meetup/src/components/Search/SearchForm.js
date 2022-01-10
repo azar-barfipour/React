@@ -4,7 +4,7 @@ import React from "react";
 import SearchItems from "./SearchItems";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import SearchDate from './SearchDate'
+import SearchDate from "./SearchDate";
 
 const SearchForm = () => {
   const [enteredSearch, setEnteredSearch] = useState("");
@@ -17,6 +17,7 @@ const SearchForm = () => {
     setEnteredSearch(event.target.value);
   };
   const getTextHandler = (text) => {
+    console.log(text);
     // setText(text)
     // for(const i of events){
     //  const date = i.date.slice(0,10);
@@ -29,22 +30,40 @@ const SearchForm = () => {
     // const result = events.filter((e) =>
     //   (e.date.includes(text))
     //     )
-    const tomorrow= new Date();
-    tomorrow.setDate(new Date().getDate() + 1)
-    console.log(tomorrow);
-    // console.log(tommorow.toISOString().slice(0,10));
+    const curr = new Date(); // get current date
+    const first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
+    const last = first + 6; // last day is the first day + 6
+    const firstday = new Date(curr.setDate(first)).toISOString();
+    const lastday = new Date(curr.setDate(last)).toISOString();
+
+    const tomorrow = new Date();
+    tomorrow.setDate(new Date().getDate() + 1);
     console.log(events);
-    if(text === 'Today') {
-    const result = events.filter(e => e.date.slice(0,10) === new Date().toISOString().slice(0,10))
-    console.log(result);
+
+    if (text === "Today") {
+      const result = events.filter(
+        (e) => e.date.slice(0, 10) === new Date().toISOString().slice(0, 10)
+      );
+      console.log(result);
       setEventsResult2(result);
-  }else if(text === 'Tomorrow'){
-    const result = events.filter(e => e.date.slice(0,10) === tomorrow.toISOString().slice(0,10))
-    console.log(result);
+    } else if (text === "Tomorrow") {
+      const result = events.filter(
+        (e) => e.date.slice(0, 10) === tomorrow.toISOString().slice(0, 10)
+      );
+      console.log(result);
       setEventsResult2(result);
-  }
-} 
-  // console.log(eventsResult2);
+    } else if (text === "This Week") {
+      const result = events.filter(
+        (e) =>
+          lastday.slice(0, 10) >= e.date.slice(0, 10) &&
+          e.date.slice(0, 10) >= firstday.slice(0, 10)
+      );
+      setEventsResult2(result);
+    }
+    else if(text === null) {
+      setEventsResult2(events);
+    }
+  };
   useEffect(() => {
     const fetchHandler = async () => {
       const response = await fetch(
@@ -53,12 +72,16 @@ const SearchForm = () => {
       const data = await response.json();
       let loadedData = [];
       for (const key in data) {
-        loadedData.push({ id: key, title: data[key].title ,date:data[key].date });
+        loadedData.push({
+          id: key,
+          title: data[key].title,
+          date: data[key].date,
+        });
       }
       setEvents(loadedData);
       const result = events.filter((e) =>
-      e.title.toLowerCase().includes(enteredSearch))
-        // console.log(result);
+        e.title.toLowerCase().includes(enteredSearch)
+      );
       setEventsResult(result);
     };
     fetchHandler();
@@ -73,11 +96,11 @@ const SearchForm = () => {
           onChange={inputChangeHandler}
           value={enteredSearch}
         />
-        <FontAwesomeIcon icon={faSearch} className={classes["form__icon"]}/>
+        <FontAwesomeIcon icon={faSearch} className={classes["form__icon"]} />
       </form>
-      <SearchDate onGetText={getTextHandler}/>
+      <SearchDate onGetText={getTextHandler} />
       {!enteredSearch && !events2 && <SearchItems events={events} />}
-      {enteredSearch  && <SearchItems events={eventsResult} />}
+      {enteredSearch && <SearchItems events={eventsResult} />}
       {events2 && <SearchItems events={eventsResult2} />}
     </div>
   );

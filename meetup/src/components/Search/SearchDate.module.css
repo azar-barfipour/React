@@ -5,7 +5,7 @@
 }
 .span__list{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 .span__item{
@@ -34,9 +34,6 @@
     background-color: rgb(246,88,88); 
 }
 .span__item--color3{
-    background-color: rgb(246,88,88); 
-}
-.span__item--color4{
     background-color: rgb(246,88,88); 
 }
 .span__close{

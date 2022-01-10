@@ -4,11 +4,9 @@ const SearchDate = (props) => {
 const [text1,setText1] = useState();
 const [text2,setText2] = useState();
 const [text3,setText3] = useState();
-const [text4,setText4] = useState();
 const [isClicked1, setIsClicked1] = useState(false);
 const [isClicked2, setIsClicked2] = useState(false);
 const [isClicked3, setIsClicked3] = useState(false);
-const [isClicked4, setIsClicked4] = useState(false);
 const spanLinkHandler1 = (event) => {
     setIsClicked1(true)
     event.preventDefault();
@@ -27,35 +25,23 @@ const spanLinkHandler3 = (event) => {
     props.onGetText(event.target.innerText);
     setText3(event.target.innerText);
 }
-const spanLinkHandler4 = (event) => {
-    setIsClicked4(true)
-    event.preventDefault();
-    props.onGetText(event.target.innerText);
-    setText4(event.target.innerText);
-}
 const closeHandler1 = (event) => {
     setIsClicked1(false);
     event.preventDefault();
-    // props.onGetText(event.target.innerText);
+    props.onGetText(null);
     setText1(null)
 }
 const closeHandler2 = (event) => {
     setIsClicked2(false);
     event.preventDefault();
-    // props.onGetText(event.target.innerText);
+    props.onGetText(null);
     setText2(null)
 }
 const closeHandler3 = (event) => {
     setIsClicked3(false);
     event.preventDefault();
-    // props.onGetText(event.target.innerText);
+    props.onGetText(null);
     setText3(null)
-}
-const closeHandler4 = (event) => {
-    setIsClicked4(false);
-    event.preventDefault();
-    // props.onGetText(event.target.innerText);
-    setText4(null)
 }
 // props.onGetText([text1,text2,text3,text4]);
     return <section className={classes['span-wrapper']}>
@@ -71,10 +57,6 @@ const closeHandler4 = (event) => {
         <li className={`${classes['span__item']} ${isClicked3 && classes['span__item--color3']}`}>
             <a className={classes['span__link']} onClick={spanLinkHandler3} type='button'>This Week</a>
             {isClicked3 && <span onClick={closeHandler3} className={classes['span__close']}>&#215;</span>}
-            </li>
-        <li className={`${classes['span__item']} ${isClicked4 && classes['span__item--color4']}`}>
-            <a className={classes['span__link']} onClick={spanLinkHandler4} type='button'>This Month</a>
-            {isClicked4 && <span onClick={closeHandler4} className={classes['span__close']}>&#215;</span>}
             </li>
         </ul>
     </section>
