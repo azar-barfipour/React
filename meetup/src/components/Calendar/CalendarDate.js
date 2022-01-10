@@ -2,7 +2,6 @@ import classes from "./CalendarDate.module.css";
 
 const CalendarDate = (props) => {
   const date = new Date(props.date);
-  console.log(date);
   const options = {
     hour: "numeric",
     minute: "numeric",

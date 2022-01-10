@@ -29,18 +29,17 @@ const SearchForm = () => {
     // const result = events.filter((e) =>
     //   (e.date.includes(text))
     //     )
-    const today= new Date().toISOString();
-    const tommorow= new Date().toISOString() + 1;
-    console.log(today);
-    console.log(tommorow);
+    const tomorrow= new Date();
+    tomorrow.setDate(new Date().getDate() + 1)
+    console.log(tomorrow);
     // console.log(tommorow.toISOString().slice(0,10));
     console.log(events);
     if(text === 'Today') {
     const result = events.filter(e => e.date.slice(0,10) === new Date().toISOString().slice(0,10))
     console.log(result);
       setEventsResult2(result);
-  }else if(text === 'Tommorow'){
-    const result = events.filter(e => e.date.slice(0,10) === tommorow.slice(0,10))
+  }else if(text === 'Tomorrow'){
+    const result = events.filter(e => e.date.slice(0,10) === tomorrow.toISOString().slice(0,10))
     console.log(result);
       setEventsResult2(result);
   }

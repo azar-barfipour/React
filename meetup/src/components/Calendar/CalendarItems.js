@@ -5,11 +5,14 @@ import CalendarItem from "./CalendarItem";
 
 const CalendarItems = (props) => {
   const [deleted,setDeleted] = useState([]);
+  const [isDeleted,setIsDeleted] = useState(false);
   const authctx = useContext(AuthContext);
   const isLoggedIn = authctx.isLoggedIn;
   const emptyItems = props.items.length === 0;
 const deleteEventHandler=(eventId)=>{
+  setIsDeleted(true)
   console.log(props.items)
+  console.log(eventId)
   setDeleted(props.items.filter(event=> event.id !== eventId))
 }
 console.log(deleted);
@@ -35,7 +38,7 @@ console.log(deleted);
             </div>
           )}
         </div>
-       {!emptyItems ? <ul className={classes['calendar__list']}>
+       {!isDeleted && !emptyItems ? <ul className={classes['calendar__list']}>
           {props.items.map((item) => {
             return (
              <CalendarItem
@@ -50,6 +53,21 @@ console.log(deleted);
             );
           })}
         </ul> : isLoggedIn &&  <p className={classes['calendar__empty']}>Your calendar is empty</p>}
+        {isDeleted &&  <ul className={classes['calendar__list']}>
+          {deleted.map((item) => {
+            return (
+             <CalendarItem
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                description={item.description}
+                date={item.date}
+                location={item.location}
+                onDelete={deleteEventHandler}
+              /> 
+            );
+          })}
+        </ul>}
       </div>
     </Fragment>
   );

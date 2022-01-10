@@ -1,7 +1,7 @@
 .span-wrapper{
     max-width: 40rem;
     margin: 1rem auto;
-    width: 90%
+    width: 80%
 }
 .span__list{
   display: flex;
@@ -10,8 +10,7 @@
 }
 .span__item{
     margin-bottom: 2rem;
-    width: 6rem;
-    border-radius: .9rem;
+    border-radius: 5rem;
     padding: .5rem;
     border: 1px solid rgb(212, 218, 228);
     cursor: pointer;
@@ -39,4 +38,7 @@
 }
 .span__item--color4{
     background-color: rgb(246,88,88); 
+}
+.span__close{
+    margin-left: .3rem;
 }

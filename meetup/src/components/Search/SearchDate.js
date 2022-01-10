@@ -61,20 +61,20 @@ const closeHandler4 = (event) => {
     return <section className={classes['span-wrapper']}>
         <ul className={classes['span__list']}>
         <li className={`${classes['span__item']} ${isClicked1 && classes['span__item--color1']}`}>
-            <button className={classes['span__link']} onClick={spanLinkHandler1} type='button'>Today</button>
-            <span onClick={closeHandler1}>&#10005;</span>
+            <a className={classes['span__link']} onClick={spanLinkHandler1} type='button'>Today</a>
+            {isClicked1 && <span onClick={closeHandler1} className={classes['span__close']}>&#215;</span>}
         </li>
         <li className={`${classes['span__item']} ${isClicked2 && classes['span__item--color2']}`}>
-            <button className={classes['span__link']}  onClick={spanLinkHandler2} type='button'>Tommorow</button>
-            <span onClick={closeHandler2}>&#10005;</span>
+            <a className={classes['span__link']}  onClick={spanLinkHandler2} type='button'>Tomorrow</a>
+            {isClicked2 && <span onClick={closeHandler2} className={classes['span__close']}>&#215;</span>}
             </li>
         <li className={`${classes['span__item']} ${isClicked3 && classes['span__item--color3']}`}>
-            <button className={classes['span__link']} onClick={spanLinkHandler3} type='button'>This Week</button>
-            <span onClick={closeHandler3}>&#10005;</span>
+            <a className={classes['span__link']} onClick={spanLinkHandler3} type='button'>This Week</a>
+            {isClicked3 && <span onClick={closeHandler3} className={classes['span__close']}>&#215;</span>}
             </li>
         <li className={`${classes['span__item']} ${isClicked4 && classes['span__item--color4']}`}>
-            <button className={classes['span__link']} onClick={spanLinkHandler4} type='button'>This Month</button>
-            <span onClick={closeHandler4}>&#10005;</span>
+            <a className={classes['span__link']} onClick={spanLinkHandler4} type='button'>This Month</a>
+            {isClicked4 && <span onClick={closeHandler4} className={classes['span__close']}>&#215;</span>}
             </li>
         </ul>
     </section>
