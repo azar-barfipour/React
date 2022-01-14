@@ -7,6 +7,12 @@ const Calendar = () => {
   const [items, setItems] = useState([]);
   const authctx = useContext(AuthContext);
   const token = authctx.token;
+  const userId = authctx.userId;
+
+  const freeEventHandler = (items) => {
+    setItems(items);
+  };
+
   useEffect(() => {
     const fetchHandler = async () => {
       const response = await fetch(
@@ -22,12 +28,18 @@ const Calendar = () => {
           description: data[key].description,
           date: data[key].date,
           location: data[key].location,
-          token : data[key].token
+          token: data[key].token,
+          userId: data[key].userId,
         });
       }
-console.log(token);
-const result = loadedData.filter(loaded => token === loaded.token);
-console.log(result);
+      console.log(userId);
+      console.log(loadedData);
+      const loadedDataCopy = [...loadedData];
+      console.log(loadedDataCopy);
+      const result = loadedDataCopy.filter(
+        (loaded) => userId === loaded.userId
+      );
+      console.log(result);
       setItems(result);
     };
     fetchHandler();
@@ -36,7 +48,7 @@ console.log(result);
   return (
     <Fragment>
       <Event />
-      <CalendarItems items={items}/>
+      <CalendarItems items={items} onFree={freeEventHandler} />
     </Fragment>
   );
 };

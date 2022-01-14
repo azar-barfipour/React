@@ -1,4 +1,4 @@
-import {  Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import classes from "./AuthForm.module.css";
@@ -13,7 +13,7 @@ const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
-  const [modal,setModal] = useState(false);
+  const [modal, setModal] = useState(false);
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
   };
@@ -37,7 +37,7 @@ const AuthForm = () => {
       url =
         "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBPzh_70XgT3p1zKFsHQ-eOLHinYkyXYjM";
     }
-      const response = await fetch(url, {
+    const response = await fetch(url, {
       method: "POST",
       body: JSON.stringify({
         email: enteredEmail,
@@ -49,7 +49,8 @@ const AuthForm = () => {
     if (isLogin) {
       const data = await response.json();
       console.log(data);
-      authCtx.login(data.idToken);
+      console.log(data.localId);
+      authCtx.login(data.idToken, data.localId);
     }
     setModal(true);
   }
@@ -62,62 +63,79 @@ const AuthForm = () => {
       isLogin && <p>logged in</p>;
     }
   };
-const modalHandler = () =>{
-  setModal(false)
-}
+  const modalHandler = () => {
+    setModal(false);
+  };
   return (
     <div>
-    {modal && isLogin && <Redirect to="/Home" />}
-    {modal && !isLogin && <Modal title='Sign up' message='signed in succesefully' onConfirm={modalHandler}/>}
-    <div className={classes['auth-form']}>
-      {isLogin && <h2 className={classes['auth-form__header']}>Log in</h2>}
-      {!isLogin && <h2 className={classes['auth-form__header']}>Sign up</h2>}
-      {isLogin && (
-        <p className={classes['auth-form__text']}>
-          Not a member yet?{" "}
-          <button onClick={submitHandler} type="submit" className={classes['auth-form__button']}>
-            Sign up
-          </button>
-        </p>
-      )}
-      {!isLogin && (
-        <p className={classes['auth-form__text']}>
-          Already a member?{" "}
-          <button onClick={loginSubmitHandler} type="submit" className={classes['auth-form__button']}>
-            Log in
-          </button>
-        </p>
-      )}
-
-      <form onSubmit={addSubmitHandler} className={classes['auth-form__wrapper']}>
-        <Input
-        className={classes['auth-form__input']}
-          id="email"
-          type="email"
-          label="Email"
-          ref={emailRef}
-          onChange={emailChangeHandler}
-          value={enteredEmail}
+      {modal && isLogin && <Redirect to="/Home" />}
+      {modal && !isLogin && (
+        <Modal
+          title="Sign up"
+          message="signed in succesefully"
+          onConfirm={modalHandler}
         />
-        <Input
-          className={classes['auth-form__input']}
-          id="password"
-          type="password"
-          label="Password"
-          ref={passwordRef}
-          onChange={passwordChangeHandler}
-          value={enteredPassword}
-        />
-
-        {!isLoggedIn && (
-          <Button name={isLogin ? "Log in" : "Sign up"} type="submit"/>
+      )}
+      <div className={classes["auth-form"]}>
+        {isLogin && <h2 className={classes["auth-form__header"]}>Log in</h2>}
+        {!isLogin && <h2 className={classes["auth-form__header"]}>Sign up</h2>}
+        {isLogin && (
+          <p className={classes["auth-form__text"]}>
+            Not a member yet?{" "}
+            <button
+              onClick={submitHandler}
+              type="submit"
+              className={classes["auth-form__button"]}
+            >
+              Sign up
+            </button>
+          </p>
+        )}
+        {!isLogin && (
+          <p className={classes["auth-form__text"]}>
+            Already a member?{" "}
+            <button
+              onClick={loginSubmitHandler}
+              type="submit"
+              className={classes["auth-form__button"]}
+            >
+              Log in
+            </button>
+          </p>
         )}
 
-        {isLoggedIn && (
-          <Button type="submit" name="Log out" onClick={logoutHandler}/>
-        )}
-      </form>
-    </div>
+        <form
+          onSubmit={addSubmitHandler}
+          className={classes["auth-form__wrapper"]}
+        >
+          <Input
+            className={classes["auth-form__input"]}
+            id="email"
+            type="email"
+            label="Email"
+            ref={emailRef}
+            onChange={emailChangeHandler}
+            value={enteredEmail}
+          />
+          <Input
+            className={classes["auth-form__input"]}
+            id="password"
+            type="password"
+            label="Password"
+            ref={passwordRef}
+            onChange={passwordChangeHandler}
+            value={enteredPassword}
+          />
+
+          {!isLoggedIn && (
+            <Button name={isLogin ? "Log in" : "Sign up"} type="submit" />
+          )}
+
+          {isLoggedIn && (
+            <Button type="submit" name="Log out" onClick={logoutHandler} />
+          )}
+        </form>
+      </div>
     </div>
   );
 };
