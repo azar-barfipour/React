@@ -14,16 +14,15 @@ const EventItemsDetails = () => {
   console.log(userId);
   console.log(token);
   const params = useParams();
+  console.log(params);
   const [groups, setGroups] = useState([]);
-  const [isActive, setIsActive] = useState(false);
+  const [isDesabled, setIsDesabled] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   // const [refresh, setRefresh] = useState(false);
   useEffect(() => {
     const fetchGroups = async () => {
       setIsLoading(true);
-      setIsActive(false);
-      // setRefresh(false);
       setError(null);
 
       try {
@@ -44,8 +43,6 @@ const EventItemsDetails = () => {
     fetchGroups();
   }, []);
   async function addEventForUserHandler(event) {
-    setIsActive(true);
-    // localStorage.setItem('refresh',refresh);
     event.preventDefault();
     const response = await fetch(
       "https://recat-meetup-project-default-rtdb.firebaseio.com/events.json",
@@ -58,6 +55,8 @@ const EventItemsDetails = () => {
           description: groups.description,
           date: groups.date,
           userId: userId,
+          // add a boolean to find out if this event is added or deleted
+          // isAdded: true
         }),
         headers: {
           "Content-Type": "application/json",
@@ -66,13 +65,30 @@ const EventItemsDetails = () => {
     );
     const data = await response.json();
   }
+  useEffect(() => {
+    const fetchEvent = async () => {
+      const res = await fetch(
+        "https://recat-meetup-project-default-rtdb.firebaseio.com/events.json"
+      );
+      const data2 = await res.json();
+      console.log(data2);
+      let loadedData = [];
+      for (const key in data2) {
+        loadedData.push({
+          id: key,
+          userId: data2[key].userId,
+        });
+      }
+      for (const data of loadedData) {
+        console.log(data.id);
+        if (data.userId === userId) {
+          setIsDesabled(true);
+        }
+      }
+    };
+    fetchEvent();
+  }, []);
 
-  // useEffect(() => {
-  //   setRefresh(JSON.parse(window.localStorage.getItem('isActive')));
-  // }, []);
-  // setRefresh(JSON.parse(window.localStorage.getItem('isActive')));
-  // console.log(refresh);
-  // console.log(isActive);
   const options = {
     hour: "numeric",
     minute: "numeric",
@@ -122,9 +138,9 @@ const EventItemsDetails = () => {
       <section className={classes["event-attend"]}>
         <div className={classes["attend-button__wrapper"]}>
           <button
-            disabled={isActive}
+            disabled={isDesabled}
             className={`${classes["attend-button"]} ${
-              isActive ? classes["attend-button--active"] : ""
+              isDesabled ? classes["attend-button--active"] : ""
             }`}
             type="submit"
             onClick={addEventForUserHandler}
