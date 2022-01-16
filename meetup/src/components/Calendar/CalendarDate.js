@@ -8,12 +8,9 @@ const CalendarDate = (props) => {
     day: "numeric",
     month: "short",
     year: "numeric",
-    weekday: 'short',
+    weekday: "short",
   };
-  const displayDate = new Intl.DateTimeFormat(
-    'en-US',
-    options
-  ).format(date);
+  const displayDate = new Intl.DateTimeFormat("en-US", options).format(date);
   return (
     <div className={classes.date}>
       <div>{displayDate}</div>

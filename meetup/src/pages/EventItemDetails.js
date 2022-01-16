@@ -1,25 +1,22 @@
 import classes from "./EventItemDetails.module.css";
 import { useState, useCallback, useEffect, useContext } from "react";
 import { useParams, Route } from "react-router-dom";
+import EventItemsDetail from "../components/Search/EventItemsDetail";
 import Comment from "../components/Comment/Comment";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AuthContext from "../store/auth-context";
 
-const EventItemsDetails = () => {
+const EventItemDetails = () => {
   const authCtx = useContext(AuthContext);
   const token = authCtx.token;
   const userId = authCtx.userId;
-  console.log(userId);
-  console.log(token);
   const params = useParams();
-  console.log(params);
   const [groups, setGroups] = useState([]);
   const [isDesabled, setIsDesabled] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  // const [refresh, setRefresh] = useState(false);
   useEffect(() => {
     const fetchGroups = async () => {
       setIsLoading(true);
@@ -34,7 +31,14 @@ const EventItemsDetails = () => {
           throw new Error("Something went wrong!!!");
         }
         const data = await response.json();
-        setGroups(data);
+        let loadedData = [];
+        loadedData.push({
+          title: data.title,
+          date: data.date,
+          description: data.description,
+          location: data.location,
+        });
+        setGroups(loadedData);
         setIsLoading(false);
       } catch (err) {
         setError(err.message);
@@ -42,7 +46,10 @@ const EventItemsDetails = () => {
     };
     fetchGroups();
   }, []);
+  const groupsCopy = [...groups];
+  const [newGroup] = groupsCopy;
   async function addEventForUserHandler(event) {
+    // console.log(groups);
     event.preventDefault();
     const response = await fetch(
       "https://recat-meetup-project-default-rtdb.firebaseio.com/events.json",
@@ -50,13 +57,14 @@ const EventItemsDetails = () => {
         method: "POST",
         body: JSON.stringify({
           token: token,
-          title: groups.title,
-          location: groups.location,
-          description: groups.description,
-          date: groups.date,
+          id: newGroup.key,
+          title: newGroup.title,
+          location: newGroup.location,
+          description: newGroup.description,
+          date: newGroup.date,
           userId: userId,
           // add a boolean to find out if this event is added or deleted
-          // isAdded: true
+          isAdded: true,
         }),
         headers: {
           "Content-Type": "application/json",
@@ -64,6 +72,7 @@ const EventItemsDetails = () => {
       }
     );
     const data = await response.json();
+    console.log(data);
   }
   useEffect(() => {
     const fetchEvent = async () => {
@@ -72,17 +81,28 @@ const EventItemsDetails = () => {
       );
       const data2 = await res.json();
       console.log(data2);
-      let loadedData = [];
+      let loadedData2 = [];
       for (const key in data2) {
-        loadedData.push({
+        loadedData2.push({
           id: key,
           userId: data2[key].userId,
+          isAdded: data2[key].isAdded,
+          title: data2[key].title,
+          description: data2[key].description,
+          location: data2[key].location,
         });
       }
-      for (const data of loadedData) {
-        console.log(data.id);
-        if (data.userId === userId) {
-          setIsDesabled(true);
+      const filterData = [...loadedData2];
+      console.log(userId);
+      const fliterdedData = filterData.filter((data) => {
+        return data.userId === userId;
+      });
+      console.log(fliterdedData);
+      for (const data of fliterdedData) {
+        console.log(groupsCopy);
+        console.log(data.key);
+        if (data.key === groupsCopy.key) {
+          // setIsDesabled(true);
         }
       }
     };
@@ -103,32 +123,19 @@ const EventItemsDetails = () => {
 
   return (
     <div className={classes.datail}>
-      <li className={classes["detail__item"]}>
-        {/* <p>{params.groupDetailId}</p> */}
-        <img
-          src="https://source.unsplash.com/200x130/?party"
-          className={classes["detail__img"]}
-        />
-        <section className={classes["detail-wrapper"]}>
-          <h5 className={classes["detail__title"]}>{groups.title}</h5>
-          <div className={classes["detail-wrapper__date"]}>
-            <FontAwesomeIcon icon={faCalendar} />
-            <p className={classes["detail__date"]}>{`${new Date(
-              groups.date
-            ).getFullYear()}-${new Date(groups.date).getMonth()}-${new Date(
-              groups.date
-            ).getDate()}  ${new Date(groups.date).getHours()}:${new Date(
-              groups.date
-            ).getMinutes()}`}</p>
-          </div>
-          <div className={classes["detail-wrapper__location"]}>
-            <FontAwesomeIcon icon={faLocationArrow} />
-            <p className={classes["detail__location"]}>{groups.location}</p>
-          </div>
-          <h3>About</h3>
-          <p className={classes["detail__desc"]}>{groups.description}</p>
-        </section>
-      </li>
+      <ul>
+        {groups.map((group) => {
+          return (
+            <EventItemsDetail
+              key={group.id}
+              title={group.title}
+              date={group.date}
+              location={group.location}
+              description={group.description}
+            />
+          );
+        })}
+      </ul>
       <section className={classes["comment-wrapper"]}>
         <h2 className={classes["comment__title"]}>Comments</h2>
         <Route path="/Explore/:eventDetailId">
@@ -152,4 +159,4 @@ const EventItemsDetails = () => {
     </div>
   );
 };
-export default EventItemsDetails;
+export default EventItemDetails;
