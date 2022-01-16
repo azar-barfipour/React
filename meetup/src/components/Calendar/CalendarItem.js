@@ -5,6 +5,7 @@ import AuthContext from "../../store/auth-context";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Fragment } from "react/cjs/react.production.min";
 const CalanderItem = (props) => {
   const authctx = useContext(AuthContext);
   const isLoggedIn = authctx.isLoggedIn;
@@ -15,33 +16,41 @@ const CalanderItem = (props) => {
   return (
     <main>
       {isLoggedIn && (
-        <div className={classes["calendarItem-container"]}>
-          <li className={classes["calendarItem__item"]}>
-            <div className={classes["calendarItem-text"]}>
-              <h4 className={classes["calendarItem__title"]}>{props.title}</h4>
-              <div className={classes["calendar-wrapper"]}>
-                <FontAwesomeIcon icon={faCalendar} />
-                <CalendarDate date={props.date} />
-              </div>
-              <div className={classes["location-wrapper"]}>
-                <FontAwesomeIcon icon={faLocationArrow} />
-                <p className={classes["calendarItem__location"]}>
-                  {props.location}
+        <Fragment>
+          <div className={classes["calendarItem-container"]}>
+            <li className={classes["calendarItem__item"]}>
+              <div className={classes["calendarItem-text"]}>
+                <h4 className={classes["calendarItem__title"]}>
+                  {props.title}
+                </h4>
+                <div className={classes["calendar-wrapper"]}>
+                  <FontAwesomeIcon icon={faCalendar} />
+                  <CalendarDate date={props.date} />
+                </div>
+                <div className={classes["location-wrapper"]}>
+                  <FontAwesomeIcon icon={faLocationArrow} />
+                  <p className={classes["calendarItem__location"]}>
+                    {props.location}
+                  </p>
+                </div>
+                <p className={classes["calendarItem__desc"]}>
+                  {props.description}
                 </p>
               </div>
-              <p className={classes["calendarItem__desc"]}>
-                {props.description}
-              </p>
+              <div>
+                <img
+                  className={classes["calendarItem__img"]}
+                  src="https://source.unsplash.com/200x100/?party"
+                ></img>
+              </div>
+            </li>
+            <div className={classes["delete-container"]}>
+              <button className={classes["delete"]} onClick={freeHandler}>
+                Remove
+              </button>
             </div>
-            <div>
-              <img
-                className={classes["calendarItem__img"]}
-                src="https://source.unsplash.com/200x100/?party"
-              ></img>
-            </div>
-          </li>
-          <button onClick={freeHandler}>Free</button>
-        </div>
+          </div>
+        </Fragment>
       )}
     </main>
   );

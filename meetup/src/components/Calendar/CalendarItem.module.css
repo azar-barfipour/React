@@ -1,5 +1,15 @@
+.delete {
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  background-color: rgb(246, 88, 88);
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  cursor: pointer;
+  width: 12%;
+  min-width: 4.8rem;
+}
 .calendarItem-container {
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   margin-top: 1rem;
 }
 
@@ -10,26 +20,26 @@
   align-items: center;
   justify-content: space-between;
 }
-.calendar-wrapper{
+.calendar-wrapper {
   display: flex;
   align-items: center;
 }
-.calendarItem-text{
+.calendarItem-text {
   width: 70%;
 }
-.calendarItem__title{
-  margin-bottom: .5rem;
+.calendarItem__title {
+  margin-bottom: 0.5rem;
 }
-.calendarItem__desc{
-  margin-bottom: .5rem;
+.calendarItem__desc {
+  margin-bottom: 0.5rem;
 }
-.location-wrapper{
+.location-wrapper {
   display: flex;
   align-items: center;
 }
-.calendarItem__location{
-  margin-left: .3rem;
-  margin-bottom: .5rem;
+.calendarItem__location {
+  margin-left: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 .calendarItem__img {
   width: 100%;
@@ -57,4 +67,3 @@
       width: 70rem;
     }
   } */
-

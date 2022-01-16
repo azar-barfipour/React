@@ -10,21 +10,30 @@ const CalendarItems = (props) => {
   const isLoggedIn = authctx.isLoggedIn;
   const emptyItems = props.items.length === 0;
   const { events } = props;
+  const { items } = props;
 
-  const deleteEventHandler = (eventId) => {
+  const deleteEventHandler = async (eventId) => {
     // setIsDeleted(true);
     console.log("events", events);
     console.log(eventId);
-    // state
-    let updatedEvents = [...props.items];
-    updatedEvents = updatedEvents.filter((event) => {
-      console.log(event);
-      console.log(event.id, eventId);
-      console.log(event.id !== eventId);
-      return event.id !== eventId;
-    });
-    console.log("updatedEvents", updatedEvents);
-    props.onFree(updatedEvents);
+    console.log(items);
+    const response = await fetch(
+      `https://recat-meetup-project-default-rtdb.firebaseio.com/events/${eventId}.json`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    // delete using filter
+
+    // let updatedEvents = [...props.items];
+    // updatedEvents = updatedEvents.filter((event) => {
+    //   console.log(event);
+    //   return event.id !== eventId;
+    // });
+
+    // console.log("updatedEvents", updatedEvents);
+    // props.onFree(updatedEvents);
     // props.items.filter((event) => event.id !== eventId);
   };
 
