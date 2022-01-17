@@ -48,7 +48,9 @@ const Calendar = () => {
   return (
     <Fragment>
       <Event />
-      <CalendarItems items={items} onFree={freeEventHandler} />
+      <CalendarItems items={items} />
+      {/* for deleting with filter */}
+      {/* <CalendarItems items={items} onFree={freeEventHandler} /> */}
     </Fragment>
   );
 };

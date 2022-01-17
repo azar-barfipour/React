@@ -12,11 +12,12 @@ const SearchForm = () => {
   const [eventsResult, setEventsResult] = useState([]);
   const [eventsResult2, setEventsResult2] = useState([]);
   const [events2, setEvents2] = useState(false);
-  const [text,setText] = useState([])
+  const [text, setText] = useState([]);
   const inputChangeHandler = (event) => {
     setEnteredSearch(event.target.value);
   };
   const getTextHandler = (text) => {
+    // console.log(text);
     // for(const i of events){
     //  const date = i.date.slice(0,10);
     //  console.log(date);
@@ -57,8 +58,7 @@ const SearchForm = () => {
           e.date.slice(0, 10) >= firstday.slice(0, 10)
       );
       setEventsResult2(result);
-    }
-    else if(text === null) {
+    } else if (text === null) {
       setEventsResult2(events);
     }
   };

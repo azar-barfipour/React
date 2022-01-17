@@ -2,28 +2,21 @@ import { useContext, Fragment, useState } from "react";
 import classes from "./CalendarItems.module.css";
 import AuthContext from "../../store/auth-context";
 import CalendarItem from "./CalendarItem";
+import Modal from "../UI/Modal";
 
 const CalendarItems = (props) => {
-  // const [deleted, setDeleted] = useState([]);
-  // const [isDeleted, setIsDeleted] = useState(false);
   const authctx = useContext(AuthContext);
   const isLoggedIn = authctx.isLoggedIn;
   const emptyItems = props.items.length === 0;
   const { events } = props;
-  const { items } = props;
 
   const deleteEventHandler = async (eventId) => {
-    // setIsDeleted(true);
-    console.log("events", events);
-    console.log(eventId);
-    console.log(items);
     const response = await fetch(
       `https://recat-meetup-project-default-rtdb.firebaseio.com/events/${eventId}.json`,
       {
         method: "DELETE",
       }
     );
-
     // delete using filter
 
     // let updatedEvents = [...props.items];
@@ -36,10 +29,9 @@ const CalendarItems = (props) => {
     // props.onFree(updatedEvents);
     // props.items.filter((event) => event.id !== eventId);
   };
-
-  console.log(events);
   return (
     <Fragment>
+      {/* <Modal title="Are you sure about removing" /> */}
       <div className={classes.calendar}>
         <div className={classes["calendar__wrapper"]}>
           {isLoggedIn ? (
