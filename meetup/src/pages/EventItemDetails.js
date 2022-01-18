@@ -48,6 +48,7 @@ const EventItemDetails = () => {
   }, []);
   const groupsCopy = [...groups];
   const [newGroup] = groupsCopy;
+  console.log(newGroup);
   async function addEventForUserHandler(event) {
     // console.log(groups);
     event.preventDefault();
@@ -75,6 +76,7 @@ const EventItemDetails = () => {
     console.log(data);
   }
   useEffect(() => {
+    console.log("EFFECT RUNNING");
     const fetchEvent = async () => {
       const res = await fetch(
         "https://recat-meetup-project-default-rtdb.firebaseio.com/events.json"
@@ -99,11 +101,11 @@ const EventItemDetails = () => {
       });
       console.log(fliterdedData);
       for (const data of fliterdedData) {
-        console.log(groupsCopy);
-        console.log(data.key);
-        if (data.key === groupsCopy.key) {
-          // setIsDesabled(true);
-        }
+        console.log(newGroup.title);
+        console.log(data.title);
+        // if (data.title === newGroup.title) {
+        //   setIsDesabled(true);
+        // }
       }
     };
     fetchEvent();

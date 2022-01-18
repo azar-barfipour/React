@@ -8,10 +8,10 @@ const Calendar = () => {
   const authctx = useContext(AuthContext);
   const token = authctx.token;
   const userId = authctx.userId;
-
-  const freeEventHandler = (items) => {
-    setItems(items);
-  };
+  //for deleting with filter:
+  // const freeEventHandler = (items) => {
+  //   setItems(items);
+  // };
 
   useEffect(() => {
     const fetchHandler = async () => {
