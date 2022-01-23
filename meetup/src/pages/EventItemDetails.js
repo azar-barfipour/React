@@ -17,6 +17,7 @@ const EventItemDetails = () => {
   const [isDesabled, setIsDesabled] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+
   useEffect(() => {
     const fetchGroups = async () => {
       setIsLoading(true);
@@ -46,6 +47,7 @@ const EventItemDetails = () => {
     };
     fetchGroups();
   }, []);
+
   const groupsCopy = [...groups];
   const [newGroup] = groupsCopy;
   console.log(newGroup);
@@ -64,8 +66,6 @@ const EventItemDetails = () => {
           description: newGroup.description,
           date: newGroup.date,
           userId: userId,
-          // add a boolean to find out if this event is added or deleted
-          isAdded: true,
         }),
         headers: {
           "Content-Type": "application/json",
@@ -74,9 +74,10 @@ const EventItemDetails = () => {
     );
     const data = await response.json();
     console.log(data);
+    setIsDesabled(true);
   }
+
   useEffect(() => {
-    console.log("EFFECT RUNNING");
     const fetchEvent = async () => {
       const res = await fetch(
         "https://recat-meetup-project-default-rtdb.firebaseio.com/events.json"
@@ -101,15 +102,17 @@ const EventItemDetails = () => {
       });
       console.log(fliterdedData);
       for (const data of fliterdedData) {
-        console.log(newGroup.title);
-        console.log(data.title);
-        // if (data.title === newGroup.title) {
-        //   setIsDesabled(true);
-        // }
+        console.log("newGroup", newGroup);
+        if (!newGroup) {
+          return;
+        }
+        if (data.title === newGroup.title) {
+          setIsDesabled(true);
+        }
       }
     };
     fetchEvent();
-  }, []);
+  }, [newGroup]);
 
   const options = {
     hour: "numeric",

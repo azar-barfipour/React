@@ -1,22 +1,40 @@
-import { useContext } from "react";
+import { useContext, Fragment, useState } from "react";
 import classes from "./CalendarItem.module.css";
 import CalendarDate from "./CalendarDate";
 import AuthContext from "../../store/auth-context";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Fragment } from "react/cjs/react.production.min";
+import Modal from "../UI/Modal";
+
 const CalanderItem = (props) => {
+  const [modal, setModal] = useState(false);
   const authctx = useContext(AuthContext);
   const isLoggedIn = authctx.isLoggedIn;
   const freeHandler = (event) => {
+    setModal(true);
     event.preventDefault();
-    props.onDelete(props.id);
   };
+  const modalRemoveHandler = (event) => {
+    event.preventDefault();
+    setModal(false);
+  };
+  const modalAcceptHandler = () => {
+    props.onDelete(props.id);
+    setModal(false);
+  };
+  console.log(modal);
   return (
     <main>
       {isLoggedIn && (
         <Fragment>
+          {modal && (
+            <Modal
+              title="Are you sure?"
+              onConfirm={modalRemoveHandler}
+              onClick={modalAcceptHandler}
+            />
+          )}
           <div className={classes["calendarItem-container"]}>
             <li className={classes["calendarItem__item"]}>
               <div className={classes["calendarItem-text"]}>

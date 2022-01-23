@@ -2,13 +2,11 @@ import { useContext, Fragment, useState } from "react";
 import classes from "./CalendarItems.module.css";
 import AuthContext from "../../store/auth-context";
 import CalendarItem from "./CalendarItem";
-import Modal from "../UI/Modal";
 
 const CalendarItems = (props) => {
   const authctx = useContext(AuthContext);
   const isLoggedIn = authctx.isLoggedIn;
   const emptyItems = props.items.length === 0;
-  const { events } = props;
 
   const deleteEventHandler = async (eventId) => {
     const response = await fetch(
@@ -74,23 +72,6 @@ const CalendarItems = (props) => {
           isLoggedIn && (
             <p className={classes["calendar__empty"]}>Your calendar is empty</p>
           )
-        )}
-        {events && (
-          <ul className={classes["calendar__list"]}>
-            {events.map((item) => {
-              return (
-                <CalendarItem
-                  key={item.id}
-                  id={item.id}
-                  title={item.title}
-                  description={item.description}
-                  date={item.date}
-                  location={item.location}
-                  onDelete={deleteEventHandler}
-                />
-              );
-            })}
-          </ul>
         )}
       </div>
     </Fragment>
