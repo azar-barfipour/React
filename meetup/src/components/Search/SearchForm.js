@@ -12,19 +12,20 @@ const SearchForm = () => {
   const [eventsResult, setEventsResult] = useState([]);
   const [eventsResult2, setEventsResult2] = useState([]);
   const [events2, setEvents2] = useState(false);
-  const [text, setText] = useState([]);
+  const [allText, setAllText] = useState([]);
   const inputChangeHandler = (event) => {
     setEnteredSearch(event.target.value);
   };
-  const getTextHandler = (text) => {
-    // console.log(text);
+  const getTextHandler = (text1, text2) => {
     // for(const i of events){
     //  const date = i.date.slice(0,10);
     //  console.log(date);
     // }
-    // setText((prevTexts) => {
-    //   return [text, ...prevTexts];
-    // });
+    console.log(text1);
+    console.log(text2);
+    // if (text1 !== "" && text1 !== "") {
+    //   console.log([...text1, ...text2]);
+    // }
     setEvents2(true);
     // const result = events.filter((e) =>
     //   (e.date.includes(text))
@@ -39,28 +40,28 @@ const SearchForm = () => {
     tomorrow.setDate(new Date().getDate() + 1);
     console.log(events);
 
-    if (text === "Today") {
-      const result = events.filter(
-        (e) => e.date.slice(0, 10) === new Date().toISOString().slice(0, 10)
-      );
-      console.log(result);
-      setEventsResult2(result);
-    } else if (text === "Tomorrow") {
-      const result = events.filter(
-        (e) => e.date.slice(0, 10) === tomorrow.toISOString().slice(0, 10)
-      );
-      console.log(result);
-      setEventsResult2(result);
-    } else if (text === "This Week") {
-      const result = events.filter(
-        (e) =>
-          lastday.slice(0, 10) >= e.date.slice(0, 10) &&
-          e.date.slice(0, 10) >= firstday.slice(0, 10)
-      );
-      setEventsResult2(result);
-    } else if (text === null) {
-      setEventsResult2(events);
-    }
+    // if (text === "Today") {
+    //   const result = events.filter(
+    //     (e) => e.date.slice(0, 10) === new Date().toISOString().slice(0, 10)
+    //   );
+    //   console.log(result);
+    //   setEventsResult2(result);
+    // } else if (text === "Tomorrow") {
+    //   const result = events.filter(
+    //     (e) => e.date.slice(0, 10) === tomorrow.toISOString().slice(0, 10)
+    //   );
+    //   console.log(result);
+    //   setEventsResult2(result);
+    // } else if (text === "This Week") {
+    //   const result = events.filter(
+    //     (e) =>
+    //       lastday.slice(0, 10) >= e.date.slice(0, 10) &&
+    //       e.date.slice(0, 10) >= firstday.slice(0, 10)
+    //   );
+    //   setEventsResult2(result);
+    // } else if (text === null) {
+    //   setEventsResult2(events);
+    // }
   };
   useEffect(() => {
     const fetchHandler = async () => {

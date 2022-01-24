@@ -1,11 +1,8 @@
 import classes from "./EventItemDetails.module.css";
-import { useState, useCallback, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams, Route } from "react-router-dom";
 import EventItemsDetail from "../components/Search/EventItemsDetail";
 import Comment from "../components/Comment/Comment";
-import { faCalendar } from "@fortawesome/free-solid-svg-icons";
-import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AuthContext from "../store/auth-context";
 
 const EventItemDetails = () => {

@@ -1,36 +1,50 @@
 import { useState } from "react";
 import classes from "./SearchDate.module.css";
 const SearchDate = (props) => {
-  const [text1, setText1] = useState();
   const [text2, setText2] = useState();
   const [text3, setText3] = useState();
   const [isClicked1, setIsClicked1] = useState(false);
   const [isClicked2, setIsClicked2] = useState(false);
   const [isClicked3, setIsClicked3] = useState(false);
+
+  let innerText1 = [];
   const spanLinkHandler1 = (event) => {
-    setIsClicked1(true);
+    setIsClicked1(!isClicked1);
     event.preventDefault();
-    props.onGetText(event.target.innerText);
-    setText1(event.target.innerText);
+    if (isClicked1 === false) {
+      // props.onGetText(innerText);
+      innerText1.push(event.target.innerText);
+    } else {
+      // props.onGetText(innerText);
+      innerText1.pop();
+    }
+    console.log(innerText1);
+    props.onGetText(innerText1);
   };
+
+  // let innerText2 = [];
   const spanLinkHandler2 = (event) => {
-    setIsClicked2(true);
+    setIsClicked2(!isClicked2);
     event.preventDefault();
-    props.onGetText(event.target.innerText);
-    setText2(event.target.innerText);
+    // props.onGetText(event.target.innerText);
+    if (isClicked2 === false) {
+      // props.onGetText(innerText);
+      innerText1.push(event.target.innerText);
+    } else {
+      // props.onGetText(innerText);
+      innerText1.pop();
+    }
+    // console.log(innerText2);
+    props.onGetText(innerText1);
   };
+  console.log(innerText1);
   const spanLinkHandler3 = (event) => {
     setIsClicked3(true);
     event.preventDefault();
     props.onGetText(event.target.innerText);
     setText3(event.target.innerText);
   };
-  const closeHandler1 = (event) => {
-    setIsClicked1(false);
-    event.preventDefault();
-    props.onGetText(null);
-    setText1(null);
-  };
+
   const closeHandler2 = (event) => {
     setIsClicked2(false);
     event.preventDefault();
@@ -59,11 +73,7 @@ const SearchDate = (props) => {
           >
             Today
           </a>
-          {isClicked1 && (
-            <span onClick={closeHandler1} className={classes["span__close"]}>
-              &#215;
-            </span>
-          )}
+          {isClicked1 && <span className={classes["span__close"]}>&#215;</span>}
         </li>
         <li
           className={`${classes["span__item"]} ${

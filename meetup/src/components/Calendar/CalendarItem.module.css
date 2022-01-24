@@ -29,6 +29,7 @@
 }
 .calendarItem__title {
   margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
 .calendarItem__desc {
   margin-bottom: 0.5rem;
