@@ -12,29 +12,14 @@ const CalanderItem = (props) => {
   const authctx = useContext(AuthContext);
   const isLoggedIn = authctx.isLoggedIn;
   const freeHandler = (event) => {
-    setModal(true);
     event.preventDefault();
-  };
-  const modalRemoveHandler = (event) => {
-    event.preventDefault();
-    setModal(false);
-  };
-  const modalAcceptHandler = () => {
     props.onDelete(props.id);
-    setModal(false);
   };
-  console.log(modal);
+
   return (
     <main>
       {isLoggedIn && (
         <Fragment>
-          {modal && (
-            <Modal
-              title="Are you sure?"
-              onConfirm={modalRemoveHandler}
-              onClick={modalAcceptHandler}
-            />
-          )}
           <div className={classes["calendarItem-container"]}>
             <li className={classes["calendarItem__item"]}>
               <div className={classes["calendarItem-text"]}>

@@ -1,19 +1,15 @@
-
 import classes from "./CommentItems.module.css";
-import CommentItem from './CommentItem'
+import CommentItem from "./CommentItem";
 const CommentItems = (props) => {
+  console.log(props.comments);
   return (
-    <ul className={classes['comment-list']}>
-        {props.comments.map((comment) => {
-          return (
-            <CommentItem
-              key={comment.id}
-              id={comment.id}
-              text={comment.text}
-            />
-          );
-        })}
-      </ul> 
+    <ul className={classes["comment-list"]}>
+      {props.comments.map((comment) => {
+        return (
+          <CommentItem key={comment.id} id={comment.id} text={comment.text} />
+        );
+      })}
+    </ul>
   );
 };
 
