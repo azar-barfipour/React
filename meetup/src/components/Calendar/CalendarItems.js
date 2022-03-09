@@ -9,13 +9,16 @@ const CalendarItems = (props) => {
   const emptyItems = props.items.length === 0;
 
   const deleteEventHandler = async (eventId) => {
+    // update backend
     const response = await fetch(
       `https://recat-meetup-project-default-rtdb.firebaseio.com/events/${eventId}.json`,
       {
         method: "DELETE",
       }
     );
-    // delete using filter
+
+    // update state
+    props.deleteEvent(eventId);
 
     // let updatedEvents = [...props.items];
     // updatedEvents = updatedEvents.filter((event) => {
@@ -27,6 +30,7 @@ const CalendarItems = (props) => {
     // props.onFree(updatedEvents);
     // props.items.filter((event) => event.id !== eventId);
   };
+
   return (
     <Fragment>
       {/* <Modal title="Are you sure about removing" /> */}
