@@ -1,4 +1,4 @@
-import { Fragment, useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import classes from "./Comment.module.css";
 import AddComment from "./AddComment";
 import CommentItems from "./CommentItems";
@@ -33,7 +33,7 @@ const Comment = () => {
       });
     }
     setComments(loadedComments);
-  }, []);
+  }, [params.eventDetailId]);
 
   useEffect(() => {
     fetchCommentHandler();
@@ -55,7 +55,7 @@ const Comment = () => {
   }
 
   return (
-    <Fragment>
+    <>
       <Link
         onClick={!isOpen ? commentFormHandler : commentFormCloseHandler}
         className={classes["comment__link"]}
@@ -65,7 +65,7 @@ const Comment = () => {
       </Link>
       {isAddingComment && <AddComment onAddComment={AddCommentHandler} />}
       <CommentItems comments={comments} />
-    </Fragment>
+    </>
   );
 };
 export default Comment;

@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState, useEffect } from "react";
+import { Fragment, useRef, useState } from "react";
 import classes from "./AddComment.module.css";
 
 const AddComment = (props) => {

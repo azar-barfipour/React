@@ -1,4 +1,4 @@
-import react, { Fragment, useEffect, useState, useContext } from "react";
+import { Fragment, useEffect, useState, useContext } from "react";
 import CalendarItems from "../components/Calendar/CalendarItems";
 import Event from "../components/Event/EventLink";
 import AuthContext from "../store/auth-context";
@@ -6,7 +6,6 @@ import AuthContext from "../store/auth-context";
 const Calendar = () => {
   const [events, setEvents] = useState([]);
   const authctx = useContext(AuthContext);
-  const token = authctx.token;
   const userId = authctx.userId;
   //for deleting with filter:
   // const freeEventHandler = (events) => {

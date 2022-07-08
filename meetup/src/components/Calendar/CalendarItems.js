@@ -1,4 +1,4 @@
-import { useContext, Fragment, useState } from "react";
+import { useContext, Fragment } from "react";
 import classes from "./CalendarItems.module.css";
 import AuthContext from "../../store/auth-context";
 import CalendarItem from "./CalendarItem";
@@ -19,21 +19,10 @@ const CalendarItems = (props) => {
 
     // update state
     props.deleteEvent(eventId);
-
-    // let updatedEvents = [...props.items];
-    // updatedEvents = updatedEvents.filter((event) => {
-    //   console.log(event);
-    //   return event.id !== eventId;
-    // });
-
-    // console.log("updatedEvents", updatedEvents);
-    // props.onFree(updatedEvents);
-    // props.items.filter((event) => event.id !== eventId);
   };
 
   return (
     <Fragment>
-      {/* <Modal title="Are you sure about removing" /> */}
       <div className={classes.calendar}>
         <div className={classes["calendar__wrapper"]}>
           {isLoggedIn ? (
@@ -51,7 +40,10 @@ const CalendarItems = (props) => {
                 </p>
               </section>
               <section className={classes["header__image"]}>
-                <img src="https://www.meetup.com/_next/image/?url=%2Fimages%2Fshared%2Fonline_events.svg&w=640&q=75"></img>
+                <img
+                  src="https://secure.meetupstatic.com/next/images/shared/online_events.svg?w=1080"
+                  alt="party"
+                ></img>
               </section>
             </div>
           )}

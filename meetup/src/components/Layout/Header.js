@@ -9,32 +9,55 @@ const Header = () => {
   return (
     <div className={classes.header}>
       <div>
-      <h1 className={classes['header__title']}>meetup</h1>
+        <NavLink to="/Home" className={classes["header__title"]}>
+          meetup
+        </NavLink>
       </div>
-      <nav className={classes['header__nav']}>
-        <ul className={classes['header__list']}>
-          <li className={classes['header__list--item']}> 
-            <NavLink  activeClassName={classes.active} to="/Home">
+      <nav className={classes["header__nav"]}>
+        <ul className={classes["header__list"]}>
+          <li className={classes["header__list--item"]}>
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? classes["header__active"]
+                  : classes["header__inactive"]
+              }
+              to="/Home"
+            >
               Home
             </NavLink>
           </li>
           {isLoggedIn && (
-            <li className={classes['header__list--item']}> 
-              <NavLink activeClassName={classes.active} to="/Explore">
+            <li className={classes["header__list--item"]}>
+              <NavLink
+                to="/Explore"
+                className={({ isActive }) =>
+                  isActive
+                    ? classes["header__active"]
+                    : classes["header__inactive"]
+                }
+              >
                 Explore
               </NavLink>
             </li>
           )}
         </ul>
-        <ul className={classes['header__auth']}>
-        <li className={classes['header__auth--item']}> 
-            <NavLink activeClassName={classes.active} to="/auth">
+        <ul className={classes["header__auth"]}>
+          <li className={classes["header__auth--item"]}>
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? classes["header__active"]
+                  : classes["header__inactive"]
+              }
+              to="/auth"
+            >
               {isLoggedIn ? "Log out" : "Log in"}
             </NavLink>
           </li>
         </ul>
       </nav>
-      </div>
+    </div>
   );
 };
 

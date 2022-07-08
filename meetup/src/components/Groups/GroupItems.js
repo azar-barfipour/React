@@ -22,7 +22,7 @@ const GroupItems = (props) => {
             className={classes["gropuItem__image"]}
           />
         </div>
-        <Link className={classes.link} to={`/Explore/${props.id}`}>
+        <Link className={classes.link} to={`/${props.id}`}>
           <h5 className={classes["group-item__title"]}>{props.title}</h5>
         </Link>
       </li>

@@ -1,14 +1,12 @@
-import { useContext, Fragment, useState } from "react";
+import { useContext, Fragment } from "react";
 import classes from "./CalendarItem.module.css";
 import CalendarDate from "./CalendarDate";
 import AuthContext from "../../store/auth-context";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Modal from "../UI/Modal";
 
 const CalanderItem = (props) => {
-  const [modal, setModal] = useState(false);
   const authctx = useContext(AuthContext);
   const isLoggedIn = authctx.isLoggedIn;
   const freeHandler = (event) => {
@@ -44,6 +42,7 @@ const CalanderItem = (props) => {
                 <img
                   className={classes["calendarItem__img"]}
                   src="https://source.unsplash.com/200x100/?party"
+                  alt="party"
                 ></img>
               </div>
             </li>

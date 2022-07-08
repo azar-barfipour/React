@@ -2,16 +2,13 @@ import { useState } from "react";
 import classes from "./AddEvent.module.css";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
-import GoogleMap from "./GoogleMap";
-import { Fragment } from "react/cjs/react.production.min";
+import { Fragment } from "react";
 import Modal from "../UI/Modal";
 
 const AddEvent = (props) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [isTitleTouched, setIsTitleTouched] = useState(false);
-  const [selectedFile, setSelectedFile] = useState();
-  const [isSelectedFile, setIsSelectedFile] = useState(false);
   const [date, setDate] = useState("");
   const [isDateTouched, setIsDateTouched] = useState(false);
   const [location, setLocation] = useState("");
@@ -22,7 +19,7 @@ const AddEvent = (props) => {
   const dateValid = !dateEmpty && isDateTouched;
   const locationEmpty = location.trim().length !== 0;
   const locationValid = !locationEmpty && isLocationTouched;
-  const [isModal,setIsModal] = useState(false); 
+  const [isModal, setIsModal] = useState(false);
 
   let formIsValid = false;
   if (titleEmpty && dateEmpty && locationEmpty) {
@@ -35,16 +32,12 @@ const AddEvent = (props) => {
   const desHandler = (event) => {
     setDescription(event.target.value);
   };
-  const imageHandler = (event) => {
-    setSelectedFile(URL.createObjectURL(event.target.files[0]));
-    setIsSelectedFile(true);
-  };
   const dateHandler = (event) => {
     setDate(event.target.value);
   };
-  const locationHandler = (event) =>{
-    setLocation(event.target.value)
-  }
+  const locationHandler = (event) => {
+    setLocation(event.target.value);
+  };
   const addGroupsHandler = (event) => {
     event.preventDefault();
     setIsTitleTouched(true);
@@ -60,8 +53,7 @@ const AddEvent = (props) => {
       title: title,
       description: description,
       date: new Date(date),
-      location : location
-      // image: selectedFile,
+      location: location,
     };
     props.onAddGroupItems(groupItems);
     setIsModal(true);
@@ -72,7 +64,6 @@ const AddEvent = (props) => {
     setIsTitleTouched(false);
     setIsDateTouched(false);
     setIsLocationTouched(false);
-
   };
   const titleBlurHandler = () => {
     setIsTitleTouched(true);
@@ -85,80 +76,75 @@ const AddEvent = (props) => {
   };
   const modalHandler = () => {
     setIsModal(false);
-  }
+  };
   return (
-      <Fragment>
-    {isModal && 
-    <Modal title='' message='Started your event
-    ' onConfirm = {modalHandler}/>
-     } 
+    <Fragment>
+      {isModal && (
+        <Modal
+          title=""
+          message="Started your event
+    "
+          onConfirm={modalHandler}
+        />
+      )}
 
-    <div className={classes['form-wrapper__title']}>
-      <h2 className={classes['form__title']}>Start your new event</h2>
+      <div className={classes["form-wrapper__title"]}>
+        <h2 className={classes["form__title"]}>Start your new event</h2>
       </div>
-    <div className={classes['form-wrapper']}>
-      <form className={classes['form']} onSubmit={addGroupsHandler}>
-        <Input
-          className={`${titleValid ? classes.isempty : {}}`}
-          id="title"
-          type="text"
-          onChange={titleHandler}
-          onBlur={titleBlurHandler}
-          label="Title"
-          value={title}
-        />
-        {titleValid ? (
-          <p className={classes.error}>Don't forget to name your event</p>
-        ) : (
-          ""
-        )}
-        <label className={classes["form-lable__description"]}>Descriotion</label>
-        <textarea
-          rows="4"
-          cols="50"
-          className={classes["form-input__description"]}
-          id="desc"
-          onChange={desHandler}
-          value={description}
-          label="Descriotion"
-        ></textarea>
-        {/* <Input
-          type="file"
-          name="file"
-          id="file"
-          label="Image"
-          // value={selectedFile}
-          onChange={imageHandler}
-        /> */}
-        <Input
-          type="datetime-local"
-          onChange={dateHandler}
-          id="date"
-          onBlur={dateBlurHandler}
-          label="Date"
-          value={date}
-        />
-        {dateValid && <p className={classes.error}>Don't forget to set date</p>}
-        {/* <GoogleMap></GoogleMap> */}
-        <Input
-          placeholder = "Street, City"
-          type="text"
-          onChange={locationHandler}
-          id="location"
-          onBlur={locationBlurHandler}
-          label="Location"
-          value={location}
-        />
-        {locationValid && <p className={classes.error}>Don't forget to set location</p>}
-        <Button
-          type="submit"
-          name="ADD"
-          disabled={!formIsValid}
-          // className={` ${!formIsValid ? classes.button : ""} `}
-        />
-      </form>
-    </div>
-    
+      <div className={classes["form-wrapper"]}>
+        <form className={classes["form"]} onSubmit={addGroupsHandler}>
+          <Input
+            className={`${titleValid ? classes.isempty : {}}`}
+            id="title"
+            type="text"
+            onChange={titleHandler}
+            onBlur={titleBlurHandler}
+            label="Title"
+            value={title}
+          />
+          {titleValid ? (
+            <p className={classes.error}>Don't forget to name your event</p>
+          ) : (
+            ""
+          )}
+          <label className={classes["form-lable__description"]}>
+            Description
+          </label>
+          <textarea
+            rows="4"
+            cols="50"
+            className={classes["form-input__description"]}
+            id="desc"
+            onChange={desHandler}
+            value={description}
+            label="Descriotion"
+          ></textarea>
+          <Input
+            type="datetime-local"
+            onChange={dateHandler}
+            id="date"
+            onBlur={dateBlurHandler}
+            label="Date"
+            value={date}
+          />
+          {dateValid && (
+            <p className={classes.error}>Don't forget to set date</p>
+          )}
+          <Input
+            placeholder="Street, City"
+            type="text"
+            onChange={locationHandler}
+            id="location"
+            onBlur={locationBlurHandler}
+            label="Location"
+            value={location}
+          />
+          {locationValid && (
+            <p className={classes.error}>Don't forget to set location</p>
+          )}
+          <Button type="submit" name="ADD" disabled={!formIsValid} />
+        </form>
+      </div>
     </Fragment>
   );
 };

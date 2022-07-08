@@ -1,7 +1,5 @@
 import { Fragment, useState, useCallback, useEffect } from "react";
-import classes from "./Groups.module.css";
 import AddEvent from "../components/Event/AddEvent";
-import EventItems from "../components/Event/EventItems";
 
 const stateItem = [
   {
@@ -33,10 +31,8 @@ const Events = (props) => {
           title: data[key].title,
           description: data[key].description,
           date: data[key].date,
-          // image: data[key].image,
         });
       }
-      console.log(loadedGroups);
       setGroups(loadedGroups);
       setIsLoading(false);
     } catch (err) {
@@ -49,7 +45,6 @@ const Events = (props) => {
   }, [fetchGroupsHandler]);
 
   async function addGroupItemsHandler(group) {
-    console.log(group);
     const response = await fetch(
       "https://recat-meetup-project-default-rtdb.firebaseio.com/groups.json",
       {
@@ -61,15 +56,11 @@ const Events = (props) => {
       }
     );
     const data = await response.json();
-    console.log(data);
   }
 
   return (
     <Fragment>
       <AddEvent onAddGroupItems={addGroupItemsHandler} />
-      <div className={classes.groups}>
-        {/* <EventItems groups={groups} isLoading={isLoading} /> */}
-      </div>
     </Fragment>
   );
 };

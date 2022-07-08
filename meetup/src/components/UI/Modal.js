@@ -17,7 +17,6 @@ const ModalOverlay = (props) => {
       <div>
         <h4 className={classes["modal__title"]}>{props.title}</h4>
         <p className={classes["modal__desc"]}>{props.message}</p>
-        <button onClick={props.onClick}>Yes</button>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
-import { Route, Redirect, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+
 import Layout from "./components/Layout/Layout";
 import Calendar from "./pages/Calendar";
 import EventItemDetails from "./pages/EventItemDetails";
@@ -9,26 +10,14 @@ import Search from "./pages/Search";
 function App() {
   return (
     <Layout>
-      <Switch>
-        <Route path="/" exact>
-          <Redirect to="/Home" />
-        </Route>
-        <Route path="/Home" exact>
-          <Calendar />
-        </Route>
-        <Route path="/Home/AddEvent">
-          <Event />
-        </Route>
-        <Route path="/Explore" exact>
-          <Search />
-        </Route>
-        <Route path="/Explore/:eventDetailId">
-          <EventItemDetails />
-        </Route>
-        <Route path="/auth">
-          <Auth />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Calendar />} />
+        <Route path="/Home" element={<Calendar />} />
+        <Route path="/Home/AddEvent" element={<Event />} />
+        <Route path="/Explore" element={<Search />} />
+        <Route path="/Explore/:eventDetailId" element={<EventItemDetails />} />
+        <Route path="/auth" element={<Auth />} />
+      </Routes>
     </Layout>
   );
 }

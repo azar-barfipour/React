@@ -1,11 +1,8 @@
 import classes from "./EventItemDetails.module.css";
-import { useState, useCallback, useEffect, useContext } from "react";
-import { useParams, Route } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import { useParams, Route, Routes, Link } from "react-router-dom";
 import EventItemsDetail from "../components/Search/EventItemsDetail";
 import Comment from "../components/Comment/Comment";
-import { faCalendar } from "@fortawesome/free-solid-svg-icons";
-import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AuthContext from "../store/auth-context";
 
 const EventItemDetails = () => {
@@ -16,7 +13,7 @@ const EventItemDetails = () => {
   const [groups, setGroups] = useState([]);
   const [isDesabled, setIsDesabled] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchGroups = async () => {
@@ -50,9 +47,8 @@ const EventItemDetails = () => {
 
   const groupsCopy = [...groups];
   const [newGroup] = groupsCopy;
-  console.log(newGroup);
+
   async function addEventForUserHandler(event) {
-    // console.log(groups);
     event.preventDefault();
     const response = await fetch(
       "https://recat-meetup-project-default-rtdb.firebaseio.com/events.json",
@@ -73,7 +69,6 @@ const EventItemDetails = () => {
       }
     );
     const data = await response.json();
-    console.log(data);
     setIsDesabled(true);
   }
 
@@ -83,7 +78,6 @@ const EventItemDetails = () => {
         "https://recat-meetup-project-default-rtdb.firebaseio.com/events.json"
       );
       const data2 = await res.json();
-      console.log(data2);
       let loadedData2 = [];
       for (const key in data2) {
         loadedData2.push({
@@ -96,13 +90,10 @@ const EventItemDetails = () => {
         });
       }
       const filterData = [...loadedData2];
-      console.log(userId);
       const fliterdedData = filterData.filter((data) => {
         return data.userId === userId;
       });
-      console.log(fliterdedData);
       for (const data of fliterdedData) {
-        console.log("newGroup", newGroup);
         if (!newGroup) {
           return;
         }
@@ -114,18 +105,6 @@ const EventItemDetails = () => {
     fetchEvent();
   }, [newGroup]);
 
-  const options = {
-    hour: "numeric",
-    minute: "numeric",
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-    weekday: "short",
-  };
-  // const displayDate = new Intl.DateTimeFormat('en-US',options).format(new Date(groups.date));
-  // console.log(displayDate);
-  // console.log(new Intl.DateTimeFormat('en-US', options).format(date))
-
   return (
     <div className={classes.datail}>
       <ul>
@@ -133,6 +112,7 @@ const EventItemDetails = () => {
           return (
             <EventItemsDetail
               key={group.id}
+              id={group.id}
               title={group.title}
               date={group.date}
               location={group.location}
@@ -143,9 +123,7 @@ const EventItemDetails = () => {
       </ul>
       <section className={classes["comment-wrapper"]}>
         <h2 className={classes["comment__title"]}>Comments</h2>
-        <Route path="/Explore/:eventDetailId">
-          <Comment />
-        </Route>
+        <Comment />
       </section>
       <section className={classes["event-attend"]}>
         <div className={classes["attend-button__wrapper"]}>

@@ -25,6 +25,7 @@
   color: #008294;
   text-align: center;
   font-size: 1rem;
+  margin-top: 0.5rem;
 }
 
 .auth-form__link {
@@ -39,6 +40,7 @@
   background-color: rgb(231, 236, 245);
   border: 1px solid rgb(212, 218, 228);
 }
+
 @media (min-width: 40rem) {
   .auth-form {
     max-width: 25rem;

@@ -1,7 +1,7 @@
-import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
+import { Map, ApiWrapper, Marker } from "-maps-react";
 import { useState, useRef, useCallback } from "react";
-import classes from "./GoogleMap.module.css";
-const GoogleMap = (props) => {
+import classes from "./Map.module.css";
+const Map = (props) => {
   const [listing, setListing] = useState({
     latLng: { lat: 51.501364, lng: -0.14189 },
   });
@@ -19,7 +19,7 @@ const GoogleMap = (props) => {
     <div>
       <Map
         className={classes["map-container"]}
-        google={props.google}
+        ={props.}
         zoom={14}
         initialCenter={listing.latLng}
         ref={refMap}
@@ -33,6 +33,6 @@ const GoogleMap = (props) => {
     </div>
   );
 };
-export default GoogleApiWrapper({
+export default ApiWrapper({
   apiKey: "",
-})(GoogleMap);
+})(Map);

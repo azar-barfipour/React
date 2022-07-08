@@ -1,4 +1,4 @@
-import { Redirect } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import classes from "./AuthForm.module.css";
@@ -14,6 +14,7 @@ const AuthForm = () => {
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
   const [modal, setModal] = useState(false);
+  const navigate = useNavigate();
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
   };
@@ -26,8 +27,6 @@ const AuthForm = () => {
 
   async function addSubmitHandler(event) {
     event.preventDefault();
-    const enteredEmailRef = emailRef.current.value;
-    const enteredPasswordRef = passwordRef.current.value;
 
     let url;
     if (isLogin) {
@@ -48,8 +47,6 @@ const AuthForm = () => {
     });
     if (isLogin) {
       const data = await response.json();
-      console.log(data);
-      console.log(data.localId);
       authCtx.login(data.idToken, data.localId);
     }
     setModal(true);
@@ -66,13 +63,17 @@ const AuthForm = () => {
   const modalHandler = () => {
     setModal(false);
   };
+  const loginGuest = () => {
+    authCtx.login("1", "1");
+    navigate("/");
+  };
   return (
     <div>
-      {modal && isLogin && <Redirect to="/Home" />}
+      {modal && isLogin && <Navigate to="/" />}
       {modal && !isLogin && (
         <Modal
           title="Sign up"
-          message="signed in succesefully"
+          message="signed in successfully"
           onConfirm={modalHandler}
         />
       )}
@@ -135,6 +136,13 @@ const AuthForm = () => {
             <Button type="submit" name="Log out" onClick={logoutHandler} />
           )}
         </form>
+        <button
+          onClick={loginGuest}
+          type="button"
+          className={classes["auth-form__button"]}
+        >
+          Login as a guest
+        </button>
       </div>
     </div>
   );
