@@ -3,6 +3,11 @@ import classes from "./CalendarItems.module.css";
 import AuthContext from "../../store/auth-context";
 import CalendarItem from "./CalendarItem";
 
+const imageData = [
+  "https://yt3.ggpht.com/ytc/AKedOLTK_dsTmewCATsPseTgqBIobFZ126amPChyUi4scA=s900-c-k-c0x00ffffff-no-rj",
+  "https://i.pinimg.com/originals/e5/6c/f2/e56cf212ab47ed25be6f905b0fcc00db.jpg",
+];
+
 const CalendarItems = (props) => {
   const authctx = useContext(AuthContext);
   const isLoggedIn = authctx.isLoggedIn;
@@ -49,21 +54,24 @@ const CalendarItems = (props) => {
           )}
         </div>
         {!emptyItems ? (
-          <ul className={classes["calendar__list"]}>
-            {props.items.map((item) => {
-              return (
-                <CalendarItem
-                  key={item.id}
-                  id={item.id}
-                  title={item.title}
-                  description={item.description}
-                  date={item.date}
-                  location={item.location}
-                  onDelete={deleteEventHandler}
-                />
-              );
-            })}
-          </ul>
+          <>
+            <ul className={classes["calendar__list"]}>
+              {props.items.map((item) => {
+                return (
+                  <CalendarItem
+                    key={item.id}
+                    id={item.id}
+                    image={imageData}
+                    title={item.title}
+                    description={item.description}
+                    date={item.date}
+                    location={item.location}
+                    onDelete={deleteEventHandler}
+                  />
+                );
+              })}
+            </ul>
+          </>
         ) : (
           isLoggedIn && (
             <p className={classes["calendar__empty"]}>Your calendar is empty</p>

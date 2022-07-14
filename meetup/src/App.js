@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 
 import Layout from "./components/Layout/Layout";
 import Calendar from "./pages/Calendar";
@@ -12,7 +12,7 @@ function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<Calendar />} />
-        <Route path="/Home" element={<Calendar />} />
+        <Route path="/Home" element={<Navigate to="/" />} />
         <Route path="/Home/AddEvent" element={<Event />} />
         <Route path="/Explore" element={<Search />} />
         <Route path="/Explore/:eventDetailId" element={<EventItemDetails />} />

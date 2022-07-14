@@ -1,10 +1,11 @@
-import { useContext, Fragment } from "react";
+import { useContext } from "react";
 import classes from "./CalendarItem.module.css";
 import CalendarDate from "./CalendarDate";
 import AuthContext from "../../store/auth-context";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 const CalanderItem = (props) => {
   const authctx = useContext(AuthContext);
@@ -17,7 +18,7 @@ const CalanderItem = (props) => {
   return (
     <main>
       {isLoggedIn && (
-        <Fragment>
+        <>
           <div className={classes["calendarItem-container"]}>
             <li className={classes["calendarItem__item"]}>
               <div className={classes["calendarItem-text"]}>
@@ -41,7 +42,8 @@ const CalanderItem = (props) => {
               <div>
                 <img
                   className={classes["calendarItem__img"]}
-                  src="https://source.unsplash.com/200x100/?party"
+                  // src="https://source.unsplash.com/200x100/?party"
+                  src={props.image[props.id]}
                   alt="party"
                 ></img>
               </div>
@@ -52,7 +54,7 @@ const CalanderItem = (props) => {
               </button>
             </div>
           </div>
-        </Fragment>
+        </>
       )}
     </main>
   );

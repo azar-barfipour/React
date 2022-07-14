@@ -55,16 +55,12 @@ const Calendar = () => {
     initializeEvents();
   }, []);
 
-  // useEffect(() => {
-  //   console.log("events changed!");
-  // }, [events]);
+  console.log(events);
 
   return (
     <Fragment>
       <Event />
       <CalendarItems items={events} deleteEvent={deleteEvent} />
-      {/* for deleting with filter */}
-      {/* <CalendarItems items={items} onFree={freeEventHandler} /> */}
     </Fragment>
   );
 };
