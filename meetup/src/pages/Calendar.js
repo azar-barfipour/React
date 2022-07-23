@@ -1,21 +1,15 @@
 import { Fragment, useEffect, useState, useContext } from "react";
+
 import CalendarItems from "../components/Calendar/CalendarItems";
 import Event from "../components/Event/EventLink";
 import AuthContext from "../store/auth-context";
 
 const Calendar = () => {
   const [events, setEvents] = useState([]);
-  const authctx = useContext(AuthContext);
-  const userId = authctx.userId;
-  //for deleting with filter:
-  // const freeEventHandler = (events) => {
-  //   setEvents(events);
-  // };
+  const authCtx = useContext(AuthContext);
+  const userId = authCtx.userId;
 
-  // from parent component / calendar
   const deleteEvent = (eventId) => {
-    console.log("delete event");
-
     // filter events
     const filtered = events.filter((event) => {
       return event.id !== eventId;
@@ -42,20 +36,17 @@ const Calendar = () => {
           location: data[key].location,
           token: data[key].token,
           userId: data[key].userId,
+          image: data[key].image,
         });
       }
       const filteredData = loadedData.filter(
         (loaded) => userId === loaded.userId
       );
-
-      // update state
       setEvents(filteredData);
     };
 
     initializeEvents();
   }, []);
-
-  console.log(events);
 
   return (
     <Fragment>

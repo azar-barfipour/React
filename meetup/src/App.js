@@ -11,9 +11,9 @@ function App() {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<Calendar />} />
-        <Route path="/Home" element={<Navigate to="/" />} />
-        <Route path="/Home/AddEvent" element={<Event />} />
+        <Route path="/Home" element={<Calendar />} />
+        <Route path="/" element={<Navigate to="/Home" />} />
+        <Route path="/AddEvent" element={<Event />} />
         <Route path="/Explore" element={<Search />} />
         <Route path="/Explore/:eventDetailId" element={<EventItemDetails />} />
         <Route path="/auth" element={<Auth />} />

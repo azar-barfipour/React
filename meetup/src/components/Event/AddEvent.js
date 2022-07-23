@@ -13,13 +13,14 @@ const AddEvent = (props) => {
   const [isDateTouched, setIsDateTouched] = useState(false);
   const [location, setLocation] = useState("");
   const [isLocationTouched, setIsLocationTouched] = useState(false);
+  const [isModal, setIsModal] = useState(false);
+
   const titleEmpty = title.trim().length !== 0;
   const titleValid = !titleEmpty && isTitleTouched;
   const dateEmpty = date.trim().length !== 0;
   const dateValid = !dateEmpty && isDateTouched;
   const locationEmpty = location.trim().length !== 0;
   const locationValid = !locationEmpty && isLocationTouched;
-  const [isModal, setIsModal] = useState(false);
 
   let formIsValid = false;
   if (titleEmpty && dateEmpty && locationEmpty) {
@@ -54,6 +55,8 @@ const AddEvent = (props) => {
       description: description,
       date: new Date(date),
       location: location,
+      image:
+        "https://images.unsplash.com/photo-1464047736614-af63643285bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80",
     };
     props.onAddGroupItems(groupItems);
     setIsModal(true);
@@ -82,7 +85,7 @@ const AddEvent = (props) => {
       {isModal && (
         <Modal
           title=""
-          message="Started your event
+          message="You just Started your event
     "
           onConfirm={modalHandler}
         />

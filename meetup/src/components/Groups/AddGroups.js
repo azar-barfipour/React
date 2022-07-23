@@ -9,7 +9,6 @@ const AddGroups = (props) => {
   const [isTitleTouched, setIsTitleTouched] = useState(false);
   const [selectedFile, setSelectedFile] = useState();
   const [isSelectedFile, setIsSelectedFile] = useState(false);
-  // const [date, setDate] = useState("");
   const titleEmpty = title.trim().length !== 0;
   const titleValid = !titleEmpty && isTitleTouched;
 
@@ -28,12 +27,9 @@ const AddGroups = (props) => {
     setSelectedFile(URL.createObjectURL(event.target.files[0]));
     setIsSelectedFile(true);
   };
-  // const dateHandler = (event) => {
-  //   setDate(event.target.value);
-  // };
+
   const addGroupsHandler = (event) => {
     event.preventDefault();
-    console.log(selectedFile);
     setIsTitleTouched(true);
     if (!titleEmpty) {
       return;
@@ -41,8 +37,8 @@ const AddGroups = (props) => {
     const groupItems = {
       title: title,
       description: description,
-      // date: new Date(date),
-      // image: selectedFile,
+      image:
+        "https://images.unsplash.com/photo-1464047736614-af63643285bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80",
     };
     props.onAddGroupItems(groupItems);
 
@@ -50,7 +46,7 @@ const AddGroups = (props) => {
     setDescription("");
     setIsTitleTouched(false);
   };
-  const titleBlurHandler = (event) => {
+  const titleBlurHandler = () => {
     setIsTitleTouched(true);
   };
 
@@ -81,33 +77,8 @@ const AddGroups = (props) => {
           value={description}
           label="Descriotion"
         ></textarea>
-        {/* <Input
-          type="file"
-          name="file"
-          id="file"
-          label="Image"
-          // value={selectedFile}
-          onChange={imageHandler}
-        /> */}
-        {/* <Input
-          id="desc"
-          type="text"
-          onChange={desHandler}
-          label="Descriotion"
-          value={description}
-        /> */}
-        {/* <label>title</label>
-      <input type="text" onChange={titleHandler}></input>
-      <label>description</label>
-      <input type="text" onChange={desHandler}></input>  */}
-        {/* <label>Date</label> */}
-        {/* <input type="datetime-local" onChange={dateHandler}></input> */}
-        <Button
-          type="submit"
-          name="ADD"
-          disabled={!formIsValid}
-          // className={` ${!formIsValid ? classes.button : ""} `}
-        />
+
+        <Button type="submit" name="ADD" disabled={!formIsValid} />
       </form>
     </div>
   );

@@ -1,11 +1,12 @@
-import classes from "./Header.module.css";
-import { NavLink } from "react-router-dom";
-import AuthContext from "../../store/auth-context";
 import { useContext } from "react";
+import { NavLink } from "react-router-dom";
+
+import AuthContext from "../../store/auth-context";
+import classes from "./Header.module.css";
 
 const Header = () => {
-  const authctx = useContext(AuthContext);
-  const isLoggedIn = authctx.isLoggedIn;
+  const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedIn;
   return (
     <div className={classes.header}>
       <div>
@@ -17,12 +18,12 @@ const Header = () => {
         <ul className={classes["header__list"]}>
           <li className={classes["header__list--item"]}>
             <NavLink
+              to="/Home"
               className={({ isActive }) =>
                 isActive
                   ? classes["header__active"]
                   : classes["header__inactive"]
               }
-              to="/Home"
             >
               Home
             </NavLink>

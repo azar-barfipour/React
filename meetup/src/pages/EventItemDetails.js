@@ -1,6 +1,6 @@
 import classes from "./EventItemDetails.module.css";
 import { useState, useEffect, useContext } from "react";
-import { useParams, Route, Routes, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import EventItemsDetail from "../components/Search/EventItemsDetail";
 import Comment from "../components/Comment/Comment";
 import AuthContext from "../store/auth-context";
@@ -35,6 +35,7 @@ const EventItemDetails = () => {
           date: data.date,
           description: data.description,
           location: data.location,
+          image: data.image,
         });
         setGroups(loadedData);
         setIsLoading(false);
@@ -62,6 +63,7 @@ const EventItemDetails = () => {
           description: newGroup.description,
           date: newGroup.date,
           userId: userId,
+          image: newGroup.image,
         }),
         headers: {
           "Content-Type": "application/json",
@@ -87,6 +89,7 @@ const EventItemDetails = () => {
           title: data2[key].title,
           description: data2[key].description,
           location: data2[key].location,
+          image: data2[key].image,
         });
       }
       const filterData = [...loadedData2];
@@ -117,6 +120,7 @@ const EventItemDetails = () => {
               date={group.date}
               location={group.location}
               description={group.description}
+              image={group.image}
             />
           );
         })}

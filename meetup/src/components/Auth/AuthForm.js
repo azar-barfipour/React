@@ -1,10 +1,12 @@
 import { Navigate, useNavigate } from "react-router-dom";
+import { useRef, useState, useContext } from "react";
+
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import classes from "./AuthForm.module.css";
-import { useRef, useState, useContext } from "react";
 import AuthContext from "../../store/auth-context";
 import Modal from "../UI/Modal";
+
 const AuthForm = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -14,7 +16,10 @@ const AuthForm = () => {
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
   const [modal, setModal] = useState(false);
+  const [error, setError] = useState("");
+  const [errorPass, setErrorPass] = useState(false);
   const navigate = useNavigate();
+
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
   };
@@ -25,40 +30,50 @@ const AuthForm = () => {
     authCtx.logout();
   };
 
-  async function addSubmitHandler(event) {
-    event.preventDefault();
+  const isEmpty = enteredEmail === "" || enteredPassword === "";
+  const lessPass = enteredPassword?.length < 6;
 
-    let url;
-    if (isLogin) {
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBPzh_70XgT3p1zKFsHQ-eOLHinYkyXYjM";
-    } else {
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBPzh_70XgT3p1zKFsHQ-eOLHinYkyXYjM";
+  async function addSubmitHandler(event) {
+    setError("");
+    event.preventDefault();
+    try {
+      let url;
+      if (isLogin) {
+        url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_AUTH_KEY}`;
+      } else {
+        url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_AUTH_KEY}`;
+      }
+      if (isEmpty) {
+        throw new Error("Email or Password is empty");
+      }
+      if (lessPass) {
+        throw new Error("Password length should be more than 6");
+      }
+      const response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify({
+          email: enteredEmail,
+          password: enteredPassword,
+          returnSecureToken: true,
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
+      if (isLogin) {
+        const data = await response.json();
+        authCtx.login(data.idToken, data.localId);
+      }
+      setModal(true);
+    } catch (error) {
+      setModal(true);
+      setError(error.message);
     }
-    const response = await fetch(url, {
-      method: "POST",
-      body: JSON.stringify({
-        email: enteredEmail,
-        password: enteredPassword,
-        returnSecureToken: true,
-      }),
-      headers: { "Content-Type": "application/json" },
-    });
-    if (isLogin) {
-      const data = await response.json();
-      authCtx.login(data.idToken, data.localId);
-    }
-    setModal(true);
   }
   const submitHandler = () => {
     setIsLogin(false);
   };
   const loginSubmitHandler = () => {
     setIsLogin(true);
-    {
-      isLogin && <p>logged in</p>;
-    }
+    isLogin && <p>logged in</p>;
   };
   const modalHandler = () => {
     setModal(false);
@@ -67,15 +82,20 @@ const AuthForm = () => {
     authCtx.login("1", "1");
     navigate("/");
   };
+
+  console.log(modal, error);
   return (
     <div>
-      {modal && isLogin && <Navigate to="/" />}
+      {modal && isLogin && !error && <Navigate to="/" />}
       {modal && !isLogin && (
         <Modal
           title="Sign up"
           message="signed in successfully"
           onConfirm={modalHandler}
         />
+      )}
+      {modal && error && (
+        <Modal title="Error" message={error} onConfirm={modalHandler} />
       )}
       <div className={classes["auth-form"]}>
         {isLogin && <h2 className={classes["auth-form__header"]}>Log in</h2>}

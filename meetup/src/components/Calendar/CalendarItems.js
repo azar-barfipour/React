@@ -3,14 +3,9 @@ import classes from "./CalendarItems.module.css";
 import AuthContext from "../../store/auth-context";
 import CalendarItem from "./CalendarItem";
 
-const imageData = [
-  "https://yt3.ggpht.com/ytc/AKedOLTK_dsTmewCATsPseTgqBIobFZ126amPChyUi4scA=s900-c-k-c0x00ffffff-no-rj",
-  "https://i.pinimg.com/originals/e5/6c/f2/e56cf212ab47ed25be6f905b0fcc00db.jpg",
-];
-
 const CalendarItems = (props) => {
-  const authctx = useContext(AuthContext);
-  const isLoggedIn = authctx.isLoggedIn;
+  const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedIn;
   const emptyItems = props.items.length === 0;
 
   const deleteEventHandler = async (eventId) => {
@@ -61,7 +56,7 @@ const CalendarItems = (props) => {
                   <CalendarItem
                     key={item.id}
                     id={item.id}
-                    image={imageData}
+                    image={item.image}
                     title={item.title}
                     description={item.description}
                     date={item.date}

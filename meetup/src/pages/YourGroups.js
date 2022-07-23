@@ -9,7 +9,6 @@ const YourGroups = (props) => {
       const response = await fetch(
         "https://recat-meetup-project-default-rtdb.firebaseio.com/groups.json"
       );
-      console.log(response);
       const data = await response.json();
       let transferData = [];
       for (const key in data) {
@@ -19,7 +18,6 @@ const YourGroups = (props) => {
           description: data[key].description,
         });
       }
-      console.log(transferData);
       setYourGroups(transferData);
     };
     fetchGroups();

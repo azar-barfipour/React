@@ -10,14 +10,12 @@
 }
 .calendarItem-container {
   margin-bottom: 3rem;
-  margin-top: 1rem;
 }
 
 .calendarItem__item {
   list-style: none;
   border-top: 1px solid rgb(231, 228, 228);
   display: flex;
-  align-items: center;
   justify-content: space-between;
 }
 .calendar-wrapper {
@@ -26,6 +24,8 @@
 }
 .calendarItem-text {
   width: 70%;
+  margin-top: 1rem;
+  height: 200px;
 }
 .calendarItem__title {
   margin-bottom: 0.5rem;
@@ -46,24 +46,7 @@
   min-width: 98px;
   border-radius: 0.5rem;
   margin: 1rem 0;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
 }
-/* @media (min-width: 640px) {
-  .calendarItem__item {
-    border: 1px solid rgb(231, 228, 228);
-    max-width: 100%;
-    height: 10rem;
-    overflow: hidden;
-    justify-content: center;
-  }
- 
-} */
-
-/* @media (min-width: 720px) and (max-width:799px){
-  .calendarItem__item {
-    width: 13rem;
-  }}
-  @media (min-width: 800px) {
-    .calendarItem__item {
-      width: 70rem;
-    }
-  } */

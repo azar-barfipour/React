@@ -18,6 +18,7 @@
   font-weight: bolder;
   color: rgb(246, 88, 88);
   text-decoration: none;
+  text-transform: capitalize;
 }
 .header__list {
   display: none;

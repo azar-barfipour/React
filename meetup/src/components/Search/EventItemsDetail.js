@@ -6,10 +6,7 @@ import classes from "./EventItemsDetail.module.css";
 const EventItemsDetail = (props) => {
   return (
     <li className={classes["detail__item"]}>
-      <img
-        src="https://source.unsplash.com/200x130/?party"
-        className={classes["detail__img"]}
-      />
+      <img src={props.image} alt="events" className={classes["detail__img"]} />
       <section className={classes["detail-wrapper"]}>
         <h5 className={classes["detail__title"]}>{props.title}</h5>
         <div className={classes["detail-wrapper__date"]}>
