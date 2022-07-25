@@ -12,6 +12,7 @@ const SearchForm = () => {
   const [isTomClicked, setIsTomClicked] = useState(false);
   const [isWeekClicked, setIsWeekClicked] = useState(false);
   const [enteredSearch, setEnteredSearch] = useState("");
+  const [fetchedEvents, setFetchedEvents] = useState([]);
   const [events, setEvents] = useState([]);
 
   const curr = new Date(); // get current date
@@ -28,12 +29,16 @@ const SearchForm = () => {
     setEnteredSearch(event.target.value);
     console.log(enteredSearch);
 
-    const result = events.filter((e) =>
-      e.title.toLowerCase().trim().includes(enteredSearch.toLowerCase().trim())
+    setEvents(
+      fetchedEvents.filter(
+        (item) =>
+          item.title.toLowerCase().indexOf(event.target.value.toLowerCase()) !==
+          -1
+      )
     );
-    setEvents(result);
-    if (result === "") {
-      console.log("there is no match event");
+
+    if (event.target.value === "") {
+      setEvents(fetchedEvents);
     }
   };
 
@@ -46,6 +51,9 @@ const SearchForm = () => {
       (e) => e.date.slice(0, 10) === new Date().toISOString().slice(0, 10)
     );
     setEvents(result);
+    if (isTodClicked === true) {
+      setEvents(fetchedEvents);
+    }
   };
 
   const isTomClickHandler = (e) => {
@@ -57,6 +65,9 @@ const SearchForm = () => {
       (e) => e.date.slice(0, 10) === tomorrow.toISOString().slice(0, 10)
     );
     setEvents(result);
+    if (isTomClicked === true) {
+      setEvents(fetchedEvents);
+    }
   };
 
   const isWeekClickHandler = (e) => {
@@ -70,6 +81,9 @@ const SearchForm = () => {
         e.date.slice(0, 10) >= firstDay.slice(0, 10)
     );
     setEvents(result);
+    if (isWeekClicked === true) {
+      setEvents(fetchedEvents);
+    }
   };
 
   useEffect(() => {
@@ -87,11 +101,12 @@ const SearchForm = () => {
           image: data[key].image,
         });
       }
+      setFetchedEvents(loadedData);
       setEvents(loadedData);
     };
 
     fetchHandler();
-  }, []); //enteredSearch
+  }, []);
   return (
     <div className={classes["form-container"]}>
       <form className={classes.form}>
